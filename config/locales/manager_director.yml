@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    models:
+      manager_director:
+        one: "Managing Director"
+        other: "Managing Directors"

@@ -1,0 +1,8 @@
+<%= f.fields_for :phones do |fields_for_phones| %>
+  <%= fields_for_phones.label :number, "Phone number", class: "control-label" %>
+  <div class="controls">
+    <%= fields_for_phones.hidden_field :desc, value: "Main" %>
+    <%= fields_for_phones.text_field :number, class: "input-small",
+      data: { mask: t("masks.phone") }%>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<!-- Account Creation begin Marin Software Tracking Script -->
+<div id="registration_pixel_conversion">
+
+<form style='display:none;' name='utmform'>
+<textarea id='utmtrans'>
+UTM:T|affiliation
+UTM:I|CreateAccount
+</textarea>
+</form>
+<script type='text/javascript'>
+var _marinClientId = "5894pa32751";
+var _marinProto = (("https:" == document.location.protocol) ? "https://" : "http://");
+  // Origindal
+  //document.write(unescape("%3Cscript src='" + _marinProto + "tracker.marinsm.com/tracker/" +
+  //_marinClientId + ".js' type='text/javascript'%3E%3C/script%3E"));
+
+  // CUSTOMIZED, because document.write overrides body tag
+  var script = unescape("%3Cscript src='" + _marinProto + "tracker.marinsm.com/tracker/" + _marinClientId + ".js' type='text/javascript'%3E%3C/script%3E");
+  $("#sign_up_success_modal").append(script);
+</script>
+<script type='text/javascript'>
+try {
+_marinTrack.processOrders();
+} catch(err) {}
+</script>
+<noscript>
+<img src="https://tracker.marinsm.com/tp?act=2&cid=5894pa32751&trans=UTM:T|affiliation%0AUTM:I|CreateAccount" />
+</noscript>
+<!-- end Copyright Marin Software -->
+</div>

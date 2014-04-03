@@ -1,0 +1,26 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Payment for invoice <%= @invoice.number %></h3>
+  </div>
+
+  <div class="span4 overview">
+    <table class="table table-bordered">
+      <tr>
+        <td><b>Invoice Total</b></td>
+        <td class="right"><%= number_to_currency @invoice.total %></td>
+      </tr>
+      <tr>
+        <td><b>(-) Total Paid</b></td>
+        <td class="right"><%= number_to_currency @invoice.payments.sum(:amount) %></td>
+      </tr>
+      <tr>
+        <td><b>(=) Balance</b></td>
+        <td class="right"><b><%= number_to_currency @invoice.total - @invoice.payments.sum(:amount) %></b></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="span12 totals">
+    <%= render "form", object: @payment %>
+  </div>
+</div>

@@ -1,0 +1,309 @@
+.container-psychics {
+  font-size: 0px;
+
+  article {
+    width: 288px;
+    display: inline-block;
+    border: 1px solid #e4ecf0;
+    border-bottom: 5px solid #e4ecf0;
+    font-size: 20px;
+    box-shadow: 0px 5px 7px #ddd;
+    position: relative;
+    margin-right: 40px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  article.last {
+    margin-right: 0;
+  }
+
+  article > header {
+    text-align: center;
+    height: 180px;
+    background-image: url(image-path("psychics/banner_love.png"));
+  }
+
+  article > header.money_and_finance {
+    background-image: url(image-path("psychic-banner-money.png"));
+  }
+
+  article > header.pet_and_animals {
+    background-image: url(image-path("psychic-banner-pet.png"));
+  }
+
+  article > header.past_lives {
+    background-image: url(image-path("psychic-banner-pastlives.png"));
+  }
+
+  article > header.love_and_relationships {
+    background-image: url(image-path("psychic-banner-love.png"));
+  }
+
+  article > header.career_and_work {
+    background-image: url(image-path("psychic-banner-work.png"));
+  }
+
+  article > header.destiny {
+    background-image: url(image-path("psychic-banner-destiny.png"));
+  }
+
+  article > header.deceased {
+    background-image: url(image-path("psychic-banner-destiny.png"));
+  }
+
+  article > header.dream_interpretation {
+    background-image: url(image-path("psychic-banner-dream-interpretation.png"));
+  }
+
+  article > header.lost_objects {
+    background-image: url(image-path("psychic-banner-lost-objects.png"));
+  }
+
+  article > header img {
+    margin-top: 10px;
+    width: 150px;
+    border: 7px solid white;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+  }
+
+  div.content header h1 a {
+    font-size: 26px;
+    color: #606d82;
+    font-weight: 300;
+    text-decoration: none;
+
+    &.small1   { font-size: 22px; }
+    &.small2   { font-size: 20px; }
+    &.small3   { font-size: 18px; }
+    &.small4   { font-size: 16px; }
+    &.small5   { font-size: 14px; }
+  }
+
+  div.content header > div {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  div.content {
+    padding: 20px;
+  }
+
+  div.content div.body,
+  div.content footer {
+    background: no-repeat url(image_path("psychics/shadow.png"));
+    padding: 20px 0px;
+  }
+
+  div.content .psychic-state-container {
+    height: 55px;
+  }
+
+  div.content header {
+    margin-bottom: 20px;
+  }
+
+  div.content header div.psychic-left {
+    padding-right: 10px;
+    width: 145px;
+    border-right: 1px solid #cdd6db;
+  }
+
+  div.content header div.psychic-left div.stars {
+    display: inline-block;
+  }
+
+  div.content header div.psychic-left span.psychics_reviews_amount{
+    font-size: 16px;
+    color: #cdd1d7;
+  }
+
+  div.content header div.psychic-right {
+    padding-left: 10px;
+    width: 77px;
+    text-align: center;
+  }
+
+  div.content header div.psychic-right .psychic-price,
+  div.content header div.psychic-right .psychic-price-promo {
+    position: relative;
+    color: #606d82;
+    font-size: 24px;
+    font-weight: 400;
+
+    & small {
+      color: #cdd1d7;
+      font-size: 20px;
+      font-weight: 100;
+    }
+  }
+
+  div.content header div.psychic-right .psychic-price-promo {
+    color: #fd3d39;
+
+    & span {
+      position: absolute;
+      margin-left: -1px;
+      margin-top: 3px;
+      font-size: 14px;
+    }
+
+    & small {
+      margin-left: 6px;
+    }
+  }
+
+  div.content header div.psychic-right .psychic-empty-price-promo {
+    height: 32px;
+  }
+
+  div.content header div.psychic-right .psychic-price-crossed-out {
+    position: absolute;
+    left: 0px;
+    top: 15px;
+  }
+
+  div.content header div.psychic-right .psychic-ext {
+    font-family: "Lato" sans-serif;
+    color: #cdd1d7;
+    font-size: 16px;
+    margin-top: 5px;
+
+    & span {
+      color: #606d82;
+      font-weight: bold;
+    }
+  }
+
+  div.content div.body h1 {
+    color: #5d7380;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+
+  div.content div.body div.specialties {
+    color: #8590a1;
+    font-size: 18px;
+    font-weight: 100;
+    height: 71px;
+    overflow: hidden;
+  }
+
+  div.content div.body a {
+    color: #17aeff;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  div.content div.body .psychic-promo-info {
+    float: right;
+    font-size: 14px;
+    color: #fd3d39;
+    margin-top: 6px;
+  }
+
+  div.content footer {
+    text-align: center;
+    font-size: 40px;
+
+    .on_a_call    { color: #ff5622; }
+    .available    { color: #4bcf00; }
+    .unavailable  { color: #d7dae0; }
+
+    div.psychic-state {
+      height: 53px;
+      overflow: hidden;
+    }
+
+    span.psychic-call-now  {
+      display: none;
+      font-size: 35px;
+      color: #ff8f00;
+      line-height: 1;
+
+      position: absolute;
+      right: 0px;
+      left: 0px;
+
+      .psychic-phone {
+        font-size: 25px;
+      }
+    }
+
+    &:hover  {
+      div.psychic-state.available span.psychic-state { display: none; }
+      span.psychic-call-now { display: block; }
+    }
+  }
+}
+
+.psychic-card-favorite-off {
+  position: absolute;
+  width: 66px;
+  height: 69px;
+  bottom: -30px;
+  left: 20px;
+  background: url(image-path("psychic-card-favorite-off.png"));
+  z-index: 2;
+}
+
+.psychic-card-favorite-on {
+  position: absolute;
+  width: 66px;
+  height: 69px;
+  bottom: -30px;
+  left: 20px;
+  background: url(image-path("psychic-card-favorite-on.png"));
+  z-index: 3;
+}
+
+.psychic-card-reviews-off {
+  position: absolute;
+  width: 66px;
+  height: 69px;
+  bottom: -30px;
+  right: 20px;
+  background: url(image-path("psychic-card-reviews-off.png"));
+  z-index: 2;
+}
+
+.psychic-card-reviews {
+  position: absolute;
+  width: 66px;
+  height: 69px;
+  bottom: -30px;
+  right: 20px;
+  background: url(image-path("psychic-card-reviews-on.png"));
+  z-index: 3;
+}
+
+.psychic-card-reviews span {
+  display: block;
+  padding-top: 23px;
+  font-size: 13px;
+  width: 66px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.psychic-card-phone {
+  position: absolute;
+  width: 114px;
+  height: 120px;
+  bottom: -55px;
+  left: 88px;
+  background: url(image-path("psychic-card-phone.png"));
+  z-index: 1;
+}
+
+.psychic-card-action {
+  cursor: pointer;
+  display: none;
+}

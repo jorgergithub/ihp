@@ -1,0 +1,87 @@
+.scrollbar_modal,
+.scrollbar_table { 
+  position: relative; 
+  width: 100%; 
+  clear: both;
+  -webkit-box-shadow: 0px 5px 5px #ccc;
+  -moz-box-shadow: 0px 5px 5px #ccc;
+  box-shadow: 0px 5px 5px #ccc;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+
+  .viewport { 
+    width: 100%; 
+    height: 450px; 
+    overflow: hidden; 
+    position: relative; 
+  }
+
+  .overview { 
+    width: 100%; 
+    list-style: none; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+  }
+
+  .thumb .end,
+  .thumb { 
+  }
+
+  .scrollbar { 
+    display: none;
+    position: absolute; 
+    width: 7px; 
+    z-index: 99; 
+    right: 7px;
+    margin-top: 25px;
+  }
+
+  .track { 
+    background-color: transparent; 
+    height: 100%; 
+    width: 7px; 
+    position: relative; 
+    padding: 0 1px; 
+  }
+
+  .thumb { 
+    height: 20px; 
+    width: 7px; 
+    cursor: pointer; 
+    overflow: hidden; 
+    position: absolute; 
+    top: 0;
+    border-radius: 7px;
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  .thumb .end { 
+    overflow: hidden; 
+    height: 5px; 
+    width: 13px; 
+  }
+
+  .disable { 
+    display: none; 
+  }
+}
+
+.noSelect { 
+  user-select: none; 
+  -o-user-select: none; 
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -webkit-user-select: none; 
+}
+
+.scrollbar_modal {
+  .scrollbar {
+    display: block;
+  }
+  
+  .thumb {
+    z-index: 1001;
+  }
+}

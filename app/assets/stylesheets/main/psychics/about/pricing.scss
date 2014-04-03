@@ -1,0 +1,71 @@
+#psychic-details section.psychic-pricing {
+  overflow: hidden;
+  text-align: center;
+
+  .about-action-items {
+    display: inline-block;
+  }
+
+  .about-action-item {
+    height: 190px;
+    width: 240px;
+  }
+
+  .per-minute {
+    background-image: url(image_path('psychics/price_icon.png'));
+  }
+
+  .current-call {
+    background-image: url(image_path('psychics/current_call_icon.png'));
+  }
+
+  .est-wait-time {
+    background-image: url(image_path('psychics/clock_icon.png'));
+  }
+
+  .people-waiting {
+    background-image: url(image_path('psychics/waiting_icon.png'));
+  }
+
+  .about-psychic-badge {
+    right: 30px;
+  }
+
+  .about-psychic-price {
+    position: relative;
+  }
+
+  .about-psychic-price-promo {
+    position: absolute;
+    left: 17px;
+    top: -9px;
+    color: #f00;
+  }
+
+  .about-psychic-price-detail {
+    position: absolute;
+    left: 17px;
+    top: 9px;
+  }
+
+  .about-psychic-price-crossed-out {
+    position: absolute;
+    top: 33px;
+    left: 10px;
+    width: 30px;
+    height: 2px;
+  }
+
+  small {
+    font-size: 60%;
+  }
+
+  aside.new-customers-label {
+    color: red;
+    position: absolute;
+    bottom: 10px;
+    font-size: 15px;
+    left: 0px;
+    right: 0px;
+  }
+}

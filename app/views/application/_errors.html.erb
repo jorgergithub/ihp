@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+  <% error_action ||= "saved" %>
+  <div id="error_explanation">
+    <h2><%= pluralize(object.errors.count, "error") %> prohibited this <%= local_assigns[:model_name] || object.class.model_name.human.downcase %> from being <%= error_action %>:</h2>
+
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

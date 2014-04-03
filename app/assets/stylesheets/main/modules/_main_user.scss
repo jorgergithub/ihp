@@ -1,0 +1,111 @@
+@import "main/helpers";
+
+.user {
+  background: #af00a5;
+  height: 160px;
+}
+
+.user-signup,
+.user-signin {
+  padding: 20px 0;
+  float: left;
+  height: 120px;
+
+  h1 {
+    font-weight: 100;
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-left: 25px;
+  }
+}
+
+.user-signup {
+  width: 280px;
+  border-right: 1px solid #bf00b7;
+}
+
+.user-signin {
+  border-left: 1px solid #8c0084;
+  padding-left: 40px;
+}
+
+.user-container {
+  position: relative;
+}
+
+.user-close {
+  position: absolute;
+  top: 60px;
+  right: 35px;
+}
+
+.signup-links {
+  @extend %flat-list;
+}
+
+.signup-link {
+  margin-right: 25px;
+}
+
+.signin-inputs {
+  @extend %clearfix;
+}
+
+.signin-input {
+  background-image: url(image-path("user-input-mask.png"));
+  width: 190px;
+  height: 50px;
+  float: left;
+  margin-right: 20px;
+}
+
+.signin-form {
+  input[type="text"],
+  input[type="password"] {
+    font-size: 22px;
+    font-weight: 100;
+    color: #fff;
+    margin: 10px 20px;
+    width: 150px;
+    height: 30px;
+    background: transparent;
+    border: none;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  input[type="submit"] {
+    float: left;
+    font-size: 22px;
+    color: #6b7584;
+    background: url(image-path("user-signin-button.png")) no-repeat top left;
+    border: none;
+    width: 152px;
+    height: 52px;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #460042 inset;
+    -webkit-text-fill-color: #fff;
+  }
+}
+
+.signin-actions {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.signin-actions-forgot {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.signin-actions-remember {
+}
+
+.user-signin-element {
+  display: none;
+}

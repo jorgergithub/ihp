@@ -1,0 +1,5 @@
+<% @backends.each do |backend| %>
+<% backend['servers'].each do |server| %>
+disable server <%= "#{backend['backend_name']}/#{server['server_name']}" %>;
+<% end %>
+<% end %>

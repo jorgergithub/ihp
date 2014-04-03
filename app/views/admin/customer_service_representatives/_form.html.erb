@@ -1,0 +1,41 @@
+<%= form_for([:admin, @csr], html: { class: 'form form-horizontal' }) do |f| %>
+  <fieldset>
+    <% if @errors and @errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@errors.count, "error") %> prohibited this CSR from being saved:</h2>
+
+        <ul>
+        <% @errors.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="control-group">
+      <%= f.label :first_name, "Name", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :first_name, placeholder: "First name", autofocus: true, autocomplete: 'on' %>
+        <%= f.text_field :last_name, placeholder: "Last name", autocomplete: 'on' %>
+      </div>
+    </div>
+
+    <%= add_text_field f, :username %>
+    <%= add_text_field f, :email %>
+    <%= add_text_field f, :phone, "", data: { mask: t('masks.phone') } %>
+
+    <div class="control-group">
+      <%= f.label :timezone, "Timezone", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, { include_blank: true, default: f.object.time_zone }, class: 'timezone' %>
+      </div>
+    </div>
+
+    <% if params[:action] == "new" %>
+      <%= add_password_field f, :password %>
+    <% end %>
+  </fieldset>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to "Cancel", admin_customer_service_representatives_path, class: "btn" %>
+<% end %>

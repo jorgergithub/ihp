@@ -1,0 +1,52 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Packages</h3>
+
+    <% if @packages.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Dollars</th>
+            <th>Price</th>
+            <th>Active?</th>
+            <th>Phone offer?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @packages.each do |pkg| %>
+            <tr>
+              <td class="admin-actions">
+                <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_admin_package_path(pkg) %>
+                <%= link_to '<i class="icon-remove"></i>'.html_safe, [:admin, pkg], data: {confirm: "Are you sure?" }, :method => "delete" %>
+              </td>
+              <td><%= link_to pkg.name, edit_admin_package_path(pkg) %></td>
+              <td><%= number_to_currency pkg.credits %></td>
+              <td><%= number_to_currency pkg.price %></td>
+              <td>
+                <% if pkg.active? %>
+                  <i class="icon-ok"></i>
+                <% end %>
+              </td>
+              <td>
+                <% if pkg.phone? %>
+                  <i class="icon-ok"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @packages %>
+
+    <% else %>
+      <div class="blank-state">
+        No packages added yet.
+        <%= link_to "Add one now.", new_admin_package_path %>
+      </div>
+    <% end %>
+    <%= link_to "Add new package", new_admin_package_path, class: "btn btn-small" %>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<%= form_for user, :url => client_path, remote: true do |f| %>
+  <div class="modal-body">
+    <%= f.fields_for :client do |cf| %>
+      <div class="row">
+        <div class="field custom">
+          <%= cf.label :birthday, "My birthday" %>
+          <%= cf.date_select :birthday, start_year: (Time.now.year - 100),
+                                        end_year: Time.now.year,
+                                        order: [:month, :day, :year],
+                                        with_css_classes: true  %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="timezone row">
+      <%= f.label :timezone, "Timezone" %>
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, {}, class: 'timezone' %>
+    </div>
+  </div>
+
+  <footer>
+    <%= image_submit_tag "modal/save_btn.png" %>
+    <%= link_to image_tag("modal/cancel_btn.png"), "#", class: "close-button" %>
+  </footer>
+<% end %>

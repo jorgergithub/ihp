@@ -1,0 +1,67 @@
+#sign_in_error_modal {
+  & > header {
+    background: #e14c4c;
+
+    h1 { color: white; }
+  }
+
+  a {
+    color: #0090ff;
+  }
+
+  .form_validation_errors {
+    margin-bottom: 20px;
+  }
+
+  .field.field-checkbox,
+  .field.field-link {
+    margin-top: -20px;
+  }
+
+  .field.field-checkbox {
+    width: 376px;
+
+    label {
+      color: #8590a1;
+      text-transform: none;
+      font-size: 18px;
+      font-weight: normal;
+
+      &.label-checked {
+        color: #40b500;
+      }
+    }
+  }
+
+  .field.field-link a {
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+  input[type="checkbox"] {
+    width: auto;
+  }
+
+  footer {
+    margin-top: 20px;
+  }
+
+  footer.footer_links {
+    margin-top: 80px;
+    font-size: 18px;
+    color: #8e8e8e;
+
+    div {
+      display: inline-block;
+    }
+
+    div + div{
+      margin-left: 20px;
+    }
+
+    &.footer_links a {
+      margin-left: 10px;
+    }
+  }
+}

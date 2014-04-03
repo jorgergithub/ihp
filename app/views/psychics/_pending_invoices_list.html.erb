@@ -1,0 +1,32 @@
+<table class="records header">
+  <thead>
+    <tr>
+      <th>Invoice ID</th>
+      <th>Period</th>
+      <th>Created</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+</table>
+
+<div class="scrollbar_table">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class=  "end"></div></div></div></div>
+  <div class="viewport">
+    <div class="overview">
+
+      <table class="records">
+        <tbody>
+          <% @psychic.pending_invoices.each do |inv| %>
+            <tr>
+              <td>#<%= inv.number %></td>
+              <td><%= inv.period %></td>
+              <td><%=l inv.created_at %></td>
+              <td><%= number_to_currency inv.total %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

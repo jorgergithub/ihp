@@ -1,0 +1,89 @@
+<% last ||= false %>
+<article class="psychic<% if last %> last<% end %>" data-psychic-id="<%= psychic.id %>">
+  <header class="<%= psychic.top_speciality %>">
+    <%= avatar_image_tag(psychic.avatar_id, width: 150, height: 150) %>
+  </header>
+
+  <div class="content">
+    <header>
+      <div class="psychic-left">
+        <h1>
+          <%= link_to psychic.alias_name, about_psychic_path(psychic) %>
+        </h1>
+        <%= render "psychics/about/stars", stars: psychic.rating, star_type: "small_green" %>
+        <span class="psychics_reviews_amount">(<%= psychic.reviews.count %>)</span>
+      </div>
+      <div class="psychic-right">
+        <% if psychic.special_price?(current_client) %>
+          <div class="psychic-price-promo">
+            $1<span>*</span><small>&nbsp;Min</small>
+          </div>
+        <% end %>
+
+        <div class="psychic-price">
+          <%= number_to_currency psychic.price, precision: 0 %><small>&nbsp;Min</small>
+          <% if psychic.special_price?(current_client) %>
+            <%= image_tag "psychic-card-price-crossed-out.png", class: "psychic-price-crossed-out" %>
+          <% end %>
+        </div>
+
+        <% if current_client && !psychic.special_price?(current_client) && current_client.new_client? %>
+          <div class="psychic-empty-price-promo">
+          </div>
+        <% end %>
+
+        <div class="psychic-ext">
+          Ext: <span><%= psychic.extension %></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="body">
+      <h1>
+        <% if psychic.sign %>
+          I’m <%= psychic.sign.name %>!
+        <% end %>
+        I Specialize in:
+      </h1>
+
+      <div class="specialties">
+        <%= limited_text(psychic.specialties, 80) %>
+      </div>
+
+      <% if psychic.special_price?(current_client) %>
+        <span class="psychic-promo-info">
+          * Special for new customers
+        </span>
+      <% end %>
+      <%= link_to "Read more", about_psychic_path(psychic) %>
+    </div>
+
+    <footer>
+      <div class="psychic-state <%= psychic.current_state %>">
+        <span class="psychic-state"><%= psychic_state(psychic) %></span>
+        <% if psychic.available? %>
+          <span class="psychic-call-now">
+            Call Now!<br />
+            <span class="psychic-phone">1-855-550-8400</span>
+          </span>
+          <script>$("span.psychic-call-now .psychic-phone").mask("9-999-999-9999")</script>
+        <% end %>
+      </div>
+    </footer>
+
+    <% if current_user and current_user.client and current_user.client.favorite?(psychic) %>
+      <div class="psychic-card-action psychic-card-favorite-on"></div>
+    <% else %>
+      <div class="psychic-card-action psychic-card-favorite-off"></div>
+    <% end %>
+
+    <div class="psychic-card-action psychic-card-phone"></div>
+
+    <div class="psychic-card-action psychic-card-reviews-off"></div>
+    <% if psychic.reviews.any? %>
+      <div class="psychic-card-action psychic-card-reviews">
+        <span><%= psychic.reviews.count %></span>
+      </div>
+    <% end %>
+  </div>
+</article>

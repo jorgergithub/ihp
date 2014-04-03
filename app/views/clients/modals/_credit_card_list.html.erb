@@ -1,0 +1,20 @@
+<div id="credit_card_list_modal" class="modal large">
+  <header>
+    <h1>My Cards On File</h1>
+  </header>
+
+  <%= render "clients/modals/spinner" %>
+  
+  <div class="modal-body">
+    <% if @client.cards.any? %>
+      <ul class="credit_cards">
+        <%= render "clients/modals/credit_card", card: @client.cards.first, select: true %>
+      </ul>
+    <% end %>
+  </div>
+
+  <footer>
+    <%= image_submit_tag "modal/add_new_card.png" %>
+    <%= link_to image_tag("modal/cancel_btn.png"), "#", class: "close-button" %>
+  </footer>
+</div>

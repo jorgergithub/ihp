@@ -1,0 +1,13 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Payment for invoice <%= @invoice.number %></h3>
+  </div>
+
+  <div class="span12">
+    Total for this invoice: <%= number_to_currency @invoice.total %>
+  </div>
+
+  <div class="span12">
+    <%= render "form", object: @payment %>
+  </div>
+</div>

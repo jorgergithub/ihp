@@ -1,0 +1,31 @@
+<%= form_for(user, :as => :user, remote: true, :url => session_path(:user)) do |f| %>
+  <%= render "shared/form_validation_errors", model: user %>
+  
+  <div class="row">
+    <div class="field">
+      <%= f.label :login, "Username / Telephone / Email Address" %>
+      <%= f.text_field :login, :autofocus => true, placeholder: "Username / Telephone / Email Address" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field field-checkbox">
+        <%= f.check_box :remember_me %> 
+        <%= f.label :remember_me %>
+    </div>
+
+    <div class="field field-link">
+      <%= link_to "I forgot my password", "#", class: "modal_link", data: { "modal-id" => :forgot_password_modal } %>
+    </div>
+  </div>
+
+  <footer>
+    <%= image_submit_tag "modal/sign_in_button.png" %>
+    <%= link_to image_tag("modal/cancel_btn.png"), "#", :class => 'close-button' %>
+  </footer>
+<% end %>

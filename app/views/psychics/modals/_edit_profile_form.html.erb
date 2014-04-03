@@ -1,0 +1,164 @@
+<%= form_for psychic, remote: "true" do |f| %>
+  <%= render "shared/form_validation_errors", model: psychic %>
+
+  <div class="row">
+    <div class="field medium">
+      <%= f.label :alias_name, "Alias" %>
+      <%= f.text_field :alias_name %>
+      <p>
+        Alias will be used as your online identity all customer facing pages on the IHP website.
+      </p>
+    </div>
+
+    <div class="field medium">
+      <%= f.label :price, "Price (Per minute)" %>
+      <%= f.number_field :price, min: 3, max: 9, step: 1 %>
+    </div>
+
+    <div class="field medium">
+      <%= f.label :top_speciality, "Top Speciality" %>
+      <%= f.select :top_speciality, options_for_select(TopSpeciality.to_a, f.object.top_speciality) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field medium">
+      <%= f.label :phone, "Phone" %>
+      <%= f.text_field :phone %>
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Abilities</th>
+      <th>Tools</th>
+      <th>Specialties</th>
+      <th>Style</th>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.check_box :ability_clairvoyance %>
+        <%= f.label :ability_clairvoyance, "Clairvoyance" %>
+      </td>
+      <td>
+        <%= f.check_box :tools_tarot %>
+        <%= f.label :tools_tarot, "Tarot" %>
+      </td>
+      <td>
+        <%= f.check_box :specialties_love_and_relationships %>
+        <%= f.label :specialties_love_and_relationships, "Love and Relationships" %>
+      </td>
+      <td>
+        <%= f.check_box :style_compassionate %>
+        <%= f.label :style_compassionate, "Compassionate" %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.check_box :ability_clairsentient %>
+        <%= f.label :ability_clairsentient, "Clairsentient" %>
+      </td>
+      <td>
+        <%= f.check_box :tools_oracle_cards %>
+        <%= f.label :tools_oracle_cards, "Orable Cards" %>
+      </td>
+      <td>
+        <%= f.check_box :specialties_career_and_work %>
+        <%= f.label :specialties_career_and_work, "Career and Work" %>
+      </td>
+      <td>
+        <%= f.check_box :style_inspirational %>
+        <%= f.label :style_inspirational, "Inspirational" %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.check_box :ability_empathy %>
+        <%= f.label :ability_empathy, "Empathy" %>
+      </td>
+      <td>
+        <%= f.check_box :tools_runes %>
+        <%= f.label :tools_runes, "Runes" %>
+      </td>
+      <td>
+        <%= f.check_box :specialties_money_and_finance %>
+        <%= f.label :specialties_money_and_finance, "Money and Finance" %>
+      </td>
+      <td>
+        <%= f.check_box :style_straightforward %>
+        <%= f.label :style_straightforward, "Straightforward" %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.check_box :ability_medium %>
+        <%= f.label :ability_medium, "Medium" %>
+      </td>
+      <td>
+        <%= f.check_box :tools_crystals %>
+        <%= f.label :tools_crystals, "Crystals" %>
+      </td>
+      <td>
+        <%= f.check_box :specialties_lost_objects %>
+        <%= f.label :specialties_lost_objects, "Lost Objects" %>
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.check_box :ability_channeler %>
+        <%= f.label :ability_channeler, "Channeler" %>
+      </td>
+      <td>
+        <%= f.check_box :tools_pendulum %>
+        <%= f.label :tools_pendulum, "Pendulum" %>
+      </td>
+      <td>
+        <%= f.check_box :specialties_dream_interpretation %>
+        <%= f.label :specialties_dream_interpretation, "Dream Interpretation" %>
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>
+        <%= f.check_box :ability_dream_analysis %>
+        <%= f.label :ability_dream_analysis, "Dream Analysis" %>
+      </td>
+      <td>
+        <%= f.check_box :tools_numerology %>
+        <%= f.label :tools_numerology, "Numerology" %>
+      </td>
+      <td>
+        <%= f.check_box :specialties_pet_and_animals %>
+        <%= f.label :specialties_pet_and_animals, "Pet and Animals" %>
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <%= f.check_box :specialties_deceased %>
+        <%= f.label :specialties_deceased, "Deceased" %>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+
+  <div class="field full">
+    <%= f.label :about %>
+    <%= f.text_area :about, placeholder: "Your info goes here..." %>
+  </div>
+
+  <footer>
+    <%= image_submit_tag "modal/save_btn.png" %>
+    <%= link_to image_tag("modal/cancel_btn.png"), "#", class: "close-button" %>
+  </footer>
+<% end %>

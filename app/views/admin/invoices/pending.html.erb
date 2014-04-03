@@ -1,0 +1,13 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Pending Invoices</h3>
+
+    <% if @invoices.any? %>
+      <%= render "invoices", actions: true %>
+    <% else %>
+      <div class="blank-state">
+        No invoices are pending payment.
+      </div>
+    <% end %>
+  </div>
+</div>

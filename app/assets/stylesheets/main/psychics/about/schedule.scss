@@ -1,0 +1,124 @@
+article.psychic-schedule {
+  & > h1 {
+    font-size: 35px;
+    font-weight: 300;
+    color: #5d687a;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  table {
+    width: 100%;
+    color: white;
+    box-shadow: 0px 5px 5px #ccc;
+    background: transparent;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+  }
+
+  table thead tr th {
+    background: #af00a5;
+    font-size: 24px;
+    color: white;
+  }
+
+  table tbody tr td {
+    font-size: 22px;
+  }
+
+  table thead tr th:first-child {
+    -webkit-border-top-left-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    border-top-left-radius: 7px;
+  }
+
+  table thead tr th:last-child {
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-right-radius: 7px;
+  }
+
+  table tbody tr:nth-child(odd) {
+    background: #f3f4f6;
+  }
+
+  table tbody tr td:first-child {
+    background: #bac4d2;
+  }
+
+  table tbody tr:nth-child(odd) td:first-child {
+    background: #dbe2ed;
+  }
+
+  table tbody tr:last-child td:first-child {
+    -webkit-border-bottom-left-radius: 7px;
+    -moz-border-radius-bottomleft: 7px;
+    border-bottom-left-radius: 7px;
+  }
+
+  table tbody tr:last-child td:last-child {
+    -webkit-border-bottom-right-radius: 7px;
+    -moz-border-radius-bottomright: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  table thead tr:first-child th:first-child {
+    -webkit-border-top-left-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    border-top-left-radius: 7px;
+  }
+
+  table td, table th {
+    text-align: center;
+    padding: 25px 0px;
+    font-weight: 100;
+    width: 115px;
+    vertical-align: middle;
+    width: 113px;
+  }
+
+  table tr th:first-child,
+  table tr td:first-child {
+    width: 176px;
+  }
+
+  table td.psychic-available {
+    padding: 5px 0px;
+  }
+
+  table td.psychic-available div {
+    position: relative;
+    width: 120px;
+    height: 69px;
+  }
+
+  table td.psychic-available span {
+    padding: 16px;
+    display: inline-block;
+    background: #a8e782;
+    border: 2px solid #83c856;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    position: relative;
+    z-index: 1;
+    position: absolute;
+    left: 17px;
+    color: white;
+  }
+  
+  table td.psychic-available.middle span {
+    padding: 35px 16px;
+    top: -17px;
+    border-radius: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+    z-index: 2;
+  }
+
+  table td.psychic-unavailable {
+    color: #8590a1;
+  }
+}

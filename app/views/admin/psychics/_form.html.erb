@@ -1,0 +1,33 @@
+<%= render 'errors', object: @psychic.user, model_name: "psychic" %>
+
+<ul class="nav nav-tabs" id="tabs">
+  <li class="active">
+    <%= link_to "Psychic", "#main", :data => { :toggle => 'tab'} %>
+  </li>
+  <li>
+    <%= link_to "Employment", "#employment", :data => { :toggle => 'tab'}  %>
+  </li>
+  <li>
+    <%= link_to "Reviews (#{@psychic.reviews.count})", "#reviews", :data => { :toggle => 'tab'}  %>
+  </li>
+</ul>
+
+<%= form_for([:admin, @psychic.user], :url => admin_psychic_path(@psychic), :html => { :class => 'form form-horizontal' }) do |f| %>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="main">
+      <%= render "main", f: f %>
+    </div>
+
+    <div class="tab-pane" id="employment">
+      <%= render "employment", f: f %>
+    </div>
+
+    <div class="tab-pane" id="reviews">
+      <%= render "admin/reviews", target: @psychic %>
+    </div>
+  </div>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to "Cancel", admin_psychics_path, class: "btn" %>
+<% end %>

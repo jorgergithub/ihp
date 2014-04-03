@@ -1,0 +1,15 @@
+<%= @logrotate_file %> {
+  <% @logrotate_options.each do |o| %>
+  <%= o %>
+  <% end %>
+  <% if @postrotate != '' -%>
+    postrotate
+      <%= @postrotate %>
+    endscript
+  <% end -%>
+  <% if @prerotate != '' -%>
+    prerotate
+      <%= @prerotate %>
+    endscript
+  <% end -%>
+}

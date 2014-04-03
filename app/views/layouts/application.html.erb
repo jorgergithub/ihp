@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IHeartPsychics</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "https://js.stripe.com/v2/" %>
+  <%= stylesheet_link_tag "" %>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller.controller_name %>" data-page="<%= current_page %>">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="/">IHeartPsychics</a>
+      <% if current_user %>
+        <% if current_user.admin? %>
+          <%= render "admin_menu" %>
+        <% elsif current_user.manager_director? %>
+          <%= render "manager_director_menu" %>
+        <% elsif current_user.website_admin? %>
+          <%= render "website_admin_menu" %>
+        <% elsif current_user.accountant? %>
+          <%= render "accountant_menu" %>
+        <% elsif current_user.psychic? %>
+          <%= render "psychic_menu" %>
+        <% elsif current_user.client? %>
+          <%= render "client_menu" %>
+        <% elsif current_user.rep? %>
+          <%= render "rep_menu" %>
+        <% else %>
+          <ul class="nav">
+            <li><%= link_to 'Dashboard', dashboard_path %></li>
+          </ul>
+        <% end %>
+        <ul class="nav pull-right">
+          <li>
+            <%= link_to current_user.full_name, dashboard_path %>
+          </li>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container">
+    <% if flash[:alert] %>
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<div class="row-fluid">
+  <div class="span12">
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="active" data-toggle="tab"><%= link_to "Pending", "#pending" %></li>
+      <li data-toggle="tab"><%= link_to "Paid", "#paid" %></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="pending">
+        <h3>Pending Invoices</h3>
+
+        <% if @pending_invoices.any? %>
+          <div id="pending_invoices">
+            <%= render "invoice", invoices: @pending_invoices %>
+          </div>
+
+          <div id="pending_paginate">
+            <%= paginate @pending_invoices, :param_name => :pending_page, :remote => true %>
+          </div>
+        <% else %>
+          <div class="blank-state">
+            No invoices are pending payment.
+          </div>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="paid">
+        <h3>Paid Invoices</h3>
+
+        <% if @paid_invoices.any? %>
+          <div id="paid_invoices">
+            <%= render "invoice", invoices: @paid_invoices %>
+          </div>
+
+          <div id="paid_paginate">
+            <%= paginate @paid_invoices, :param_name => :paid_page, :remote => true %>
+          </div>
+        <% else %>
+          <div class="blank-state">
+            No paid invoices yet.
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

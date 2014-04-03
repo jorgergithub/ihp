@@ -1,0 +1,2 @@
+class WebsiteAdmin < User
+end

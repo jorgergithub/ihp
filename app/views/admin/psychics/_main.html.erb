@@ -1,0 +1,28 @@
+<fieldset>
+  <legend>Personal Info</legend>
+
+  <div class="control-group">
+    <%= f.label :first_name, "Name", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, placeholder: "First name", autofocus: true, autocomplete: 'on' %>
+      <%= f.text_field :last_name, placeholder: "Last name", autocomplete: 'on' %>
+    </div>
+  </div>
+
+  <%= add_text_field f, :username %>
+  <%= add_text_field f, :email %>
+
+  <% if @psychic.new_record? %>
+    <%= add_password_field f, :password %>
+    <%= add_password_field f, :password_confirmation %>
+  <% end %>
+
+  <%= f.fields_for :psychic, f.object.psychic.localized do |pf| %>
+    <%= add_text_field pf, :phone, nil, input: { data: { mask: t('masks.phone') } } %>
+    <%= add_checkbox pf, :featured %>
+
+    <legend>Profile Information</legend>
+
+    <%= render "psychics/fields", f: pf %>
+  <% end %>
+</fieldset>

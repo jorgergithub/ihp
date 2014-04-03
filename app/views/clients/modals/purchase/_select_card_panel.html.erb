@@ -1,0 +1,19 @@
+<div class="sub_modal_panel select_card_panel">
+  <%= form_for :order, url: orders_path, remote: true do |f| %>
+
+  <% if @client.cards.any? %>
+    <ul class="credit_cards">
+      <%= render "clients/modals/credit_card", card: @client.cards.first, select: true %>
+    </ul>
+  <% end %>
+
+  <div class="credit_card_payment_errors">
+  </div>
+
+  <footer>
+      <%= f.hidden_field :package_id %>
+      <%= image_submit_tag("modal/use_selected_cc_btn.png") %>
+      <%= link_to image_tag("modal/use_new_cc_btn.png"), "#", "data-sub-panel" => "new_credit_card_panel" %>
+    </footer>
+  <% end %>
+</div>

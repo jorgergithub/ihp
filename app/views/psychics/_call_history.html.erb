@@ -1,0 +1,39 @@
+<table class="records header">
+  <thead>
+    <tr>
+      <tr>
+        <th style="width: 130px;">Call ID</th>
+        <th>Date & Time</th>
+        <th>Customer Name</th>
+        <th style="width: 130px;">Call Duration</th>
+        <th style="width: 100px;">Review</th>
+      </tr>
+    </tr>
+  </thead>
+</table>
+
+<div class="scrollbar_table">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class=  "end"></div></div></div></div>
+  <div class="viewport">
+    <div class="overview">
+
+      <table class="records">
+        <tbody>
+          <% @calls.each do |call| %>
+            <tr>
+              <td><%= call.id %></td>
+              <td><%= call.created_at.strftime("%B, %d, %Y %I:%M%p") %></td>
+              <td><%= call.client.try(:first_name) %></td>
+              <td><%= call.duration %> Mins</td>
+              <td><%= call.reviews.any? ? "Yes" : "No" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+

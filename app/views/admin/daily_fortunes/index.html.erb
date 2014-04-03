@@ -1,0 +1,40 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Daily Fortunes</h3>
+
+    <% if @daily_fortunes.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Start Period</th>
+            <th>End Period</th>
+            <th>Active</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @daily_fortunes.each do |daily_fortune| %>
+            <tr>
+              <td class="admin-actions">
+                <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_admin_daily_fortune_path(daily_fortune) %>
+                <%= link_to '<i class="icon-remove"></i>'.html_safe, [:admin, daily_fortune], data: {confirm: "Are you sure?" }, :method => "delete" %>
+              </td>
+              <td><%= l daily_fortune.start_date %></td>
+              <td><%= l daily_fortune.end_date %></td>
+              <td><%= daily_fortune.active %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @daily_fortunes %>
+
+    <% else %>
+      <div class="blank-state">
+        No Daily Fortune added yet.
+        <%= link_to "Add one now.", new_admin_daily_fortune_path %>
+      </div>
+    <% end %>
+    <%= link_to "Add new Daily Fortune", new_admin_daily_fortune_path, class: "btn btn-small" %>
+  </div>
+</div>

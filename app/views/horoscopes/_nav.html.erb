@@ -1,0 +1,18 @@
+<nav class="signs">
+  <div class="small_container">
+    <%= image_tag "signs/left_arrow.png", class: "horoscope_arrow horoscope_left" %>
+
+    <ul class="horoscope_first horoscope_selected">
+      <% @horoscope.signs[0..5].each_with_index do |sign, index| %>
+        <%= render "nav_sign_item", sign: sign, selected: select_if_first(index, :horoscope) %>
+      <% end %>
+    </ul>
+
+    <ul class="horoscope_last">
+      <% @horoscope.signs[6..11].each_with_index do |sign| %>
+        <%= render "nav_sign_item", sign: sign, selected: "" %>
+      <% end %>
+    </ul>
+    <%= image_tag "signs/right_arrow.png", class: "horoscope_arrow horoscope_right" %>
+  </div>
+</nav>

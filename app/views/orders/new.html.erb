@@ -1,0 +1,94 @@
+<script type="text/javascript">
+  Stripe.setPublishableKey("<%= Rails.configuration.stripe[:publishable_key] %>")
+</script>
+
+<%= form_for(@order, html: { :class => 'form form-horizontal' }) do |f| %>
+  <fieldset>
+    <span class="payment-errors"></span>
+
+    <section class="package">
+      <legend>Package</legend>
+
+      <div class="control-group">
+        <%= f.label :package_id, class: 'control-label' %>
+        <div class="controls">
+          <% Package.active.reverse.each do |pkg| %>
+            <label class="radio">
+              <%= f.radio_button :package_id, pkg.id %>
+              <%= pkg.name %>
+              for
+              <%= number_to_currency(pkg.price) %>
+              <% if pkg = Package.active.reverse.first %>
+                <span id="package-validation-error" class="validation-error"></span>
+              <% end %>
+            </label>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="payment">
+      <legend>Payment</legend>
+      <div class="control-group">
+        <%= f.label :card, class: 'control-label' %>
+        <div class="controls">
+          <% if @client.card %>
+            <label class="radio">
+              <%= f.radio_button :card_id, @client.card.id %>
+              <b><%= @client.card.type %></b>
+              ending in
+              <b><%= @client.card.last4 %></b>
+            </label>
+          <% end %>
+
+          <label class="radio">
+            <%= f.radio_button :card_id, nil %>
+            New card:
+          </label>
+
+          <div class="control-group">
+            <%= f.label :card_number, class: 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :card_number, maxlength: 16,
+                data: { stripe: "number", mask: "9999 9999 9999 9999" } %>
+              <span id="card-number-validation-error" class="validation-error"></span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :expiration, class: 'control-label' %>
+            <div class="controls">
+              <%= f.collection_select :card_exp_month,
+                Rails.configuration.credit_card[:months], :value, :name, {},
+                  { class: 'input-medium', data: { stripe: "exp-month" } } %>
+              <%= f.collection_select :card_exp_year,
+                Rails.configuration.credit_card[:years], :value, :name, {},
+                  { class: 'input-small', data: { stripe: "exp-year" } } %>
+              <span id="card-exp-date-validation-error" class="validation-error"></span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :card_cvc, 'CVC', class: 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :card_cvc, class: 'input-mini', maxlength: 3,
+                data: { stripe: "cvc", mask: "999" } %>
+              <span id="card-cvc-validation-error" class="validation-error"></span>
+            </div>
+          </div>
+
+          <label class="radio">
+            <%= radio_button_tag 'order[card_id]', 'paypal', false, id: 'order_paypal' %>
+            Pay using PayPal
+          </label>
+        </div>
+      </div>
+    </section>
+  </fieldset>
+
+  <div>
+    <%= f.button "Go", class: 'btn go' %>
+    <%= link_to "Cancel", dashboard_path, class: 'cancel btn' %>
+  </div>
+
+<% end %>

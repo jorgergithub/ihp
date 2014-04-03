@@ -1,0 +1,43 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Review #<%= @review.id %></h3>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span6">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>Submitted</td>
+          <td><%=l @review.created_at, format: :short %></td>
+        </tr>
+        <tr>
+          <td>Client</td>
+          <td><%= link_to @review.client.full_name, edit_admin_client_path(@review.client) %></td>
+        </tr>
+        <tr>
+          <td>Psychic</td>
+          <td><%= link_to @review.psychic.full_name, edit_admin_psychic_path(@review.psychic) %></td>
+        </tr>
+        <tr>
+          <td>Rating</td>
+          <td>
+            <% @review.rating.times do %><i class="icon-heart"></i><% end %>
+            (<%= @review.rating %> hearts)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    <h4>Review</h4>
+
+    <div class="well">
+      <%= @review.text %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+$(".overlay").fadeIn();
+<% if @subscriber.errors.any? %>
+  $("#confirmation-modal .message").text("<%=raw @subscriber.errors.full_messages.first %>");
+<% else %>
+  $("#confirmation-modal .message").text("You have been successfully subscribed.");
+  $(".subscribe input").val("");
+<% end %>
+$("#confirmation-modal").fadeIn();

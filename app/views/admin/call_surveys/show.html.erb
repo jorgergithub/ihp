@@ -1,0 +1,44 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Call Survey #<%= @call_survey.id %></h3>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span6">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>Client</td>
+          <td><%= link_to @call_survey.client.full_name, edit_admin_client_path(@call_survey.client) %></td>
+        </tr>
+        <tr>
+          <td>Psychic</td>
+          <td><%= link_to @call_survey.psychic.full_name, edit_admin_psychic_path(@call_survey.psychic) %></td>
+        </tr>
+        <tr>
+          <td>Call</td>
+          <td><%= link_to @call_survey.call.id, "#" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    <h4>Survey Answers</h4>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @call_survey.answers %>
+      </tbody>
+    </table>
+  </div>
+</div>

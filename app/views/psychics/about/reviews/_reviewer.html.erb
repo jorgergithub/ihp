@@ -1,0 +1,5 @@
+<aside>
+  <%= review.client.first_name %>, <%= review.created_at.strftime("%B %-d, %Y") %>
+
+  <%= render "psychics/about/stars", stars: review.rating, star_type: star_type %>
+</aside>

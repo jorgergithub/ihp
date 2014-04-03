@@ -1,0 +1,54 @@
+@import "bootstrap";
+
+// body {
+//   padding-top: 20px;
+//   padding-bottom: 20px;
+// }
+
+.right { text-align: right !important; }
+
+.money { text-align: right; width: 80px; }
+
+.blank-state {
+  padding: 40px;
+  color: #888;
+  text-align: center;
+}
+
+.search-summary {
+  padding: 10px;
+  color: #888;
+}
+
+.hidden {
+  display: none;
+}
+
+.form {
+  .field_with_errors {
+    display: inline-block;
+    color: #f00;
+
+    .control-label {
+      font-weight: bold;
+    }
+  }
+}
+
+.form-horizontal {
+  .field_with_errors {
+    float: left;
+    width: 160px;
+    padding: 0;
+    text-align: right;
+    color: #f00;
+
+    .control-label {
+      font-weight: bold;
+    }
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}

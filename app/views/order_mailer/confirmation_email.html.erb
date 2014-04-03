@@ -1,0 +1,48 @@
+<p>
+  Hello <%= @client.first_name %>,
+</p>
+
+<% if @order.refunded? %>
+  <p>
+    Dolar has been successfully refunded to your account!
+  </p>
+<% else %>
+  <p>
+    You have successfully added more dollars to your account!
+  </p>
+<% end %>
+
+<p>
+  Do you wonder what the future may hold for you?  Is there a big decision
+  looming overhead that you just can’t seem to make?  Let I Heart Psychics be
+  your guide in determining the best approach for you and your journey here.
+</p>
+
+<p>
+  Please explore our team of psychic advisors and determine which one is best
+  suited for your particular situation.  If you are still unsure, feel free to
+  contact Customer Care at 1-855-550-8300.
+</p>
+
+<p>
+  Remember, a psychic reading and reader are as unique as a thumbprint and no
+  two psychics will read the same. Each experience is tailored around you and
+  your desires. Our Customer Care Representatives are ready to link you to the specialized psychic that is most suited for your questions and needs.
+</p>
+
+<p>
+  We would like to thank you for including I Heart Psychics on such a unique and
+  personal journey!
+</p>
+
+<p>
+  Love and light,
+</p>
+
+<p>
+  The I Heart Psychics team<br>
+</p>
+
+<p>
+   <%= ihp_url %>
+</p>

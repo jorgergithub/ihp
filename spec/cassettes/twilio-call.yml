@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://account:token@api.twilio.com/2010-04-01/Accounts/account/Calls/CAc1ffa7a744d25480e5ee009dfd7b2fc4.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/3.10.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 18 Jul 2013 19:07:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1111'
+      Connection:
+      - close
+      Etag:
+      - 43e120da4751c0e5064a4dc5e10846be
+      Last-Modified:
+      - Wed, 17 Jul 2013 16:51:57 -0700
+      Access-Control-Allow-Origin:
+      - https://www.twilio.com
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+    body:
+      encoding: UTF-8
+      string: '{"sid":"CAc1ffa7a744d25480e5ee009dfd7b2fc4","date_created":"Wed, 17
+        Jul 2013 23:50:32 +0000","date_updated":"Wed, 17 Jul 2013 23:51:57 +0000","parent_call_sid":null,"account_sid":"AC4d5e48e4d4647262b5c4314e36e3d26e","to":"+15186335473","to_formatted":"(518)
+        633-5473","from":"+17863295532","from_formatted":"(786) 329-5532","phone_number_sid":"PN9523396e26f2d67f4375b7c67599a191","status":"completed","start_time":"Wed,
+        17 Jul 2013 23:50:32 +0000","end_time":"Wed, 17 Jul 2013 23:51:57 +0000","duration":"85","price":"-0.02000","price_unit":"USD","direction":"inbound","answered_by":null,"api_version":"2010-04-01","annotation":null,"forwarded_from":"+15186335473","group_sid":null,"caller_name":null,"uri":"\/2010-04-01\/Accounts\/AC4d5e48e4d4647262b5c4314e36e3d26e\/Calls\/CAc1ffa7a744d25480e5ee009dfd7b2fc4.json","subresource_uris":{"notifications":"\/2010-04-01\/Accounts\/AC4d5e48e4d4647262b5c4314e36e3d26e\/Calls\/CAc1ffa7a744d25480e5ee009dfd7b2fc4\/Notifications.json","recordings":"\/2010-04-01\/Accounts\/AC4d5e48e4d4647262b5c4314e36e3d26e\/Calls\/CAc1ffa7a744d25480e5ee009dfd7b2fc4\/Recordings.json"}}'
+    http_version:
+  recorded_at: Thu, 18 Jul 2013 19:07:19 GMT
+recorded_with: VCR 2.5.0

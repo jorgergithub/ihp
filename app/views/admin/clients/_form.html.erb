@@ -1,0 +1,100 @@
+<%= form_for([:admin, object], :url => admin_client_path(@client), :html => { :class => 'form form-horizontal' }) do |f| %>
+
+  <%= hidden_field_tag :anchor %>
+
+  <ul class="nav nav-tabs" id="tabs">
+    <li class="active" data-toggle="tab"><%= link_to "Client", "#form" %></li>
+    <% if f.object.persisted? %>
+      <li data-toggle="tab"><%= link_to "Phones", "#phones" %></li>
+      <li data-toggle="tab"><%= link_to "Survey Responses (#{@client.call_surveys.count})", "#responses" %></li>
+    <% end %>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="form">
+      <legend>Personal Info</legend>
+
+      <%= render 'errors', object: @user, model_name: "user" %>
+
+      <div class="control-group">
+        <%= f.label :first_name, "Name", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :first_name, placeholder: "First name", autofocus: true, autocomplete: 'on' %>
+          <%= f.text_field :last_name, placeholder: "Last name" %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :username, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :username %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :email, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.email_field :email %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :timezone, "Timezone", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, { include_blank: true, default: f.object.time_zone }, class: 'timezone' %>
+        </div>
+      </div>
+
+      <%= f.fields_for :client do |fields_for_client| %>
+        <% unless f.object.persisted? %>
+          <div class="control-group">
+            <%= render "devise/registrations/phone_number", :f => fields_for_client %>
+          </div>
+        <% end %>
+
+        <div class="control-group">
+          <%= fields_for_client.label :birthday, "Birthday", :class => 'control-label' %>
+          <div class="controls">
+            <%= fields_for_client.text_field :birthday, class: "datepicker" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= fields_for_client.label :pin, "My pin", :class => 'control-label' %>
+          <div class="controls">
+            <%= fields_for_client.text_field :pin, maxlength: 4 %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= fields_for_client.label :balance, "Balance", :class => 'control-label' %>
+          <div class="controls">
+            <%= fields_for_client.text_field :balance %>
+          </div>
+        </div>
+
+        <%= add_checkbox fields_for_client, :receive_newsletters %>
+      <% end %>
+    </div>
+
+    <% if f.object.persisted? %>
+      <div class="tab-pane" id="phones">
+        <div class="control-group">
+          <%= f.fields_for :client do |fields_for_client| %>
+            <%= fields_for_client.fields_for :phones, localized(@phones) do |fields_for_phones| %>
+              <%= render "phone_fields", :f => fields_for_phones %>
+            <% end %>
+            <%= link_to_add_fields("Add a new phone number", fields_for_client, :phones, :class => "btn btn-small", :title => "Add a new phone number to this Client.") %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="responses">
+        <%= render "admin/surveys", target: @client %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to "Cancel", admin_clients_path, class: "btn" %>
+<% end %>

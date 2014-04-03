@@ -1,0 +1,7 @@
+$("#phone_modal form").trigger("ajax:complete");
+$("#phone_modal form").replaceWith("<%= escape_javascript(render 'client_phones/modal_form', phone: @phone ) %>");
+
+<% if @phone.errors.blank? %>
+  $("p#client_phone").text("<%= @phone.number %>");
+  closeModal();
+<% end %>

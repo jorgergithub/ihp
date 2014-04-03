@@ -1,0 +1,47 @@
+<p>
+  Dear <%= @client.first_name %>,
+</p>
+
+<p>
+  Thank you for your latest reading and the opportunity to connect with you.
+  We hope that your experience was uplifting and look forward to your next I
+  Heart Psychics call!
+</p>
+
+<p>
+  Below is the call summary for your latest reading:
+</p>
+
+<table>
+  <tr><td><b>Date:</b></td><td><%= @call.date %></td></tr>
+  <tr><td><b>Time:</b></td><td><%= @call.time %></td></tr>
+  <tr><td><b>Psychic:</b></td><td><%= @psychic.alias_name %></td></tr>
+  <tr><td><b>Call Duration:</b></td><td><%= @call.duration_str %></td></tr>
+  </tr>
+</table>
+
+<p>
+  Please help us by taking a few moments to tell us about your recent experience
+  with I Heart Psychics. We are grateful that you have chosen us and it is our
+  goal to improve your experience with each visit.
+</p>
+
+<p>
+  Your unique survey is <%= link_to "here", survey_url(@call) %>.
+</p>
+
+<p>
+  Happy reading and thank you for including I Heart Psychics on such a unique and personal journey!
+</p>
+
+<p>
+  Love and light,
+</p>
+
+<p>
+  The I Heart Psychics team<br>
+</p>
+
+<p>
+   <%= ihp_url %>
+</p>

@@ -1,0 +1,374 @@
+<VirtualHost *:80>
+  ServerName <%= @domain %>
+  <% unless @domain_aliases.empty? %>
+  ServerAlias <%= @domain_aliases.to_a.join(' ') %>
+  <% end %>
+<% if @ssl_only %>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{REQUEST_URI} !^/server-status
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+<% else %>
+  DocumentRoot <%= "#{@deploy_to}/current/public" %>
+
+  <Directory <%= "#{@deploy_to}/current/public" %>>
+    Options FollowSymLinks
+    AllowOverride <%= @allow_override %>
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  <% unless @asset_pipeline_enabled %>
+    # Recommendations for asset pipline: http://guides.rubyonrails.org/asset_pipeline.html#in-production
+    <LocationMatch "^/assets/.*$">
+      Header unset ETag
+      FileETag None
+      # RFC says only cache for 1 year
+      ExpiresActive On
+      ExpiresDefault "access plus 1 year"
+    </LocationMatch>
+  <% end %>
+
+  ##
+  ## The following options are Rails specific options. They may occur
+  ## here in your VirtualHost entry or in the global configuration.
+  ##
+
+  ## RailsAutoDetect
+  #
+  # Set whether Phusion Passenger should automatically detect whether
+  # a virtual host's document root is a Ruby on Rails application.
+  # The default is on.
+  # Options: <on|off>
+
+  RailsAutoDetect <%= @rails_auto_detect %>
+
+  ## RailsBaseURI
+  #
+  # Specify that the given URI is a Rails application. It is allowed to
+  # specify this option multiple times. Do this to deploy multiple
+  # Rails applications in different sub-URIs under the same virtual host.
+  
+  # RailsBaseURI <uri>
+
+  ## RackEnv
+  #
+  # Use this option to specify the default RACK_ENV value.
+
+  RackEnv <%= @rails_env %>
+
+  ## RailsEnv
+  #
+  # Use this option to specify the default RAILS_ENV value.
+
+  RailsEnv <%= @rails_env %>
+
+  ## RailsSpawnMethod
+  #
+  # Internally, Phusion Passenger spawns multiple Ruby on Rails processes
+  # in order to handle requests. But there are multiple ways with which
+  # processes can be spawned, each having its own set of pros and cons.
+  # Supported spawn methods are:
+  #  smart
+  #    When this spawn method is used, Phusion Passenger will attempt
+  #    to cache Ruby on Rails framework code and application code for
+  #    a limited period of time.
+  #
+  #  conservative
+  #    This spawning method is similar to the one used in Mongrel Cluster.
+  #    It does not perform any code caching at all.
+
+  RailsSpawnMethod <%= @rails_spawn_method %>
+
+  ## PassengerMinInstances
+  #
+  # This specifies the minimum number of application instances that must be
+  # kept around whenever Phusion Passenger cleans up idle instances. You should
+  # set this option to a non-zero value if you want to avoid potentially long
+  # startup times after a website has been idle for an extended period.
+  #
+  # Please note that this option does not pre-start application instances during
+  # Apache startup. It just makes sure that when the application is first accessed:
+  # - at least the given number of instances will be spawned.
+  # - the given number of processes will be kept around even when instances are
+  #   being idle cleaned (see PassengerPoolIdleTime).
+  #
+  # If you want to pre-start application instances during Apache startup, then you
+  # should use the PassengerPreStart directive, possibly in combination with
+  # PassengerMinInstances.
+
+  <% unless @min_instances.empty? %>
+  PassengerMinInstances <%= @min_instances %>
+  <% end %>
+
+  ## PassengerPreStart
+  #
+  # By default, Phusion Passenger does not start any application instances
+  # until said web application is first accessed. The result is that the
+  # first visitor of said web application might experience a small delay as
+  # Phusion Passenger is starting the web application on demand. If that is
+  # undesirable, then this directive can be used to pre-started application
+  # instances during Apache startup.
+  #
+  # This directive only accepts a URL that fits the following criteria:
+  # - The domain part of the URL must be equal to the value of the ServerName
+  #   directive of the VirtualHost block that defines the web application.
+  # - Unless the web application is deployed on port 80, the URL should
+  #   contain the web application's port number too.
+  # - The path part of the URL must point to some URI that the web
+  #   application handles.
+  #
+  # You probably want to combine this with PassengerMinInstances.
+  #
+  # Example URL: http://example.com/
+
+  <% unless @pre_start_url.empty? %>
+  PassengerPreStart <%= @pre_start_url %>
+  <% end %>
+
+  ## PassengerAppGroupName
+  #
+  # By default, Passenger groups applcations by the the path they are served out of,
+  # ie /srv/yourapp/current.
+  #
+  # At times, it may be useful be serving the same app from multiple vhosts, but have
+  # them be have different workers. For example, you may have a /ping URL that needs to
+  # respond quickly, without being affected by the rest of the app. In this case, you can:
+  #
+  #  * create a new vhost pointing at the same app
+  #  * set PassengerAppGroupName to ping
+  #  * configure a proxy to forward /ping to the new vhost
+
+  # PassengerAppGroupName <%= @app_name %>
+
+  # Deflate
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE <%= @gzip_types.to_a.join(' ') %>
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  </IfModule>
+
+  RequestHeader set X-Request-Start "%t"
+
+  RewriteEngine On
+
+  <Location /assets>
+    Header unset ETag 
+    Header unset Server
+    Header set Access-Control-Allow-Origin *
+    FileETag None 
+    ExpiresActive On
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType application/x-shockwave-flash "access plus 1 year"
+  </Location>
+
+
+  # Check for maintenance file and redirect all requests
+  ErrorDocument 503 /system/maintenance.html
+  RewriteCond %{REQUEST_URI} !\.(css|jpg|png|gif)$
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^.*$ /system/maintenance.html [R=<%= @maintenance_status_code %>,L]
+
+  # Rewrite index to check for static
+  RewriteCond  %{THE_REQUEST} ^(GET|HEAD)
+  RewriteCond  %{DOCUMENT_ROOT}<%= @page_cache_directory %>/index.html -f
+  RewriteRule  ^/?$ <%= @page_cache_directory %>/index.html [QSA,L]
+
+  # Rewrite to check for Rails non-html cached pages (i.e. xml, json, atom, etc)
+  RewriteCond  %{THE_REQUEST} ^(GET|HEAD)
+  RewriteCond  %{DOCUMENT_ROOT}<%= @page_cache_directory %>%{REQUEST_URI} -f
+  RewriteRule  ^(.*)$ <%= @page_cache_directory %>$1 [QSA,L]
+
+  # Rewrite to check for Rails cached html page
+  RewriteCond  %{THE_REQUEST} ^(GET|HEAD)
+  RewriteCond  %{DOCUMENT_ROOT}<%= @page_cache_directory %>%{REQUEST_URI}.html -f
+  RewriteRule  ^(.*)$ <%= @page_cache_directory %>$1.html [QSA,L]
+
+<% end %>
+</VirtualHost>
+
+<% if @ssl %>
+<VirtualHost _default_:443>
+  RequestHeader set X_FORWARDED_PROTO "https"
+
+  SSLEngine on
+  SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL %>
+  SSLCertificateFile    <%= @certificate_file %>
+  SSLCertificateKeyFile <%= @certificate_key_file %>
+  <% if @certificate_chain_file %>
+  SSLCertificateChainFile <%= @certificate_chain_file %>
+  <% else %>
+  # SSLCertificateChainFile /etc/apache2/ssl.crt/server-ca.crt
+  <% end %>
+  <% if @ssl_protocol %>
+  SSLProtocol <%= @ssl_protocol %>
+  <% end %>
+
+  BrowserMatch ".*MSIE.*" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+
+  ServerName <%= @domain %>
+  <% unless @domain_aliases.empty? %>
+  ServerAlias <%= @domain_aliases.to_a.join(' ') %>
+  <% end %>
+  DocumentRoot <%= "#{@deploy_to}/current/public" %>
+
+  <Directory <%= "#{@deploy_to}/current/public" %>>
+    Options FollowSymLinks
+    AllowOverride <%= @allow_override %>
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  <% if @asset_pipeline_enabled %>
+    # Recommendations for asset pipline: http://guides.rubyonrails.org/asset_pipeline.html#in-production
+    <LocationMatch "^/assets/.*$">
+      Header unset ETag
+      FileETag None
+      # RFC says only cache for 1 year
+      ExpiresActive On
+      ExpiresDefault "access plus 1 year"
+    </LocationMatch>
+  <% end %>
+
+  ##
+  ## The following options are Rails specific options. They may occur
+  ## here in your VirtualHost entry or in the global configuration.
+  ##
+  
+
+  ## RailsAutoDetect
+  #
+  # Set whether Phusion Passenger should automatically detect whether
+  # a virtual host's document root is a Ruby on Rails application.
+  # The default is on.
+  # Options: <on|off>
+
+  RailsAutoDetect <%= @rails_auto_detect %>
+  
+  ## RailsBaseURI
+  #
+  # Specify that the given URI is a Rails application. It is allowed to
+  # specify this option multiple times. Do this to deploy multiple
+  # Rails applications in different sub-URIs under the same virtual host.
+
+  # RailsBaseURI <uri>
+
+
+  ## RackEnv
+  #
+  # Use this option to specify the default RACK_ENV value.
+
+  RackEnv <%= @rails_env %>
+
+  ## RailsEnv
+  #
+  # Use this option to specify the default RAILS_ENV value.
+
+  RailsEnv <%= @rails_env %>
+
+  ## RailsSpawnMethod
+  #
+  # Internally, Phusion Passenger spawns multiple Ruby on Rails processes
+  # in order to handle requests. But there are multiple ways with which
+  # processes can be spawned, each having its own set of pros and cons.
+  # Supported spawn methods are:
+  #  smart
+  #    When this spawn method is used, Phusion Passenger will attempt
+  #    to cache Ruby on Rails framework code and application code for
+  #    a limited period of time.
+  #
+  #  conservative
+  #    This spawning method is similar to the one used in Mongrel Cluster.
+  #    It does not perform any code caching at all.
+
+  RailsSpawnMethod <%= @rails_spawn_method %>
+
+  ## PassengerMinInstances
+  #
+  # This specifies the minimum number of application instances that must be
+  # kept around whenever Phusion Passenger cleans up idle instances. You should
+  # set this option to a non-zero value if you want to avoid potentially long
+  # startup times after a website has been idle for an extended period.
+  #
+  # Please note that this option does not pre-start application instances during
+  # Apache startup. It just makes sure that when the application is first accessed:
+  # - at least the given number of instances will be spawned.
+  # - the given number of processes will be kept around even when instances are
+  #   being idle cleaned (see PassengerPoolIdleTime).
+  #
+  # If you want to pre-start application instances during Apache startup, then you
+  # should use the PassengerPreStart directive, possibly in combination with
+  # PassengerMinInstances.
+
+  <% unless @min_instances.empty? %>
+  PassengerMinInstances <%= @min_instances %>
+  <% end %>
+
+  ## PassengerPreStart
+  #
+  # By default, Phusion Passenger does not start any application instances
+  # until said web application is first accessed. The result is that the
+  # first visitor of said web application might experience a small delay as
+  # Phusion Passenger is starting the web application on demand. If that is
+  # undesirable, then this directive can be used to pre-started application
+  # instances during Apache startup.
+  #
+  # This directive only accepts a URL that fits the following criteria:
+  # - The domain part of the URL must be equal to the value of the ServerName
+  #   directive of the VirtualHost block that defines the web application.
+  # - Unless the web application is deployed on port 80, the URL should
+  #   contain the web application's port number too.
+  # - The path part of the URL must point to some URI that the web
+  #   application handles.
+  #
+  # You probably want to combine this with PassengerMinInstances.
+  #
+  # Example URL: http://example.com/
+
+  <% unless @pre_start_url.empty? %>
+  PassengerPreStart <%= @pre_start_url %>
+  <% end %>
+
+  # Deflate
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE <%= @gzip_types.to_a.join(' ') %>
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  </IfModule>
+
+  RequestHeader set X-Request-Start "%t"
+
+  RewriteEngine On
+
+
+  # Check for maintenance file and redirect all requests
+  ErrorDocument 503 /system/maintenance.html
+  RewriteCond %{REQUEST_URI} !\.(css|jpg|png|gif)$
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^.*$ /system/maintenance.html [R=<%= @maintenance_status_code %>,L]
+
+  # Rewrite index to check for static
+  RewriteCond  %{THE_REQUEST} ^(GET|HEAD)
+  RewriteCond  %{DOCUMENT_ROOT}<%= @page_cache_directory %>/index.html -f
+  RewriteRule  ^/?$ <%= @page_cache_directory %>/index.html [QSA,L]
+
+  # Rewrite to check for Rails non-html cached pages (i.e. xml, json, atom, etc)
+  RewriteCond  %{THE_REQUEST} ^(GET|HEAD)
+  RewriteCond  %{DOCUMENT_ROOT}<%= @page_cache_directory %>%{REQUEST_URI} -f
+  RewriteRule  ^(.*)$ <%= @page_cache_directory %>$1 [QSA,L]
+
+  # Rewrite to check for Rails cached html page
+  RewriteCond  %{THE_REQUEST} ^(GET|HEAD)
+  RewriteCond  %{DOCUMENT_ROOT}<%= @page_cache_directory %>%{REQUEST_URI}.html -f
+  RewriteRule  ^(.*)$ <%= @page_cache_directory %>$1.html [QSA,L]
+
+  </VirtualHost>
+<% end %>

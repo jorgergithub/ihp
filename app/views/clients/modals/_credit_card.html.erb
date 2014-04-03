@@ -1,0 +1,14 @@
+<li class="credit_card <%= "cc_selected" if select %>">
+  <%= image_tag "modal/credit_card.png" %>
+  <i><%= image_tag "credit_card_icons/#{credit_card_icon(card)}.png" %></i>
+
+  <h1>Card Ending in <b><%= card.last4 %></b></h1>
+
+  <p>
+    <%= card.address_city %>
+  </p>
+
+  <div class="cc_actions">
+    <%= link_to image_tag("modal/delete_icon.png"), destroy_card_client_path, remote: true, method: :delete, class: "delete_card" %>
+  </div>
+</li>

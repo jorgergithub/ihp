@@ -1,0 +1,27 @@
+<div id="sign_in_error_modal" class="modal large">
+  <header>
+    <h1>Sign In Error</h1>
+  </header>
+
+  <%= render "clients/modals/spinner" %>
+  
+  <div class="modal-body">
+    <%= render "modals/sign_in/form", user: User.new %>
+  </div>
+
+  <footer class="footer_links">
+    <nav>
+      <div>
+        <span>Other Options:</span> 
+        <%= link_to "Sign up", "#", class: "modal_link", data: { "modal-id" => "sign_up_modal" } %>
+      </div>
+
+      <div>
+        <span>Sign In Using:</span> 
+        <%= link_to "Facebook", "#" %>
+        <%= link_to "Twitter", "#" %>
+        <%= link_to "Google", "#" %>
+      </div>
+    </nav>
+  </footer>
+</div>

@@ -1,0 +1,12 @@
+<%= form_for(object, :html => { :class => 'form form-horizontal' }) do |f| %>
+  <%= hidden_field_tag :redirect_to, edit_psychic_path %>
+  <%= hidden_field_tag :redirect_message, "Profile successfully updated." %>
+
+  <%= render 'errors', object: object %>
+
+  <legend>Profile Information</legend>
+  <%= render 'fields', f: f %>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to "Cancel", dashboard_path, class: "btn", rows: 10 %>
+<% end %>

@@ -1,0 +1,212 @@
+@import "main/helpers";
+
+.container {
+  background: #fff;
+}
+
+.container-nav {
+  font-size: 18px;
+  background: #232d3b;
+  border-radius: 40px;
+  height: 30px;
+  padding: 25px 0 20px 45px;
+  position: relative;
+}
+
+.container-nav-links {
+  @extend %flat-list;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.container-nav-link {
+  margin-right: 25px;
+  height: 25px;
+}
+
+.container-nav-highlight {
+  color: #6acd00;
+  font-weight: normal;
+}
+
+.container-nav-price {
+  @extend %clearfix;
+
+  width: 300px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.container-nav-price-label,
+.container-nav-price-min,
+.container-nav-price-max,
+.container-nav-price-slider {
+  float: left;
+}
+
+.container-nav-price-label {
+  width: 75px;
+}
+
+.container-nav-price-min {
+  margin-right: 5px;
+}
+
+.container-nav-price-max {
+  margin-left: 5px;
+}
+
+.container-nav-price-slider {
+  margin-top: 2px;
+  height: 20px;
+  width: 150px;
+  background-color: #4f5762;
+  border-radius: 10px;
+  position: relative;
+}
+
+.ui-slider-range-min {
+  height: 20px;
+  background-color: #6acd00;
+  border-radius: 10px;
+}
+
+.ui-slider-handle {
+  height: 46px;
+  background: url(image-path("slider_handler.png"));
+  position: absolute;
+  display: inline-block;
+  width: 55px;
+  margin-top: -83px;
+  outline: none;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: -27px;
+}
+
+.container-nav-search {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 200px;
+  height: 75px;
+  background: url(image-path("container-nav-search.png")) #af00a5 no-repeat right 25px top 25px;
+  border-radius: 40px;
+}
+
+.container-nav-search-input {
+  @include placeholder-color(#fff);
+  font-size: 18px;
+  font-weight: 100;
+  color: #fff;
+  margin: 10px 20px;
+  width: 125px;
+  height: 50px;
+  background: transparent;
+  border: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.container-nav-specialty {
+  position: relative;
+}
+
+.specialty-search {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.search-selected {
+  font-weight: normal !important;
+}
+
+.specialty-search-selection {
+  margin-top: -25px;
+  margin-left: -10px;
+  padding-top: 25px;
+  padding-left: 10px;
+  width: 90px;
+  height: 50px;
+  background: #af00a5;
+  color: #fff;
+  border-radius: 40px;
+  display: block;
+}
+
+.specialty-search-selection:after {
+  display: block;
+  content: "";
+  background: url(image-path("specialty-search-separator.png")) no-repeat;
+  margin-top: 25px;
+  margin-left: 20px;
+  width: 40px;
+  height: 14px;
+}
+
+.specialty-search-items {
+  margin-top: 13px;
+  border-radius: 10px;
+  background: #af00a5;
+  width: 290px;
+}
+
+.specialty-search-item {
+  padding: 15px 0 15px 50px;
+  cursor: pointer;
+}
+
+.specialty-search-item-round-top {
+  border-radius: 10px 10px 0 0;
+}
+
+.specialty-search-item-round-bottom {
+  border-radius: 0 0 10px 10px;
+}
+
+.specialty-search-selected {
+  background: url(image-path("specialty-search-selected.png")) no-repeat 10px;
+  background-color: #8f0087;
+}
+
+.specialty-search-item i {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  float: right;
+  margin-right: 20px;
+}
+
+.specialty-search-love-and-relationships {
+  background: url(image-path("specialty-search-love-and-relationships.png"));
+}
+
+.specialty-search-money-and-finance {
+  background: url(image-path("specialty-search-money-and-finance.png"));
+}
+
+.specialty-search-career-and-work {
+  background: url(image-path("specialty-search-career-and-work.png"));
+}
+
+.specialty-search-pet-and-animals {
+  background: url(image-path("specialty-search-pet-and-animals.png"));
+}
+
+.specialty-search-lost-objects {
+  background: url(image-path("specialty-search-lost-objects.png"));
+}
+
+.specialty-search-past-lives {
+  background: url(image-path("specialty-search-past-lives.png"));
+}

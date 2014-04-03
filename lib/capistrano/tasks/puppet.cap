@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby # for highlighting
+
+desc "Bootstrap a new server so it can be configured with Puppet"
+task :bootstrap do
+  on roles(:all) do
+    upload! "bootstrap.sh", "/tmp"
+    execute "bash /tmp/bootstrap.sh"
+  end
+end
+
+desc "Push Puppet configs to the server(s) and run them"
+task :puppet do
+  run_locally do
+    execute "tar czf 'puppet.tgz' puppet/"
+  end
+  
+  on roles(:all) do
+    upload! "puppet.tgz", "/home/#{fetch(:user)}"
+    execute "tar xzf puppet.tgz"
+    execute "sudo rm -rf /etc/puppet"
+    execute "sudo mv /home/#{fetch(:user)}/puppet/ /etc/puppet"
+    execute "sudo puppet apply /etc/puppet/manifests/site.pp --environment #{fetch(:stage)}"
+  end
+end

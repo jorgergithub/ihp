@@ -1,0 +1,39 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Psychic</th>
+      <th>Period</th>
+      <th>Created</th>
+      <th>Tier</th>
+      <th>Total</th>
+      <% if actions %>
+        <th>Actions</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= link_to invoice.number, admin_invoice_path(invoice) %></td>
+        <td><%= invoice.psychic.full_name %></td>
+        <td>
+          <%=l invoice.start_date, format: :short %> to
+          <%=l invoice.end_date, format: :short %>
+        </td>
+        <td><%=l invoice.created_at, format: :short %></td>
+        <td><%= invoice.tier.name %></td>
+        <td class="right"><%= number_to_currency invoice.total %></td>
+        <% if actions %>
+          <td>
+            <% unless invoice.paid? %>
+              <%= link_to '<i class="icon-money"></i> Pay Invoice'.html_safe, new_admin_invoice_payment_path(invoice) %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @invoices %>

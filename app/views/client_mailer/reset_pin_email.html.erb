@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hi <%= @client.first_name %>,</p>
+
+    <p>
+      Your PIN has just been reset to <%= @client.pin %>.
+    </p>
+
+    <p>
+      You will need to enter this PIN number every time you call a psychic.
+    </p>
+
+    <p>
+      Please note that you can always <%= link_to "reset your PIN online", reset_pin_client_url %>
+    </p>
+
+    <p>
+      Happy reading and thank you for including I Heart Psychics on such a
+      unique and personal journey!
+    </p>
+
+    <p>
+      Love and light,
+    </p>
+
+    <p>
+      The I Heart Psychics team<br>
+    </p>
+
+    <p>
+       <%= ihp_url %>
+    </p>
+  </body>
+</html>

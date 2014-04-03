@@ -1,0 +1,32 @@
+<%= form_for :credit_card, html: { class: "credit_card_form" } do |f| %>
+  <div class="row">
+    <div class="field">
+      <%= f.label :credit_card, "Credit Card#" %>
+      <%= f.text_field :credit_card, placeholder: "1234 1324 1234 1234" %>
+      <i><%= image_tag "modal/visa.png" %></i>
+    </div>
+
+    <div class="field">
+      <div class="field small">
+        <%= f.label :exp, "Expires" %>
+        <%= f.text_field :exp, placeholder: "MM" %>
+        <%= f.text_field :exp, placeholder: "YY" %>
+      </div>
+
+      <div class="field medium">
+        <%= f.label :cvv, "CVV / CVC" %>
+        <%= f.text_field :cvv, placeholder: "786" %>
+      </div>
+    </div>
+  </div>
+
+  <% if new_card %>
+    <div class="row">
+      <%= f.check_box :remember_card %>
+      <%= f.label :remember_card, "Remember this card" %>
+      <p>
+        By selecting checkout, you hereby authorize payment to I Heart Psychics Inc. &amp; will be billed $25.00 on a recurring basis starting September 1, 2013
+      </p>
+    </div>
+  <% end %>
+<% end %>

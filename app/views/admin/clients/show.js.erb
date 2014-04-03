@@ -1,0 +1,7 @@
+var payment = jQuery("#client-payment")
+payment.empty();
+
+var paymentContent = "<%= escape_javascript(render '/admin/orders/payment') %>";
+payment.append(paymentContent);
+
+Module.run("IHP.Pages.AdminOrdersNew", jQuery("body"));

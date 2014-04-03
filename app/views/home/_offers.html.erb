@@ -1,0 +1,38 @@
+<a name="offers"></a>
+<div class="container-offers small_container">
+  <% Package.active.each_with_index do |package, i| %>
+    <%= content_tag :div,
+                    class: "container-offer modal_link#{i%3 == 0 ? " first" : ""}",
+                    "data-modal-id" => container_offer_modal_id,
+                    data: { "modal-attributes" => { package: {  id: package.id,
+                                                                price: package.price.to_i,
+                                                                credits: package.credits.to_i } } } do %>
+
+      <header class="container-offer-header">
+        <span>$</span><%= package.price.to_i %>
+      </header>
+
+      <div class="container-offer-body">
+        <%= package.credits.to_i %>
+        <span>Dollars</span>
+      </div>
+
+      <% if package.discount > 0 %>
+        <div class="container-offer-discount-bg"></div>
+        <div class="container-offer-discount-<%= package.discount %>"></div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if @client %>
+    <div class="modal_list">
+      <% if @client.favorite_psychics.any? %>
+        <%= render "clients/modals/purchase/psychics" %>
+      <% else %>
+        <%= render "clients/modals/purchase/thank_you" %>
+      <% end %>
+      <%= render "clients/modals/prices" %>
+      <%= render "clients/modals/purchase/select_payment_method" %>
+    </div>
+  <% end %>
+</div>

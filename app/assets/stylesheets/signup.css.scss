@@ -1,0 +1,10 @@
+@import "bootstrap.scss";
+
+#error_explanation {
+  @extend .well;
+  @extend .well-small;
+
+  h2 {
+    font-size: 23px;
+  }
+}

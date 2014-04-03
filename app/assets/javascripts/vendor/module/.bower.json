@@ -1,0 +1,23 @@
+{
+  "name": "module",
+  "main": [
+    "./module.js",
+    "./module.min.js"
+  ],
+  "ignore": [
+    "test",
+    "report",
+    ".gitignore"
+  ],
+  "homepage": "https://github.com/fnando/module",
+  "_release": "master",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "518331e7d598dbca0bf99c473cddf6f0a8a8694a"
+  },
+  "_source": "https://github.com/fnando/module.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/fnando/module.git",
+  "_direct": true
+}

@@ -1,0 +1,31 @@
+#birthday_modal {
+  div.timezone {
+    margin-top: 25px;
+  }
+
+  select {
+    height: 50px;
+    line-height: 50px;
+    border: 2px #bec5d0 solid;
+    font-size: 18px;
+    color: #8590a1;
+
+    &.month {
+      width: 225px;
+    }
+
+    &.day {
+      margin-left: 30px;
+      width: 125px;
+    }
+
+    &.year {
+      margin-left: 25px;
+      width: 125px;
+    }
+
+    &.timezone {
+      width: 540px;
+    }
+  }
+}

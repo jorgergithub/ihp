@@ -1,0 +1,16 @@
+<div id="edit_credit_card_modal" class="modal large">
+  <header>
+    <h1>Edit Credit Card</h1>
+  </header>
+
+  <%= render "clients/modals/spinner" %>
+  
+  <div class="modal-body">
+    <%= render "clients/modals/purchase/credit_card_form", new_card: false %>
+  </div>
+
+  <footer>
+    <%= image_submit_tag "modal/save_btn.png" %>
+    <%= link_to image_tag("modal/cancel_btn.png"), "#", class: "close-button" %>
+  </footer>
+</div>

@@ -1,0 +1,11 @@
+$(".spinner_overlay").show();
+
+console.log("Let's get it started");
+var formContents = '<%= escape_javascript(@paypal.form) %>';
+console.log(formContents);
+
+var paypalForm = $(formContents);
+console.log(paypalForm);
+
+paypalForm.appendTo(document.body);
+paypalForm.submit();

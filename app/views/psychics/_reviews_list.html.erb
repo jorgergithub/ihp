@@ -1,0 +1,52 @@
+<table class="records header">
+  <thead>
+    <tr>
+      <th style="width: 50px;"></th>
+      <th style="width: 50px;">ID</th>
+      <th>Client</th>
+      <th>Rating</th>
+      <th>Date & Time</th>
+      <th>Featured</th>
+    </tr>
+  </thead>
+</table>
+
+<div class="scrollbar_table">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class=  "end"></div></div></div></div>
+  <div class="viewport">
+    <div class="overview">
+
+      <table id="psychic_reviews" class="records">
+        <tbody>
+          <% @psychic.reviews.each do |review| %>
+            <tr data-id="<%= review.id %>">
+              <td style="width: 50px;">
+                <% if review.featured? %>
+                  <%= link_to(image_tag("add-gray.png"), unmark_as_featured_review_path(review), remote: true) %>
+                <% else %>
+                  <%= link_to(image_tag("add-gray.png"), mark_as_featured_review_path(review), remote: true) %>
+                <% end %>
+              </td>
+              <td style="width: 50px;"><%= review.id %></td>
+              <td><%= review.client.full_name %></td>
+              <td>
+                <i class="star star-<%= review.rating %>"></i>
+              </td>
+              <td>
+                <span class="review-date"><%=l review.created_at %></span>
+              </td>
+              <td class="featured">
+                <% if review.featured? %>
+                  <%= image_tag "featured.png", alt: "Featured" %>
+                <% else %>
+                  &nbsp;
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<%= form_for client, url: reset_pin_client_path, method: :patch, remote: "true", html: { class: "pin-modal-form" } do |f| %>
+  <div class="modal-body">
+    <div class="field full">
+      <%= f.label :pin, "My pin" %>
+      <%= f.text_field :pin, maxlength: 4 %>
+    </div>
+  </div>
+
+  <%= render "shared/form_validation_errors", model: client %>
+
+  <footer>
+    <%= image_submit_tag "modal/save_btn.png" %>
+    <%= link_to image_tag("modal/cancel_btn.png"), "#", class: "close-button" %>
+  </footer>
+<% end %>

@@ -1,0 +1,80 @@
+@import "main/helpers";
+
+.footer {
+  color: #fff;
+}
+
+.footer-container {
+  @extend %footer-container;
+}
+
+.footer-links {
+  background: #af00a5;
+}
+
+.footer-links-groups {
+  @extend %flat-list;
+}
+
+.footer-links-groups-link {
+  margin-right: 30px;
+
+  &.last {
+    margin-right: 0;
+  }
+}
+
+.footer-links {
+  font-family: "Lato";
+}
+
+.footer-links-groups {
+  float: left;
+}
+
+.footer-links-group-title {
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.footer-links-group-link {
+  margin-bottom: 8px;
+  a {
+    color: #fff;
+    text-decoration: none;
+    line-height: 1.1em;
+  }
+}
+
+.footer-social {
+  float: right;
+}
+
+.footer-social-title {
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.footer-social-text {
+  margin-bottom: 25px;
+  line-height: 1.5em;
+}
+
+.footer-social-links {
+  @extend %flat-list;
+}
+
+.footer-social-link {
+  margin-right: 15px;
+}
+
+.footer-copyright {
+  background: #232d3b;
+}
+
+.footer-copyright-container {
+  @extend %footer-container;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 18px;
+}

@@ -1,0 +1,31 @@
+<%= form_for([:admin, object], :html => { :class => 'form form-horizontal', autocomplete: 'off' }) do |f| %>
+
+  <%= render 'errors', object: @website_admin %>
+
+  <div class="control-group">
+    <%= f.label :first_name, "Name", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, placeholder: "First name", autofocus: true, autocomplete: 'on' %>
+      <%= f.text_field :last_name, placeholder: "Last name", autocomplete: 'on' %>
+    </div>
+  </div>
+
+  <%= add_text_field f, :username %>
+
+  <%= add_text_field f, :email %>
+
+  <% if object.new_record? %>
+    <%= add_password_field f, :password %>
+    <%= add_password_field f, :password_confirmation %>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :timezone, "Timezone", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, { include_blank: true, default: f.object.time_zone }, class: 'timezone' %>
+    </div>
+  </div>
+
+  <%= f.submit "Save", class: "btn" %>
+  <%= link_to "Cancel", admin_website_admins_path, class: "btn" %>
+<% end %>

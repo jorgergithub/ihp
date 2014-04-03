@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      psychic_application:
+        one: "Psychic Application"
+        other: "Psychic Applications"
+
+    attributes:
+      psychic_application:
+        pseudonym: "Alias"
+        state: "State / Province"

@@ -1,0 +1,38 @@
+<%= form_for([:admin, object], :html => { :class => 'form form-horizontal', autocomplete: 'off' }) do |f| %>
+
+  <% if @manager_director.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manager_director.errors.count, "error") %> prohibited this manager director from being saved:</h2>
+
+      <ul>
+      <% @manager_director.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :first_name, "Name", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, placeholder: "First name", autofocus: true, autocomplete: 'on' %>
+      <%= f.text_field :last_name, placeholder: "Last name", autocomplete: 'on' %>
+    </div>
+  </div>
+
+  <%= add_text_field f, :username %>
+
+  <%= add_text_field f, :email %>
+
+  <%= add_password_field f, :password %>
+
+  <div class="control-group">
+    <%= f.label :timezone, "Timezone", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, { include_blank: true, default: f.object.time_zone }, class: 'timezone' %>
+    </div>
+  </div>
+
+  <%= f.submit "Save", class: "btn" %>
+  <%= link_to "Cancel", admin_manager_directors_path, class: "btn" %>
+<% end %>

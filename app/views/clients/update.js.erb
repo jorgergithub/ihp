@@ -1,0 +1,15 @@
+var birthday = $(".my-birthday-timezone .birthday"),
+    modal = $("#birthday_modal"),
+    form = modal.find("form");
+
+<% if @client.errors.blank? && @client.user.errors.blank? %>
+  birthday.html("<%= I18n.l(@client.birthday, format: :birthday) %>");
+  modal.attr("data-day", "<%= @client.birthday.day %>");
+  modal.attr("data-month", "<%= @client.birthday.month %>");
+  modal.attr("data-year", "<%= @client.birthday.year %>");
+  modal.attr("data-timezone", "<%= raw @client.time_zone %>");
+  closeModal();
+<% else%>
+  form.trigger("ajax:complete");
+  form.replaceWith("<%= escape_javascript(render 'clients/modals/birthday_form', user: @client.user ) %>");
+<% end %>

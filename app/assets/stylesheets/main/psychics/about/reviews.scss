@@ -1,0 +1,92 @@
+#psychic-details section.psychic-reviews {
+  padding: 50px 0;
+
+  .psychic-reviews-main {
+    background-color: #242d3c;
+    padding: 30px 20px;
+    text-align: center;
+
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+
+    font-size: 0;
+
+    article {
+      display: none;
+      &.psychic-selected { display: inline-block; }
+    }
+
+    div.psychic-reviews-review {
+      display: inline-block;
+      margin: 0px 16px;
+      vertical-align: middle;
+    }
+
+    aside {
+      display: block;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 30px;
+
+      & .stars {
+        margin-top: 7px;
+      }
+    }
+
+    p {
+      font-size: 28px;
+      display: inline-block;
+      width: 720px;
+      margin: 0px 30px;
+      vertical-align: middle;
+      text-align: center;
+      color: white;
+      font-weight: 200;
+    }
+
+    .psychic-selected {
+      display: block;
+    }
+
+    .psychic-open-quotes {
+      vertical-align: top;
+    }
+
+    .psychic-close-quotes {
+      vertical-align: bottom;
+    }
+
+    .psychic-arrow {
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  }
+}
+
+#psychic-details section.psychic_regular_reviews_group {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+#psychic-details article.psychic-review {
+  width: 467px;
+  display: inline-block;
+  vertical-align: top;
+
+  & + article {
+    margin-left: 30px;
+  }
+
+  p {
+    color: #8590a1;
+    font-size: 20px;
+  }
+
+  aside {
+    margin-top: 30px;
+    color: #535861;
+    font-size: 15px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,10 @@
+var form = $("#psychic_edit_profile_modal form");
+form.trigger("ajax:complete");
+form.replaceWith("<%= escape_javascript(render 'psychics/modals/edit_profile_form', psychic: @psychic ) %>");
+
+<% if @psychic.errors.blank? %>
+  $("span#psychic-phone-number").html("<%= @psychic.phone %>");
+  closeModal();
+<% end %>
+
+Module.run("IHP.Modals.PsychicEditProfileModal");

@@ -1,0 +1,77 @@
+.horoscopes nav.signs {
+  background: #242d3c;
+  color: #606d82;
+  padding: 65px 0px;
+  font-size: 0px;
+
+  ul {
+    display: none;
+    width: 875px;
+    margin-left: 15px;
+  }
+
+  ul.horoscope_selected {
+    display: inline-block;
+  }
+
+  img.horoscope_arrow.horoscope_left {
+    margin-left: 10px;
+  }
+
+  img.horoscope_arrow.horoscope_right {
+    margin-right: 10px;
+  }
+
+  li {
+    display: inline-block;
+    width: 140px;
+    height: 146px;
+    text-align: center;
+    padding-top: 24px;
+    cursor: pointer;
+  }
+
+  li + li {
+    margin-left: 5px;
+  }
+
+  li h1 {
+    font-size: 18px;
+  }
+
+  li time {
+    font-size: 16px;
+  }
+
+  li.horoscope_selected {
+    color: white;
+    background: #7fd14d;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  li img.horoscope_selected {
+    display: none;
+  }
+
+  li.horoscope_selected img.horoscope_selected {
+    display: inline-block;
+  }
+
+
+  li.horoscope_selected img.horoscope_unselected {
+    display: none;
+  }
+
+  img {
+    margin-bottom: 24px;
+  }
+
+  img.horoscope_arrow {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 67px;
+    cursor: pointer;
+  }
+}

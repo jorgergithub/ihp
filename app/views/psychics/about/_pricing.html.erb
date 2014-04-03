@@ -1,0 +1,53 @@
+<section class="psychic-pricing">
+  <div class="about-action-items">
+    <div class="per-minute about-action-item action-item first">
+      <h2>Per minute</h2>
+
+      <div class="about-psychic-badge badge">
+        <div class="about-psychic-price">
+          <% if @psychic.special_price?(current_client) %>
+            <div class="about-psychic-price-promo">
+              $1
+            </div>
+            <div class="about-psychic-price-detail">
+              <%= number_to_currency @psychic.price, precision: 0 %>
+            </div>
+            <%= image_tag "psychic-about-price-crossed-out.png", class: "about-psychic-price-crossed-out" %>
+          <% else %>
+            <%= number_to_currency @psychic.price, precision: 0 %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if @psychic.special_price?(current_client) %>
+        <aside class="new-customers-label">* Special for new customers<aside>
+      <% end %>
+    </div>
+
+    <% if @psychic.on_a_call? %>
+      <div class="current-call about-action-item action-item">
+        <h2>Current Call</h2>
+
+        <div class="about-psychic-badge badge">
+          <%= @psychic.current_call_length %><small>MIN</small>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="est-wait-time about-action-item action-item">
+      <h2>Est. Wait Time</h2>
+
+      <div class="about-psychic-badge badge">
+        <%= @psychic.estimated_wait %> <small>MIN</small>
+      </div>
+    </div>
+
+    <div class="people-waiting about-action-item action-item last">
+      <h2>People Waiting</h2>
+
+      <div class="about-psychic-badge badge">
+        <%= @psychic.callbacks.active.count %>
+      </div>
+    </div>
+  <div>
+</section>

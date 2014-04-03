@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      New application received from I Heart Psychics Send Résumé page. Please find the resume attached.
+    </p>
+
+    <table>
+      <tr>
+        <td><b>First name:</b></td>
+        <td><%= @application.first_name %></td>
+      </tr>
+      <tr>
+        <td><b>Last name:</b></td>
+        <td><%= @application.last_name %></td>
+      </tr>
+      <tr>
+        <td><b>Email:</b></td>
+        <td><%= @application.email %></td>
+      </tr>
+      <tr>
+        <td><b>Phone:</b></td>
+        <td><%= @application.phone %></td>
+      </tr>
+      <tr>
+        <td><b>Position:</b></td>
+        <td><%= @application.position %></td>
+      </tr>
+      <tr>
+        <td><b>Comments:</b></td>
+        <td><%= @application.comments %></td>
+      </tr>
+    </table>
+
+    <p>
+      Best,<br>
+      I Heart Psychics
+    </p>
+  </body>
+</html>

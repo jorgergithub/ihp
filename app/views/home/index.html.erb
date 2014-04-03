@@ -1,0 +1,90 @@
+<section class="hero modal_link" data-modal-id="hero_modal"></section>
+
+<div class="modal_list">
+  <%= render "hero_modal" %>
+</div>
+
+<section class="container container_12">
+  <%= render "offers" %>
+
+  <a name="search"></a>
+  <nav class="container-nav small_container">
+    <ul class="container-nav-links">
+      <li class="container-nav-link">
+        <a href="#" class="search-status-all">All</a>
+        <span class="container-nav-highlight"><%= Psychic.count %></span>
+      </li>
+      <li class="container-nav-link">
+        <a href="#" class="search-status-available">Available</a>
+        <span class="container-nav-highlight"><%= Psychic.available_count %></span>
+      </li>
+      <li class="container-nav-link">
+        <a href="#" class="search-featured">Featured</a>
+      </li>
+      <li class="container-nav-link container-nav-specialty">
+        <a href="#" class="specialty-search-link">Specialty</a>
+
+        <div class="specialty-search">
+          <div class="specialty-search-selection specialty-search-link">Specialty</div>
+
+          <ul class="specialty-search-items">
+            <li class="specialty-search-item specialty-search-item-round-top">
+              Love / Relationships
+              <i class="specialty-search-love-and-relationships"></i>
+            </li>
+            <li class="specialty-search-item">
+              Money / Finance
+              <i class="specialty-search-money-and-finance"></i>
+            </li>
+            <li class="specialty-search-item">
+              Career / Work
+              <i class="specialty-search-career-and-work"></i>
+            </li>
+            <li class="specialty-search-item">
+              Pets / Animals
+              <i class="specialty-search-pet-and-animals"></i>
+            </li>
+            <li class="specialty-search-item">
+              Lost Objects
+              <i class="specialty-search-lost-objects"></i>
+            </li>
+            <li class="specialty-search-item specialty-search-item-round-bottom">
+              Past Lives
+              <i class="specialty-search-past-lives"></i>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="container-nav-link" style="display: none;"><a href="#">Tool</a></li>
+      <li class="container-nav-link">
+        <span class="container-nav-price-label">Price</span>
+        <div class="container-nav-price">
+          <div class="container-nav-price-min">$3</div>
+          <div class="container-nav-price-slider"></div>
+          <div class="container-nav-price-max">$9</div>
+        </div>
+      </li>
+    </ul>
+
+    <aside class="container-nav-search">
+      <%= text_field_tag "search", "", placeholder: "Search", class: "container-nav-search-input" %>
+    </aside>
+  </nav>
+
+  <div class="container-psychics small_container">
+    <div class="container-psychics-loading-container">
+      <%= image_tag "spinner.gif", class: "container-psychics-loading" %>
+    </div>
+
+    <div class="container-search-result"></div>
+
+    <div class="container-psychics-loading-container">
+      <%= image_tag "spinner.gif", class: "container-psychics-loading" %>
+    </div>
+
+    <a href="#" class="psychics-more">
+      <%= image_tag "psychics/more_psychics_btn.png" %>
+    </a>
+  </div>
+
+</section>

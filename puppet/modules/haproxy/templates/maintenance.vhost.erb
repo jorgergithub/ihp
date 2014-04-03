@@ -1,0 +1,45 @@
+<VirtualHost *:8080>
+  ServerName <%= @domain %>
+  <% unless @domain_aliases.empty? %>
+  ServerAlias <%= @domain_aliases.join(' ') %>
+  <% end %>
+
+  DocumentRoot <%= "#{@deploy_to}/current/public" %>
+
+  <Directory <%= "#{@deploy_to}/current/public" %>>
+    Options FollowSymLinks
+    AllowOverride <%= @allow_override || 'None' %>
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  # TODO should we add asset pipeline here?
+
+  # Deflate
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE <%= @gzip_types.join(' ') %>
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  </IfModule>
+
+  RequestHeader set X-Request-Start "%t"
+
+  RewriteEngine On
+
+  ErrorDocument 503 /503.html
+  Redirect 503 /system/maintenance.html
+
+  # Check for maintenance file and redirect all requests
+  RewriteCond %{REQUEST_URI} !\.(css|jpg|png|gif)$
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteCond %{ENV:REDIRECT_STATUS} !=503
+  RewriteRule ^.*$ /system/maintenance.html [L]
+
+  RewriteCond %{REQUEST_URI} !\.(css|jpg|png|gif)$
+  RewriteCond %{DOCUMENT_ROOT}/503.html -f
+  RewriteCond %{SCRIPT_FILENAME} !503.html
+  RewriteRule ^.*$ /503.html [R=503,L]
+
+</VirtualHost>

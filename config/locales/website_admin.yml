@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    models:
+      website_admin:
+        one: "Content Manager"
+        other: "Content Managers"

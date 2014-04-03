@@ -1,0 +1,186 @@
+body.psychics {
+  .psychics {
+    margin-bottom: 20px;
+  }
+
+  .old-psychic {
+    border-radius: 5px;
+    padding: 15px;
+    height: 360px;
+    background-color: #f1f2f2;
+
+    .name, .extension {
+      font-size: 18px;
+      color: #777;
+
+      b {
+        color: #000;
+      }
+    }
+
+    .name .details {
+      color: #777;
+
+      &:hover {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+
+    .rating {
+      height: 15px;
+
+      .star-filled { color: #000; }
+      .star-empty  { color: #fff; }
+    }
+
+    .about {
+      color: #888;
+      font-size: 11px;
+      line-height: 1.2em;
+      margin-top: 10px;
+      height: 250px;
+      overflow: auto;
+    }
+
+    .actions {
+      .reviews {
+        color: #888;
+        text-decoration: none;
+
+        &:hover {
+          color: #000;
+          text-decoration: none;
+
+          &:after {
+            content: "reviews";
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 5px;
+          }
+        }
+      }
+
+      .favorite {
+        color: #888;
+        text-decoration: none;
+
+        &:hover {
+          color: #111;
+          text-decoration: none;
+
+          &:after {
+            content: "favorite";
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 5px;
+          }
+        }
+      }
+
+      .favorited {
+        color: #f00;
+        text-decoration: none;
+
+        &:hover {
+          color: #111;
+          text-decoration: none;
+
+          &:after {
+            content: "unfavorite";
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  #psychic-details {
+    h3 span {
+      font-weight: normal;
+    }
+
+    .star-filled { color: #000; }
+    .star-empty  { color: #000; }
+
+    .about {
+      margin-top: 40px;
+
+      .title {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      .body {
+        color: #888;
+      }
+    }
+
+    .reviews-title {
+      margin-top: 40px;
+    }
+
+    .reviews {
+      .review {
+        .author {
+          color: #777;
+          font-weight: bold;
+        }
+
+        .text {
+          margin-top: 10px;
+          line-height: 1.5em;
+          color: #777;
+        }
+      }
+
+      .featured-review {
+        .text {
+          z-index: 1;
+          background: #fff;
+          line-height: 2em;
+          color: #777;
+          padding: 30px 0 0 30px;
+
+          p {
+            font-size: 28px;
+            padding: 10px;
+            position: relative;
+
+            span {
+              position:relative
+            }
+
+            span:before {
+              content: "“ ";
+              font-size: 100px;
+              font-weight: bold;
+              line-height: 20px;
+              color: #e4e4e4;
+              position: absolute;
+              top: 20px;
+              left: -56px
+            }
+          }
+
+          p:after {
+            content: " ”";
+            font-size: 100px;
+            font-weight: bold;
+            line-height: 20px;
+            position: absolute;
+            bottom: -20px;
+            color: #e4e4e4
+          }
+        }
+
+        .author {
+          color: #777;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

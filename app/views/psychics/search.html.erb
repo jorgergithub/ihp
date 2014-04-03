@@ -1,0 +1,11 @@
+<% if @psychics.any? %>
+  <% @psychics.each_with_index do |p, i| %>
+    <%= render p, last: (i+1)%3 == 0 %>
+  <% end %>
+<% else %>
+  <% unless params[:append] %>
+    <div class="container-psychics-no-results">
+      No psychics matched your criteria.
+    </div>
+  <% end %>
+<% end %>

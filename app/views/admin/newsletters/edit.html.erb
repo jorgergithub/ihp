@@ -1,0 +1,33 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Edit newsletter</h3>
+  </div>
+  <div class="span12">
+    <!--
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="active" data-toggle="tab"><%= link_to "Newsletter", "#form" %></li>
+      <li data-toggle="tab"><%= link_to "Delivery", "#delivery" %></li>
+    </ul>
+    -->
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="form">
+        <% content_for(:buttons) do %>
+          <div class="pull-right">
+            <% if @newsletter.delivered? %>
+              <span style="color: blue;">Delivered at <%= @newsletter.delivered_at %></span>
+              <%= link_to "<i class='icon-remove'></i>".html_safe, reset_admin_newsletter_path(@newsletter) %>
+            <% else %>
+              <%= link_to "Deliver now", deliver_admin_newsletter_path(@newsletter), class: 'btn' %>
+            <% end %>
+          </div>
+        <% end %>
+        <%= render "form", object: @newsletter %>
+      </div>
+
+      <div class="tab-pane" id="delivery">
+        Not implemented.
+      </div>
+    </div>
+  </div>
+</div>

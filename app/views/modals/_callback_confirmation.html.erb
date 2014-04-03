@@ -1,0 +1,20 @@
+<div id="callback-confirmation-modal" class="modal medium">
+  <header>
+    <h1>Scheduled Call Back Confirmed</h1>
+  </header>
+
+  <div class="modal-body callback-confirmation-modal-body">
+    <p>Your Call Back has Been Scheduled</p>
+
+    <span class="psychic-avatar"></span>
+
+    <p>
+      <span class="psychic-name"></span>
+      will call you back within <span class="callback-minutes"></span> minutes if
+      <span class="psychic-name"></span>
+      becomes available.
+    </p>
+
+    <%= link_to "Done", "#", class: "callback-confirmation-done", data: { "close-modal" => "#callback-confirmation-modal" } %>
+  </div>
+</div>

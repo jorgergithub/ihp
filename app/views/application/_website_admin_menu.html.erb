@@ -1,0 +1,7 @@
+<ul class="nav">
+  <%= dashboard_link %>
+  <%= admin_link 'FAQs', admin_categories_path, :resource => :categories %>
+  <%= admin_link 'Psychic FAQs', admin_psychic_faq_categories_path, :resource => :psychic_faq_categories %>
+  <%= admin_link 'Daily Fortunes', admin_daily_fortunes_path, :resource => :daily_fortunes %>
+  <%= admin_link 'Horoscopes', admin_horoscopes_path %>
+</ul>

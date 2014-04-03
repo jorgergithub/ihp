@@ -1,0 +1,36 @@
+<%= form_for([:admin, object], :html => { :class => 'form form-horizontal' }) do |f| %>
+  <%= render 'errors', object: object %>
+
+  <div class="control-group">
+    <%= f.label :deliver_by_str, 'Deliver by', :class => 'control-label' %>
+    <div class="controls">
+      <div id="datetimepicker" class="input-append">
+        <%= f.text_field :deliver_by_str, data: { format: "MM/dd/yyyy HH:mm PP" } %>
+        <span class="add-on">
+          <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <%= add_text_field f, :title, "Title", input: {class: "input-xxlarge"} %>
+
+  <div class="control-group">
+    <%= f.text_area :body, class: "ckeditor", ckeditor: { height: '500px' }  %>
+  </div>
+
+  <%= yield(:buttons) %>
+
+  <%= f.submit "Save", class: "btn" %>
+  <%= link_to "Cancel", admin_newsletters_path, class: "btn", rows: 10 %>
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('#datetimepicker').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true,
+      pickSeconds: false
+    });
+  });
+</script>

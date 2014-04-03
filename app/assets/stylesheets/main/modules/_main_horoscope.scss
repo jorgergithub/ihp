@@ -1,0 +1,86 @@
+@import "main/helpers";
+
+.horoscope {
+  background-color: #161d26;
+}
+
+.horoscope-container {
+  position: relative;
+  @extend %footer-container;
+}
+
+.horoscope-title,
+.horoscope-sign-title,
+.horoscope-period,
+.horoscope-container h3 {
+  font-weight: 100;
+}
+
+.horoscope-title {
+  font-size: 25px;
+  color: white;
+}
+
+.horoscope-container h3 {
+  color: white; 
+  font-size: 24px;
+}
+
+.horoscope-sign-title {
+  font-size: 100px;
+  color: #af00a5;
+}
+
+.horoscope-period {
+  font-size: 24px;
+}
+
+.horoscope-text {
+  font-size: 24px;
+  color: #babbbd;
+  margin-top: 20px;
+  width: 660px;
+}
+
+.horoscope-sign {
+  position: absolute;
+  width: 269px;
+  height: 328px;
+  right: 100px;
+  bottom: 0;
+  background: url(image-path("horoscope-sign-bg.png"));
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.horoscope-sign-image {
+  margin-top: 70px;
+}
+
+section.horoscope-container nav {
+  position: relative;
+}
+
+section.horoscope-container ul {
+  position: absolute;
+  left: 50%;
+  margin-left: -75px;
+}
+
+section.horoscope-container ul li {
+  display: inline-block;
+  cursor: pointer;
+}
+
+section.horoscope-container ul li + li {
+  margin-left: 20px;
+}
+
+.horoscope-container article {
+  display: none;
+  margin-top: 35px;
+
+  &.horoscope-selected {
+    display: inline-block;
+  }
+}

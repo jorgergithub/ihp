@@ -1,0 +1,37 @@
+<section class="horoscope">
+  <section class="horoscope-container container_12">
+    <% if !current_user %>
+      <nav>
+        <ul>
+          <li class="horoscope_left_arrow">
+            <%= image_tag "horoscopes/left_arrow.png" %>
+          </li>
+          <li class="horoscope_right_arrow">
+            <%= image_tag "horoscopes/right_arrow.png" %>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
+
+    <% selected_sign_index = current_user.try(:sign).try(:index) || 0 %>
+
+    <% @horoscope.signs.each_with_index do |sign, index| %>
+      <article class="<%= "horoscope-selected" if selected_sign_index == index %>">
+        <h2 class="horoscope-title">Your Daily Horoscope</h2>
+        <h1 class="horoscope-sign-title"><%= sign.name %></h1>
+        <h3>
+          <%= sign.first_day.strftime("%B %d") %> -
+          <%= sign.last_day.strftime("%B %d")%>
+        </h3>
+
+        <p class="horoscope-text">
+          <%= sign.text %>
+        </p>
+
+        <div class="horoscope-sign">
+          <%= image_tag("horoscopes/footer/#{sign.name.downcase}.png", alt: "Gemini", class: "horoscope-sign-image") %>
+        </div>
+      </article>
+    <% end %>
+  </section>
+</section>

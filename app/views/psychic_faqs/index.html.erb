@@ -1,0 +1,31 @@
+<%= select ||= params[:select]  %>
+
+<section class="faqs small_container" data-selected-category="<%= select %>">
+  <aside>
+    <ul class="categories">
+      <% @categories.each do |category| %>
+        <li class="category faqs-link-<%= category.to_slug %>" href="#<%= category.to_slug %>"><%= link_to category.name, "##{category.to_slug}" %></li>
+      <% end %>
+    </ul>
+  </aside>
+
+  <div class="faqs">
+    <% @categories.each do |category| %>
+      <article class="faq faqs-<%= category.to_slug %>">
+        <% category.faqs.each_with_index do |faq, i| %>
+          <section class="faqs-entry">
+            <div class="faqs-question-number"><%= i+1 %></div>
+            <h2 class="faqs-question"><%= faq.question %></h2>
+            <p class="faqs-answer"><%= faq.answer %></p>
+          </section>
+        <% end %>
+      </article>
+    <% end %>
+  </div>
+</section>
+
+<script>
+  $(function() {
+    Module.run("IHP.Pages.FaqsIndex", ["section.faqs"]);
+  });
+</script>

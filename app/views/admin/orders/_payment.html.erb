@@ -1,0 +1,57 @@
+<legend>Payment</legend>
+<div class="control-group">
+  <%= label_tag :card, nil, class: 'control-label' %>
+  <div class="controls">
+    <% if @client.card %>
+      <label class="radio">
+        <%= radio_button_tag 'order[card_id]', @client.card.id, true, id: 'existing_card_id' %>
+        <b><%= @client.card.type %></b>
+        ending in
+        <b><%= @client.card.last4 %></b>
+      </label>
+    <% end %>
+
+    <label class="radio" >
+      <%= radio_button_tag 'order[card_id]', nil, !@client.card, id: 'order_card_id' %>
+      New card:
+    </label>
+
+    <div id="new-card-fields">
+      <div class="control-group">
+        <%= label_tag :order_card_number, nil, class: 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :order_card_number, nil, name: 'order[card_number]', maxlength: 16, data: { stripe: "number" } %>
+          <span id="card-number-validation-error" class="validation-error"></span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= label_tag :expiration, nil, :class => 'control-label' %>
+
+        <div class="controls">
+          <%= select_tag :order_card_exp_month, options_from_collection_for_select(
+            Rails.configuration.credit_card[:months], :value, :name), prompt: "Select a month", name: 'order[card_exp_month]', class: 'input-medium', data: { stripe: "exp-month" } %>
+
+          <%= select_tag :order_card_exp_year, options_from_collection_for_select(
+          Rails.configuration.credit_card[:years], :value, :name), prompt: "Select a year", name: 'order[card_exp_year]',class: 'input-small', data: { stripe: "exp-year" } %>
+
+          <span id="card-exp-date-validation-error" class="validation-error"></span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= label_tag :order_card_cvc, 'CVC', class: 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :order_card_cvc, nil, class: 'input-mini', maxlength: 3,
+            name: 'order[card_cvc]', data: { stripe: "cvc", mask: "999" } %>
+          <span id="card-cvc-validation-error" class="validation-error"></span>
+        </div>
+      </div>
+    </div>
+
+    <label class="radio">
+      <%= radio_button_tag 'order[card_id]', 'paypal', false, id: 'order_paypal' %>
+      Pay using PayPal
+    </label>
+  </div>
+</div>

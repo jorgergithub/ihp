@@ -1,0 +1,53 @@
+<%= form_for([:admin, object], :html => { :class => 'form form-horizontal' }) do |f| %>
+
+  <%= render 'errors', object: @daily_fortune %>
+
+  <fieldset>
+    <% if @errors and @errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@errors.count, "error") %> prohibited this Daily Fortune from being saved:</h2>
+
+        <ul>
+        <% @errors.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="control-group">
+      <%= f.label :start_date, "Start Date", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :start_date, class: "datepicker" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :end_date, "End Date", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :end_date, class: "datepicker" %>
+      </div>
+    </div>
+
+    <%= add_text_field f, :sunday %>
+    <%= add_text_field f, :monday %>
+    <%= add_text_field f, :tuesday %>
+    <%= add_text_field f, :wednesday %>
+    <%= add_text_field f, :thursday %>
+    <%= add_text_field f, :friday %>
+    <%= add_text_field f, :saturday %>
+
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <%= f.check_box :active %> Active
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="modal-footer">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Cancel", admin_daily_fortunes_path, class: "btn" %>
+   </div>
+<% end %>

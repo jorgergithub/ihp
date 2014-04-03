@@ -1,0 +1,29 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require main_styles
+ *= require application
+ *= require base
+ *= require bootstrap-datetimepicker
+ *= require client
+ *= require csr
+ *= require datepicker
+ *= require horoscopes
+ *= require invoices
+ *= require omniauth_callbacks
+ *= require orders
+ *= require psychic
+ *= require psychic_application
+ *= require signup
+ *= require schedules
+ *= require surveys
+ *= require callbacks
+ */

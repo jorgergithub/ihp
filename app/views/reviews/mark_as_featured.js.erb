@@ -1,0 +1,3 @@
+<% if @review.featured? %>
+  $("#psychic_reviews tr[data-id=" + <%= @review.id %> + "] td.featured").html("<%= escape_javascript(image_tag "featured.png", alt: "Featured") %>");
+<% end %>

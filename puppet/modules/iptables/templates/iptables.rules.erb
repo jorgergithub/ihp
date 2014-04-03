@@ -1,0 +1,8 @@
+*filter
+:FORWARD DROP [0:0]
+:INPUT DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+<% @rules.each do |rule| -%>
+<%= rule %>
+<% end %>
+COMMIT

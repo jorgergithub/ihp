@@ -1,0 +1,11 @@
+.surveys {
+  .question {
+    padding: 10px;
+    font-weight: bold;
+
+    .options, .answer {
+      padding: 10px;
+      font-weight: normal;
+    }
+  }
+}

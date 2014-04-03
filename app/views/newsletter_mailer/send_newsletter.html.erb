@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <base href="<%= ihp_url %>">
+  <%= @body.html_safe %>
+
+  <div style="margin: 0 auto; width: 100%;">
+    <hr>
+    <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#666666">
+    <a href="<%= unsubscribe_url(@client.unsubscribe_key) %>">Unsubscribe from I Heart Psychic newsletters.</a>
+    </font>
+  </div>
+
+</body>
+</html>

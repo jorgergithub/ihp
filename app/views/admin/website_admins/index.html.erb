@@ -1,0 +1,42 @@
+<div class="row-fluid">
+  <div class="span8">
+    <h3>Content Managers</h3>
+
+    <% if @website_admins.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @website_admins.each do |wa| %>
+            <tr>
+              <td class="admin-actions">
+                <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_admin_website_admin_path(wa) %>
+                <%= link_to '<i class="icon-remove"></i>'.html_safe, [:admin, wa], data: {confirm: "Are you sure?" }, :method => "delete" %>
+              </td>
+              <td><%= link_to wa.username, edit_admin_website_admin_path(wa) %></td>
+              <td><%= wa.full_name %></td>
+              <td><%= wa.email %></td>
+              <td><%=l wa.created_at, format: :short %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @website_admins %>
+
+    <% else %>
+      <div class="blank-state">
+        No content managers added yet.
+        <%= link_to "Add one now.", new_admin_website_admin_path %>
+      </div>
+    <% end %>
+    <%= link_to "Add new content manager", new_admin_website_admin_path, class: "btn btn-small" %>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+@import "splash/mixins";
+
+.home {
+  .apna {
+    @include thin-font(20px);
+
+    h1 {
+      text-align: center;
+    }
+  }
+}

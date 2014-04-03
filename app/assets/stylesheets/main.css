@@ -1,0 +1,56 @@
+/*
+ * Public facing website stylesheets
+ *
+ *= require_self
+ *= require lib/reset
+ *= require lib/960
+ *= require main/helpers
+ *= require main/horoscopes/nav
+ *= require main/horoscopes/details
+ *= require main/typography
+ *= require main/main
+ *= require main/vendor/tiny_scrollbar
+ *= require main/clients/favorite_psychics
+ *= require main/psychics/about/about
+ *= require main/psychics/about/profile
+ *= require main/psychics/about/pricing
+ *= require main/psychics/about/schedule
+ *= require main/psychics/about/reviews
+ *= require main/psychics/card
+ *= require main/modules/_modal
+ *= require main/modules/modal/_sign_up
+ *= require main/modules/modal/_sign_in_error
+ *= require main/modules/modal/credit_card_list
+ *= require main/modules/modal/home/hero
+ *= require main/modules/modal/purchase/select_payment_method
+ *= require main/modules/modal/purchase/thanks
+ *= require main/modules/modal/clients/birthday
+ *= require main/modules/modal/psychics/edit_profile
+ *= require main/modules/modal/prices
+ *= require main/modules/modal/callback
+ *= require main/modules/modal/callback_confirmation
+ *= require main/modules/modal/_validation_errors
+ *= require main/modules/_main_user
+ *= require main/modules/_main_header
+ *= require main/modules/_main_nav
+ *= require main/modules/_main_hearo
+ *= require main/modules/_main_container
+ *= require main/modules/_main_offers
+ *= require main/modules/_main_psychics
+ *= require main/modules/_main_horoscope
+ *= require main/modules/_main_footer
+ *= require main/modules/_dashboard
+ *= require main/modules/_client_dashboard
+ *= require main/modules/_psychic_dashboard
+ *= require main/modules/_rating
+ *= require main/training_items
+ *= require main/message_modal
+ *= require main/accessory
+ *= require main/ethics
+ *= require main/contact
+ *= require main/careers
+ *= require main/faqs
+ *= require main/staff
+ *= require main/how_it_works
+ *= require main/surveys
+ */

@@ -1,0 +1,13 @@
+<article class="lucky">
+  <header>
+    <h1><%= sign.name %></h1>
+    <time>
+      <%= sign.first_day.strftime("%B %d") %> - 
+      <%= sign.last_day.strftime("%B %d")%>
+    </time>
+  </header>
+
+  <p>
+    <%= sign.text %>
+  </p>
+</article>

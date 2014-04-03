@@ -1,0 +1,18 @@
+.psychic_applications {
+  .resume {
+    padding: 10px 20px;
+  }
+
+  .day, .month, .year {
+    width: 70px;
+  }
+
+  .resume-not-uploaded {
+    margin: 5px 0 20px 10px;
+  }
+
+  label[for=psychic_application_has_experience],
+  label[for=psychic_application_experience] {
+    margin-top: 40px;
+  }
+}

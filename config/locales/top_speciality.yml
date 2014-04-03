@@ -1,0 +1,11 @@
+en:
+  enumerations:
+    top_speciality:
+      love_and_relationships: "Love and Relationships"
+      career_and_work: "Career and Work"
+      money_and_finance: "Money and Finance"
+      lost_objects: "Lost Objects"
+      dream_interpretation: "Dream Interpretation"
+      pet_and_animals: "Pet and Animals"
+      past_lives: "Past Lives"
+      deceased: "Deceased"

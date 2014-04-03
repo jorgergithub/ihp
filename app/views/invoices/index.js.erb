@@ -1,0 +1,5 @@
+jQuery('#pending_invoices').html('<%= escape_javascript render("invoice", invoices: @pending_invoices) %>');
+jQuery('#pending_paginate').html('<%= escape_javascript(paginate(@pending_invoices, :param_name => :pending_page, :remote => true).to_s) %>');
+
+jQuery('#paid_invoices').html('<%= escape_javascript render("invoice", invoices: @paid_invoices) %>');
+jQuery('#paid_paginate').html('<%= escape_javascript(paginate(@paid_invoices, :param_name => :paid_page, :remote => true).to_s) %>');

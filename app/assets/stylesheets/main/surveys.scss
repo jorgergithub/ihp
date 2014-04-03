@@ -1,0 +1,40 @@
+.surveys {
+  color: #000;
+
+  h3 {
+    font-size: 30px;
+    font-weight: normal;
+    color: #9d0095;
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+
+
+  .question {
+    padding: 10px;
+    font-weight: bold;
+
+    .options, .answer {
+      padding: 10px;
+      font-weight: normal;
+    }
+  }
+
+  input, textarea {
+    margin-bottom: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #8590a1;
+  }
+
+  textarea {
+    width: 540px;
+    height: 180px;
+    padding: 10px;
+  }
+
+  p {
+    padding: 10px;
+  }
+}

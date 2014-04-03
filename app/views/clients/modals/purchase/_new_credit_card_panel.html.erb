@@ -1,0 +1,42 @@
+<div class="sub_modal_panel new_credit_card_panel">
+  <div class="modal-body">
+    <%= form_for :order, remote: true, url: orders_path, authenticity_token: true do |f| %>
+      <div class="row">
+        <div class="field">
+          <%= f.label :card_number, "Credit Card#" %>
+          <%= f.text_field :card_number, placeholder: "1234 1324 1234 1234", maxlength: 16,data: { stripe: "number" } %>
+          <i class="card_type">
+            <%= image_tag "credit_card_icons/generic_2.png", class: "generic_card" %>
+            <%= image_tag "credit_card_icons/visa.png", class: "visa" %>
+            <%= image_tag "credit_card_icons/american_express.png", class: "american_express" %>
+            <%= image_tag "credit_card_icons/master_card.png", class: "master_card" %>
+            <%= image_tag "credit_card_icons/discover.png", class: "discover" %>
+          </i>
+        </div>
+
+        <div class="field">
+          <div class="field small">
+            <%= f.label :card_exp_month, "Expires" %>
+            <%= f.text_field :card_exp_month, placeholder: "MM", maxlength: 2, data: { stripe:  "exp-month" } %>
+            <%= f.text_field :card_exp_year, placeholder: "YYYY", maxlength: 4, data: { stripe: "exp-year" } %>
+          </div>
+
+          <div class="field medium">
+            <%= f.label :card_cvc, "CVV / CVC" %>
+            <%= f.text_field :card_cvc, maxlength: 3, data: { stripe: "cvc" } %>
+          </div>
+        </div>
+      </div>
+
+      <aside class="form_validation_errors">
+        <ul><li></li></ul>
+      </aside>
+
+      <footer>
+        <%= f.hidden_field :package_id %>
+        <%= link_to image_tag("modal/use_card_on_file.png"), "#", "data-sub-panel" => "select_card_panel"  %>
+        <%= image_submit_tag "modal/complete_transaction.png" %>
+      </footer>
+    <% end %>
+  </div>
+</div>

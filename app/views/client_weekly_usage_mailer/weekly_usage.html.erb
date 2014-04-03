@@ -1,0 +1,42 @@
+<p>
+  Dear Client,
+</p>
+
+<p>
+  For the week of <%= @start_date %>, your usage with I Hearts Psychics was the
+  following:
+</p>
+
+<p>
+  Calls: <%= @calls.size %>
+  Minutes: <%= @duration %>
+  Balance Used: <%= @calls.sum(&:price) %>
+  Current Balance: <%= @client.balance %>
+</p>
+
+<p>
+  We hope that you have enjoyed your readings and we are deeply grateful that you
+  have chosen I Heart Psychics as your premier psychic platform.
+</p>
+
+<p>
+  Please feel free to contact Customer Care at 1-855-550-8300 with any questions
+  and / or concerns.
+</p>
+
+<p>
+  On behalf of the entire I Heart Psychics team, we would like to thank you for
+  including I Heart Psychics on such a unique and personal journey!
+</p>
+
+<p>
+  Love and light,
+</p>
+
+<p>
+  The I Heart Psychics team<br>
+</p>
+
+<p>
+   <%= ihp_url %>
+</p>

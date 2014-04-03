@@ -1,0 +1,22 @@
+<div class="fields">
+  <hr>
+
+  <div class="pull-right">
+    <%= link_to_remove_fields('<i class="icon-remove"></i>'.html_safe, f, :title => "Delete this Question.") %>
+  </div>
+
+  <%= add_select f, :type, [["Text", "TextQuestion"], ["Options", "OptionsQuestion"], ["Rating", "RatingQuestion"], ["Yes/No", "YesNoQuestion"]] %>
+  <%= add_text_field f, :text, "Question", input: {class: "input-xxlarge"} %>
+
+  <% if f.object.is_a?(OptionsQuestion) %>
+    <%= f.fields_for :options do |nested| %>
+      <%= render "option_fields", f: nested %>
+    <% end %>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= link_to_add_fields("Add an Answer", f, :options, :class => "btn btn-small btn-primary", :title => "Add a new answer to this question.") %>
+      </div>
+    </div>
+  <% end %>
+</div>

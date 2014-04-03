@@ -1,0 +1,15 @@
+<%= form_for(object, :url => callbacks_path, :html => { :class => 'form form-horizontal' }) do |f| %>
+  <%= render 'errors', object: object %>
+  <%= f.hidden_field :psychic_id %>
+
+  <div class="control-group">
+    <%= f.label :wait_for, "How long are you willing to wait?", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :wait_for, autofocus: 'on' %>
+      minutes
+    </div>
+  </div>
+
+  <%= f.submit "Schedule Callback", class: "btn" %>
+  <%= link_to "Back", root_path, class: "btn" %>
+<% end %>

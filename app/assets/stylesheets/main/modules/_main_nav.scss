@@ -1,0 +1,58 @@
+@import "main/helpers";
+
+.nav {
+  background: #e4ecf0;
+  // height: 40px;
+}
+
+.nav:after {
+  content: " ";
+  background: #ccd7dd;
+  height: 4px;
+  display: block;
+}
+
+.nav-container {
+  padding: 15px 0;
+}
+
+.nav-links {
+  @extend %flat-list;
+  float: left;
+}
+
+.nav-link {
+  padding: 10px 20px;
+
+  a {
+    color: #6a6f78;
+    text-decoration: none;
+    font-weight: normal;
+  }
+}
+
+.nav-link.active {
+  background: #6e0068;
+  border-radius: 30px;
+}
+
+.active a {
+  color: #fff;
+}
+
+.nav-info {
+  background: url(image-path("nav-info-phone.png")) no-repeat 0 7px;
+  padding: 10px 0 10px 40px;
+  float: right;
+  color: #6a6f78;
+
+  span {
+    font-weight: bold;
+  }
+}
+
+.nav h1 {
+  color: #6acd00;
+  font-size: 30px;
+  font-weight: normal;
+}

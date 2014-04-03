@@ -1,0 +1,77 @@
+<span class="payment-errors"></span>
+
+<fieldset>
+  <legend>Personal Info</legend>
+
+  <div class="control-group">
+    <%= f.label :first_name, "Name", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, placeholder: "First name", autofocus: true, autocomplete: 'on' %>
+      <%= f.text_field :last_name, placeholder: "Last name", autocomplete: 'on' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :username, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :username %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.email_field :email %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :timezone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, { include_blank: true, default: nil }, class: 'timezone' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.fields_for :client do |cf| %>
+      <div class="control-group">
+        <%= cf.label :birthday, "My birthday", :class => "control-label" %>
+        <div class="controls">
+          <%= cf.date_select :birthday, start_year: (Time.now.year - 100),
+                              end_year: Time.now.year,
+                              order: [:month, :day, :year],
+                              with_css_classes: true  %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= cf.label :pin, "My pin", :class => "control-label" %>
+        <div class="controls">
+          <%= cf.text_field :pin, maxlength: 4 %>
+        </div>
+      </div>
+
+      <%= render "phone_number", :f => cf %>
+    <% end %>
+  </div>
+
+  <% if f.object.password_required? %>
+    <legend>Password</legend>
+
+    <div class="control-group">
+      <%= f.label :password, class: 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :password_confirmation, class: 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+  <% end %>
+</fieldset>
+
+<div><%= f.button "Sign up", class: 'btn' %></div>

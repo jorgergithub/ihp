@@ -1,0 +1,30 @@
+<div id="select_payment_method_modal" class="modal large">
+  <nav>
+    <ul>
+      <li data-panel="paypal_panel" class="tab_selected">Pay via Paypal</li>
+      <!-- <li data-panel="credit_cards_panel">Pay via Credit Card</li> -->
+    </ul>
+  </nav>
+
+  <header>
+    <h1><span class="package-credits"></span><small>DOLLARS</small></h1>
+    <span class="normal">for</span>
+    <h1><small>$</small><span class="package-price"></span></h1>
+  </header>
+
+  <%= render "clients/modals/spinner" %>
+
+  <div class="modal_panel credit_cards_panel">
+    <%= render "clients/modals/purchase/select_card_panel" %>
+    <%= render "clients/modals/purchase/new_credit_card_panel" %>
+  </div>
+
+  <div class="modal_panel paypal_panel">
+    <footer>
+      <%= form_for :order, url: paypal_orders_path, remote: true, data: { keepspinner: true } do |f| %>
+        <%= f.hidden_field :package_id %>
+        <%= image_submit_tag("modal/proceed_to_checkout_btn.png") %>
+      <% end %>
+    </footer>
+  </div>
+</div>

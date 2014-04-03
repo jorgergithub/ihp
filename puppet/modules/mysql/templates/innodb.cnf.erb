@@ -1,0 +1,6 @@
+# set the log_file_size before mysqld is started to ensure logs are created
+# correctly the first time
+[mysqld]
+innodb_log_buffer_size            = <%= @innodb_log_buffer_size %>
+innodb_log_file_size              = <%= @innodb_log_file_size %>
+innodb_log_files_in_group         = <%= @innodb_log_files_in_group %>

@@ -1,0 +1,6 @@
+<% if resource.errors.blank? %>
+  window.location.href = "/?reset_password_success=true"
+<% else %>
+  $("#reset_password_modal form").trigger("ajax:complete");
+  $("#reset_password_modal form").replaceWith("<%= escape_javascript(render('modals/password/reset_password_form'))%>")
+<% end %>

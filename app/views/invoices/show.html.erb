@@ -1,0 +1,123 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Invoice #<%= @invoice.number %></h3>
+  </div>
+
+  <% if @invoice.paid? %>
+    <div class="paid">PAID</div>
+  <% end %>
+
+  <div class="span4 overview">
+    <table class="table table-bordered">
+      <tr>
+        <td>Period:</td>
+        <td><%= @invoice.start_date %> to <%= @invoice.end_date %></td>
+      </tr>
+      <tr>
+        <td>Pay tier:</td>
+        <td><%= @invoice.tier.name %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="span12 items">
+    <table class="table invoice-table">
+      <thead>
+        <tr>
+          <th>Minutes</th>
+          <th>Calls</th>
+          <th>Avg. Mins</th>
+          <th>Appointments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @invoice.total_minutes %></td>
+          <td><%= @invoice.number_of_calls %></td>
+          <td><%= @invoice.avg_minutes %></td>
+          <td><%= 0 %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="span12 totals">
+  <table style="width: 100%">
+    <tr>
+      <td class="item"><b>Minutes</b></td>
+    </tr>
+    <tr>
+      <td>
+        Total minutes:
+        <%= @invoice.total_minutes %> @
+        <%= number_to_currency @invoice.price_per_minute %>/min
+      </td>
+      <td class="right">
+        <%= number_to_currency @invoice.minutes_payout %>
+      </td>
+    </tr>
+    <tr>
+      <td class="item"><b>Bonus</b></td>
+    </tr>
+    <tr>
+      <td>
+        Weekly Schedule Bonus Minutes:
+        <%= @invoice.bonus_minutes %>
+        x $0.07
+      </td>
+      <td class="right">
+        <%= number_to_currency @invoice.bonus_payout %>
+      </td>
+    </tr>
+    <tr>
+      <td class="total"><b>Total</b></td>
+      <td class="total" align="right"><%= number_to_currency @invoice.total %></td>
+    </tr>
+  </table>
+</div>
+
+<% if @invoice.payments.any? %>
+  <div class="span12">
+    <h3>Payments</h3>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Transaction ID</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoice.payments.each do |payment| %>
+          <tr>
+            <td><%= payment.id %></td>
+            <td><%=l payment.created_at, format: :short %></td>
+            <td><%= payment.transaction_id %></td>
+            <td class="right"><%= number_to_currency payment.amount %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<div class="span12">
+
+  <div class="form-actions">
+    <% if current_user.psychic? %>
+      <%= link_to "Back", psychic_invoices_path(anchor: status(@invoice)), class: 'btn' %>
+    <% end %>
+
+    <% if current_user.accountant? %>
+      <% if @invoice.paid? %>
+        <%= link_to "Back", paid_admin_invoices_path, class: 'btn' %>
+      <% else %>
+        <%= link_to "Back", pending_admin_invoices_path, class: 'btn' %>
+        <%= link_to '<i class="icon-money"></i> Pay Invoice'.html_safe, new_admin_invoice_payment_path(@invoice), class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

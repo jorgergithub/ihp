@@ -1,0 +1,5 @@
+var clientCalls = jQuery("#admin-client-calls");
+clientCalls.empty();
+
+var clientCallsContent = "<%= escape_javascript(render 'calls') %>";
+clientCalls.append(clientCallsContent);

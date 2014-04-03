@@ -1,0 +1,41 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Psychic Applications</h3>
+
+    <% if @psychic_applications.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Alias</th>
+            <th>Email</th>
+            <th>Landline #</th>
+            <th>City, State</th>
+            <th>Country</th>
+            <th>Submitted</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% localized(@psychic_applications).each do |app| %>
+            <tr>
+              <td><%= link_to app.full_name, admin_psychic_application_path(app) %></td>
+              <td><%= app.alias_name %></td>
+              <td><%= app.email %></td>
+              <td><%= app.phone %></td>
+              <td><%= app.city %>, <%= app.state %></td>
+              <td><%= app.country %></td>
+              <td><%=l app.created_at.to_date, format: :short %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @psychic_applications %>
+
+    <% else %>
+      <div class="blank-state">
+        No applications are pending.
+      </div>
+    <% end %>
+  </div>
+</div>

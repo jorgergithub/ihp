@@ -1,0 +1,13 @@
+<%= form_for(object, :html => { :class => 'form form-inline' }) do |f| %>
+  <form class="form-inline">
+
+    <%= f.text_field :number, class: "input-small", style: "width: 150px",
+    placeholder: "Number", data: { mask: t("masks.phone") }, autofocus: true %>
+
+    <%= f.text_field :desc, class: "input-small", style: "width: 150px",
+    placeholder: "Description" %>
+
+    <%= f.submit "Save", class: "btn" %>
+    <%= link_to "Cancel", client_path, class: "btn" %>
+  </form>
+<% end %>

@@ -1,0 +1,36 @@
+Hello <%= @resource.first_name %>,
+
+We would like to cordially welcome you to I Heart Psychics!
+
+You’re one step away from connecting to our highly specialized readers,
+astrology horoscopes, and spiritual editorials!  We pride ourselves on being the
+premier innovative platform linking clients to top-rated psychic readers of t
+heir choosing, as well as astrology forecasts, and uplifting divine content.
+
+<% if @resource.generated_password == true  %>
+Your generated password is '<%= @resource.password %>'.  We ask that you
+please change it as soon as possible to ensure the security of your account.
+<% else%>
+Do you wonder if they are [that person is] ‘the one’?  Are you ready to make
+a career change, but still uneasy about making the jump?  Have you lost a
+loved one and are looking to connect to the Other Side? Our team of
+experienced psychics is ready to bring you peace of mind and to ease the
+tension that comes from making those lasting, life changing decisions.
+<% end %>
+
+In order to speak with a psychic over the phone, you'll have to use
+the PIN number you selected while signing up: <%= @resource.try(:client).try(:pin) %>.
+
+Please confirm your account email through the link below to get started:
+
+<%= confirmation_url(@resource, :confirmation_token =>
+  @resource.confirmation_token) %>
+
+We would like to thank you for including I Heart Psychics on such a unique and
+personal journey!
+
+Love and light,
+
+The I Heart Psychics team
+
+ <%= ihp_url %>

@@ -1,0 +1,38 @@
+<div class="row-fluid">
+  <div class="span8">
+    <h3>Subscribers</h3>
+
+    <% if @subscribers.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Email</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @subscribers.each do |subscriber| %>
+            <tr>
+              <td class="admin-actions">
+                <%= link_to '<i class="icon-remove"></i>'.html_safe, [:admin, subscriber], data: {confirm: "Are you sure?" }, :method => "delete" %>
+              </td>
+              <td><%= subscriber.email %></td>
+              <td><%=l subscriber.created_at, format: :short %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @subscribers %>
+
+    <% else %>
+      <div class="blank-state">
+        No subscribers added yet.
+        <%#= link_to "Add one now.", new_admin_subscriber_path %>
+      </div>
+    <% end %>
+    <%#= link_to "Add new subscriber", new_admin_survey_path, class: "btn btn-small" %>
+    <%= link_to "Download as CSV", admin_subscribers_path(format: "csv"), class: "btn btn-small" %>
+  </div>
+</div>

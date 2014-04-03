@@ -1,0 +1,8 @@
+<div class="question">
+  <%= options_question.text %>
+  <div class="options">
+    <%= f.fields_for "answers[#{answer.question.id}]", answer do |af| %>
+      <%= render options_question.options, f: af %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<article class="<%= 'psychic-selected' if selected %>" data-page="<%= page %>">
+  <div class="psychic-reviews-review">
+    <%= image_tag "psychics/open_quotes.png", class: "psychic-open-quotes" %>
+    <p><%= review.text %></p>
+    <%= image_tag "psychics/close_quotes.png", class: "psychic-close-quotes" %>
+  
+    <%= render "psychics/about/reviews/reviewer", review: review, star_type: :big %>
+  </div>
+</article>

@@ -1,0 +1,28 @@
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Env Vars</h3>
+
+    <% if @vars.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Var</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vars.keys.sort.each do |k| %>
+            <tr>
+              <td><%= truncate(k, length: 25) %></td>
+              <td><%= @vars[k] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="blank-state">
+        No variables.
+      </div>
+    <% end %>
+  </div>
+</div>

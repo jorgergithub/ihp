@@ -1,0 +1,25 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Calls</h3>
+
+    <fieldset>
+      <%= form_tag(admin_clients_path, method: "get") do %>
+        <section>
+          <legend>Client</legend>
+
+          <div class="control-group">
+            <div class="controls">
+              <%= collection_select :client, :id, Client.by_name, :id, :full_name, { :prompt => 'Select a client'}, { :rel => "/admin/calls/" } %>
+            </div>
+          </div>
+        </section>
+      <% end %>
+
+      <section id="admin-client-calls">
+        <% if @client %>
+          <%= render "calls" %>
+        <% end %>
+      </section>
+    </fieldset>
+  </div>
+</div>

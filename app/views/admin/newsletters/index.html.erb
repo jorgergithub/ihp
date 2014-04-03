@@ -1,0 +1,46 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Newsletters</h3>
+
+    <% if @newsletters.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Deliver by</th>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Delivered?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @newsletters.each do |newsletter| %>
+            <tr>
+              <td>
+                <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_admin_newsletter_path(newsletter) %>
+                <%= link_to '<i class="icon-remove"></i>'.html_safe, [:admin, newsletter], data: {confirm: "Are you sure?" }, :method => "delete" %>
+              </td>
+              <td><%=l newsletter.deliver_by, format: :short %></td>
+              <td><%= link_to newsletter.title, edit_admin_newsletter_path(newsletter) %></td>
+              <td><%=l newsletter.created_at, format: :short %></td>
+              <td>
+                <% if newsletter.delivered? %>
+                  <i class="icon-ok"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @newsletters %>
+
+    <% else %>
+      <div class="blank-state">
+        No Newsletters added yet.
+        <%= link_to "Add one now.", new_admin_newsletter_path %>
+      </div>
+    <% end %>
+    <%= link_to "Add new Newsletter", new_admin_newsletter_path, class: "btn btn-small" %>
+  </div>
+</div>

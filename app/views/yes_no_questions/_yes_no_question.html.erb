@@ -1,0 +1,19 @@
+<div class="question">
+  <%= yes_no_question.text %>
+  <div class="options">
+    <%= f.fields_for "answers[#{answer.question.id}]", answer do |af| %>
+      <div class="option">
+        <label class="radio">
+          <%= af.radio_button :text, 'Yes' %>
+          Yes
+        </label>
+      </div>
+      <div class="option">
+        <label class="radio">
+          <%= af.radio_button :text, 'No' %>
+          No
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>

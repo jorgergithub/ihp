@@ -1,0 +1,13 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Paid Invoices</h3>
+
+    <% if @invoices.any? %>
+      <%= render "invoices", actions: false %>
+    <% else %>
+      <div class="blank-state">
+        No paid invoices yet.
+      </div>
+    <% end %>
+  </div>
+</div>

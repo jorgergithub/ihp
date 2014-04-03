@@ -1,0 +1,11 @@
+<li class="<%= selected %>" data-sign="<%= sign.name %>">
+  <%= image_tag "signs/selected/#{sign.name.downcase}.png", class: "horoscope_selected" %>
+  <%= image_tag "signs/unselected/#{sign.name.downcase}.png", class: "horoscope_unselected" %>
+  <h1>
+    <%= sign.name %>
+  </h1>
+  <time>
+    <%= sign.first_day.strftime("%m.%d").gsub(/^0/,"") %> - 
+    <%= sign.last_day.strftime("%m.%d").gsub(/^0/,"") %>
+  </time>
+</li>

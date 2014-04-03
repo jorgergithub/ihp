@@ -1,0 +1,38 @@
+<p>
+  IHP Team,
+</p>
+
+<p>
+  <%= link_to @client.full_name, edit_admin_client_url(@client) %> has just
+  submitted a survey for his call with <%= link_to @psychic.full_name,edit_admin_psychic_url(@psychic) %>
+</p>
+
+<p>
+  <ul>
+    <li>
+      Open the <%= link_to "Survey", admin_call_survey_url(@call_survey) %>
+    </li>
+    <li>
+      Open the <%= link_to "Review", admin_review_url(@review) %>
+    </li>
+  </ul>
+</p>
+
+<p>
+  Please go through the survey with care and take note of anything that should
+  be improved upon as well as positive feedback.  We not only want to pay
+  attention to the areas that need improvement but also recognize our readers’
+  strengths and give praise when due.
+</p>
+
+<p>
+  Love and light,
+</p>
+
+<p>
+  The I Heart Psychics team<br>
+</p>
+
+<p>
+       <%= ihp_url %>
+</p>

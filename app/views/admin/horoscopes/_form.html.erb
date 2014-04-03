@@ -1,0 +1,44 @@
+<%= form_for([:admin, object], :html => { :class => 'form form-horizontal' }) do |f| %>
+  <%= render 'errors', object: object %>
+
+  <% signs.each do |sign| %>
+    <div class="control-group">
+      <label class="control-label" for="horoscope_<%= sign.name.downcase %>">
+        <%= sign.name %> - <%= sign.figure %><br>
+        <%= sign.start %> to <%= sign.end %>
+      </label>
+      <div class="controls">
+        <%= f.text_area sign.name.downcase, class: 'input-xxlarge', rows: 4 %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @today.monday? %>
+    <div class="control-group">
+      <%= f.label :lovescope, "Lovescope", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :lovescope, class: 'input-xxlarge', rows: 4 %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :friendship_compatibility_from, "Friendship Compatibility", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :friendship_compatibility_from, signs, :name, :name, class: 'input-xxlarge' %>
+      <%= f.collection_select :friendship_compatibility_to, signs, :name, :name, class: 'input-xxlarge' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :love_compatibility_from, "Love Compatibility", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :love_compatibility_from, signs, :name, :name, class: 'input-xxlarge' %>
+      <%= f.collection_select :love_compatibility_to, signs, :name, :name, class: 'input-xxlarge' %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :date %>
+  <%= f.submit "Save", class: "btn" %>
+  <%= link_to "Cancel", admin_horoscopes_path, class: "btn" %>
+<% end %>

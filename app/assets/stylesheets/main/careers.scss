@@ -1,0 +1,136 @@
+.careers, section.faqs {
+  padding: 100px 30px 85px 30px;
+
+  aside {
+    display: inline;
+    float: left;
+    width: 300px;
+  }
+
+  aside ul {
+    font-size: 20px;
+    color: #8590a1;
+  }
+
+  aside li {
+    background: #ebeff3;
+    width: 190px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  aside li a {
+    font-weight: normal;
+    color: #8590a1;
+    text-decoration: none;
+  }
+
+  aside li.selected {
+    background: #7fd14d;
+  }
+
+  aside li.selected a {
+    color: #fefeff;
+  }
+
+  article {
+    float: right;
+    width: 670px;
+    color: #000;
+    display: none;
+  }
+
+  article.selected {
+    display: block;
+  }
+
+  p {
+    margin-bottom: 35px;
+    color: #8590a1;
+  }
+
+  a {
+    color: #8590a1;
+    font-weight: bold;
+  }
+
+  form {
+    font-size: 16px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    color: #8a8a8a;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"], textarea {
+    font-size: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    color: #8a8a8a;
+  }
+
+  input[type="text"] {
+    width: 370px;
+    height: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  textarea {
+    width: 340px;
+    height: 110px;
+    padding: 10px;
+  }
+
+  .carrers-resume-send-button {
+    display: block;
+    border: 0;
+    border-radius: 4px;
+    width: 170px;
+    height: 60px;
+    padding: 18x 0;
+    background-color: #6acd00;
+    font-size: 20px;
+    color: #fff;
+  }
+
+  #error_explanation {
+    background: #ffcccb;
+    width: 650px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: black;
+    border-radius: 4px;
+  }
+
+  #error_explanation h2 {
+    color: black;
+    font-size: 20px;
+  }
+
+  #error_explanation ul {
+    list-style-type: square;
+    padding: 10px 0 0 20px;
+  }
+
+  .carrers-psychics-apply-now {
+    display: block;
+    border: 0;
+    border-radius: 4px;
+    width: 170px;
+    padding: 18px 0;
+    background-color: #6acd00;
+    font-size: 20px;
+    font-weight: normal;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 auto;
+  }
+}

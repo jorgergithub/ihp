@@ -1,0 +1,24 @@
+<td class="schedule-time">
+  <%= f.hidden_field :date, class: "date" %>
+
+  <div class="upcoming-time">
+    <span class="time"><%= schedule.start_time_string %></span>
+    <%= f.hidden_field :start_time_string, class: "time_string" %>
+    <%= image_tag "timer.png", class: "time-icon" %>
+  </div>
+
+  <%= render "schedules/popover", f: f, type: "start", schedule: schedule %>
+</td>
+<td class="schedule-time">
+  <div class="upcoming-time">
+    <span class="time"><%= schedule.end_time_string %></span>
+    <%= f.hidden_field :end_time_string, class: "time_string" %>
+    <%= image_tag "timer.png", class: "time-icon" %>
+  </div>
+
+  <%= render "schedules/popover", f: f, type: "end", schedule: schedule %>
+</td>
+<td>
+  <%= f.hidden_field(:_destroy, class: "delete") %>
+  <%= link_to(image_tag("remove.png"), "#", class: "remove-schedule") %>
+</td>

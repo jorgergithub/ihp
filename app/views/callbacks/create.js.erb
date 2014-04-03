@@ -1,0 +1,8 @@
+var avatar = "<%= escape_javascript(avatar_image_tag(@callback.psychic.avatar_id, width: 200, height: 200)) %>";
+
+$("#callback-confirmation-modal .psychic-name").html("<%= @callback.psychic.alias_name %>")
+$("#callback-confirmation-modal .callback-minutes").html("<%= @wait_for %>")
+$("#callback-confirmation-modal .psychic-avatar").html(avatar);
+
+$("#callback-confirmation-modal").fadeIn();
+$("#callback-modal").fadeOut();

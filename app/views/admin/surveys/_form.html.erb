@@ -1,0 +1,22 @@
+<%= form_for([:admin, object], :html => { :class => 'form form-horizontal' }) do |f| %>
+
+  <%= render 'errors', object: @survey %>
+
+  <fieldset>
+    <%= add_text_field f, :name %>
+    <%= add_checkbox f, :active %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.fields_for :questions do |nested| %>
+      <%= render "question_fields", f: nested %>
+    <% end %>
+
+    <%= link_to_add_fields("Add a Question", f, :questions, :class => "btn btn-small btn-primary pull-right", :title => "Add a new question to this survey.") %>
+  </fieldset>
+
+  <div class="modal-footer">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Cancel", admin_surveys_path, class: "btn" %>
+  </div>
+<% end %>

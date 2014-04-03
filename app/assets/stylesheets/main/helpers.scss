@@ -1,0 +1,60 @@
+@mixin bold-font($size) {
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: $size;
+}
+
+@mixin regular-font($size) {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: $size;
+}
+
+@mixin thin-font($size) {
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: $size;
+}
+
+@mixin placeholder-color($color) {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+      color:    $color;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color:    $color;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color:    $color;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+      color:    $color;
+  }
+}
+
+%image-replace {
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+}
+
+%clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+%clearfix {
+  zoom: 1;
+}
+
+%flat-list {
+  @extend %clearfix;
+
+  list-style: none;
+  > * { float: left; }
+}
+
+%footer-container {
+  padding: 40px 100px;
+  width: 970px;
+}

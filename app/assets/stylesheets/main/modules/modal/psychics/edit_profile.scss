@@ -1,0 +1,45 @@
+#psychic_edit_profile_modal {
+  .field.medium p{
+    width: 220px;
+    font-size: 10px;
+    color: #8590a1;
+    margin: 10px 0px;
+  }
+
+  .field.medium input {
+    width: 190px;
+  }
+
+  label {
+    vertical-align: middle;
+  }
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    font-size: 12px;
+  }
+
+  table th {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+    color: #242d3c;
+    padding-bottom: 10px;
+  }
+
+  table td {
+    padding-bottom: 15px;
+    vertical-align: bottom;
+  }
+
+  select {
+    width: 260px;
+    height: 50px;
+    line-height: 50px;
+    border: 2px #bec5d0 solid;
+    font-size: 18px;
+    color: #8590a1;
+  }
+}

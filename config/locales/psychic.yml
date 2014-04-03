@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      psychic:
+        one: "Psychic"
+        other: "Psychics"
+
+    attributes:
+      psychic:
+        pseudonym: "Alias"

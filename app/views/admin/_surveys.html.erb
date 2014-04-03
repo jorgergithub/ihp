@@ -1,0 +1,63 @@
+<% if target.call_surveys.any? %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Call</th>
+        <th>Client</th>
+        <th>Psychic</th>
+        <th>Date/time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% target.call_surveys.each do |cs| %>
+        <tr>
+          <td class="admin-actions">
+            <a href="#details_<%= cs.id %>" role="button" data-toggle="modal"><i class="icon-plus-sign"></i></a>
+          </td>
+          <td>
+            <a href="#details_<%= cs.id %>" role="button" data-toggle="modal"><%= cs.id %></a>
+          </td>
+          <td><%= link_to "##{cs.call.id}", edit_admin_call_path(cs.client) %></td>
+          <td><%= link_to cs.client.full_name, edit_admin_client_path(cs.client) %></td>
+          <td><%= link_to cs.psychic_full_name, edit_admin_psychic_path(cs.psychic) %></td>
+          <td><%= format_datetime cs.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% target.call_surveys.each do |cs| %>
+    <div id="details_<%= cs.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Survey details</h3>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+          <tr style="background: #eee;">
+            <td colspan=2>
+              <div class="pull-right">
+                <%= format_datetime cs.created_at %>
+              </div>
+              Survey for
+              <b><%= link_to "call ##{cs.call.id}", edit_admin_call_path(cs.client) %></b>
+              with
+              <b><%= link_to cs.psychic_full_name, edit_admin_psychic_path(cs.psychic) %></b>
+            </td>
+          </tr>
+          <%= render cs.answers %>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+  <% end %>
+
+<% else %>
+  <div class="blank-state">
+    No survey responses for this client.
+  </div>
+<% end %>

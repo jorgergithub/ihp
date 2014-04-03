@@ -1,0 +1,28 @@
+<%= form_for([:admin, object], :html => { :class => 'form form-horizontal', autocomplete: 'off' }) do |f| %>
+
+  <%= render 'errors', object: @schedule_job %>
+
+  <div class="control-group">
+    <%= f.label :description, "Description", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, disabled: true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :week_day, "Week Day", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :week_day, options_for_select(WeekDay.to_a, f.object.week_day), class: 'input-xxlarge' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :at, "At", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :at, options_for_select(TheHour.to_a, f.object.at), class: 'input-xxlarge' %>
+    </div>
+  </div>
+
+  <%= f.submit "Save", class: "btn" %>
+  <%= link_to "Cancel", admin_schedule_jobs_path, class: "btn" %>
+<% end %>

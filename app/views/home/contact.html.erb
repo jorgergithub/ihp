@@ -1,0 +1,64 @@
+<section class="contact small_container">
+
+  <h1>Contact Us</h1>
+
+  <p class="contact-main">
+    Do you have any questions, comments or suggestions? We are always looking for ways to improve our service to better serve you. Your feedback is very important to us! Please share your comments using any of the following methods.
+  </p>
+
+  <aside>
+    <h3>Mail</h3>
+    <p>
+      I Heart Psychics Co.<br>
+      3565 South Las Vegas Blvd. Suite 340<br>
+      Las Vegas, NV 89109
+    </p>
+
+    <h3>Email</h3>
+    <p>
+      contact@iheartpsychics.com
+    </p>
+
+    <h3>Phone</h3>
+    <p>
+      1 - 855 - 550 - 8400
+    </p>
+
+    <h3>Social Networks</h3>
+    <ul class="contact-social-links">
+      <li class="contact-social-link">
+        <%= link_to(image_tag("color-logo-facebook.png", alt: "Facebook"), "http://www.facebook.com/iheartpsychics", target: :_blank) %>
+      </li>
+      <li class="contact-social-link">
+        <%= link_to(image_tag("color-logo-twitter.png", alt: "Twitter"), "http://www.twitter.com/iheartpsychics", target: :_blank) %>
+      </li>
+      <li class="contact-social-link">
+        <%= link_to(image_tag("color-logo-google+.png", alt: "Google+"), "https://plus.google.com/b/117686678431757185332/117686678431757185332", target: :_blank) %>
+      </li>
+      <li class="contact-social-link">
+        <%= link_to(image_tag("color-logo-linkedin.png", alt: "LinkedIn"), "http://www.linkedin.com/company/iheartpsychics", target: :_blank) %>
+      </li>
+      <li class="contact-social-link">
+        <%= link_to(image_tag("color-logo-youtube.png", alt: "YouTube"), "http://www.youtube.com/iheartpsychics", target: :_blank) %>
+      </li>
+    </ul>
+  </aside>
+
+  <%= form_for @message do |f| %>
+    <%= render 'errors', object: @message, error_action: "sent" %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+
+    <%= f.label :suggestions %>
+    <%= f.text_area :suggestions %>
+
+    <%= f.submit "Send", class: "contact-send-button" %>
+  <% end %>
+</section>

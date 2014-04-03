@@ -1,0 +1,20 @@
+<%= form_for @psychic_application, html: {class: 'form container_12'} do |f| %>
+
+  <% if @psychic_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@psychic_application.errors.count, "error") %> prohibited this application from being submitted:</h2>
+
+      <ul>
+      <% @psychic_application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render "form", f: f %>
+
+  <%= link_to "Submit Application", "#", class: "submit button" %>
+  <%= link_to "Back", root_path, class: "button" %>
+
+<% end %>

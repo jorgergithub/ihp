@@ -1,0 +1,22 @@
+{
+  "name": "iheartpsychics",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gistia/iheartpsychics",
+  "authors": [
+    "Felipe Coury <felipe.coury@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "module": "https://github.com/fnando/module.git",
+    "emitter": "https://github.com/fnando/emitter.git",
+    "clamp.js": "*"
+  }
+}

@@ -1,0 +1,27 @@
+.invoices, .payments {
+  .invoice-table th, .invoice-table td {
+    text-align: center;
+  }
+
+  td.total {
+    padding-top: 20px;
+  }
+
+  .overview, .items, .totals {
+    margin-top: 20px;
+  }
+
+  .totals .item {
+    padding-top: 10px;
+  }
+
+  .paid {
+    float: right;
+    padding: 15px;
+    border-radius: 4px;
+    background: #005a00;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+  }
+}

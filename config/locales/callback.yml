@@ -1,0 +1,5 @@
+en:
+  activerecord:
+    attributes:
+      callback:
+        wait_for: "How long are you willing to wait?"

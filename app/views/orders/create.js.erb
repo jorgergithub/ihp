@@ -1,0 +1,15 @@
+<% if @order.paid? %>
+  $("#client_balance").text("<%= number_to_currency @client.reload.balance, precision: 0 %>");
+  showModal("thank_you_modal");
+
+  $("#purchase_history_container").html("<%= escape_javascript render('clients/purchase_history', transactions: @transactions) %>");
+  Module.run("IHP.Components.Scrollbar");
+
+  $("#select_payment_method_modal .select_card_panel").replaceWith("<%= escape_javascript render('clients/modals/purchase/select_card_panel') %>");
+  
+  $("#purchase_pixel_conversion").remove()
+  var marinConversionPixel = "<%= escape_javascript render('orders/marin_conversion_pixel') %>";
+  $(marinConversionPixel).insertAfter($("#thank_you_modal"));
+<% else %>
+  $("#select_payment_method_modal .new_credit_card_panel .form_validation_errors ul li").text("An error occured when trying to charge your Credit Card.")
+<% end %>

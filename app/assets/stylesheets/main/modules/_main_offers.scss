@@ -1,0 +1,171 @@
+@import "main/helpers";
+
+.container-offers {
+  @extend %clearfix;
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+
+.container-offer {
+  position: relative;
+  width: 298px;
+  height: 421px;
+  float: left;
+  background: url(image-path("offer-background.png"));
+  margin-left: 35px;
+  margin-bottom: 50px;
+}
+
+.container-offer.modal_link,
+.container-offer.sign_up_link {
+  cursor: pointer;
+}
+
+.container-offer.first {
+  margin-left: 0;
+}
+
+.container-offer-header {
+  padding: 18px 0;
+  text-align: center;
+  font-size: 72px;
+  font-weight: 100;
+  color: #fff;
+  border-radius: 15px 15px 0 0;
+}
+
+.container-offer-header span {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.container-offer-body {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 120px;
+  font-weight: 100;
+  color: #8692a4;
+}
+
+.container-offer-body span {
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+}
+
+.container-offer-discount-bg {
+  position: absolute;
+  background: url(image-path("offer-discount-bg.png"));
+  width: 100px;
+  height: 100px;
+  top: -30px;
+  left: -30px;
+}
+
+.container-offer-discount-1,
+.container-offer-discount-2,
+.container-offer-discount-3,
+.container-offer-discount-4,
+.container-offer-discount-5,
+.container-offer-discount-6,
+.container-offer-discount-7,
+.container-offer-discount-8,
+.container-offer-discount-9,
+.container-offer-discount-10,
+.container-offer-discount-11,
+.container-offer-discount-12,
+.container-offer-discount-13,
+.container-offer-discount-14,
+.container-offer-discount-15,
+.container-offer-discount-16,
+.container-offer-discount-17,
+.container-offer-discount-18,
+.container-offer-discount-19,
+.container-offer-discount-20 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: -30px;
+  left: -30px;
+}
+
+.container-offer-discount-1 {
+  background: url(image-path("offer-discount-1.png"));
+}
+
+.container-offer-discount-2 {
+  background: url(image-path("offer-discount-2.png"));
+}
+
+.container-offer-discount-3 {
+  background: url(image-path("offer-discount-3.png"));
+}
+
+.container-offer-discount-4 {
+  background: url(image-path("offer-discount-4.png"));
+}
+
+.container-offer-discount-5 {
+  background: url(image-path("offer-discount-5.png"));
+}
+
+.container-offer-discount-6 {
+  background: url(image-path("offer-discount-6.png"));
+}
+
+.container-offer-discount-7 {
+  background: url(image-path("offer-discount-7.png"));
+}
+
+.container-offer-discount-8 {
+  background: url(image-path("offer-discount-8.png"));
+}
+
+.container-offer-discount-9 {
+  background: url(image-path("offer-discount-9.png"));
+}
+
+.container-offer-discount-10 {
+  background: url(image-path("offer-discount-10.png"));
+}
+
+.container-offer-discount-11 {
+  background: url(image-path("offer-discount-11.png"));
+}
+
+.container-offer-discount-12 {
+  background: url(image-path("offer-discount-12.png"));
+}
+
+.container-offer-discount-13 {
+  background: url(image-path("offer-discount-13.png"));
+}
+
+.container-offer-discount-14 {
+  background: url(image-path("offer-discount-14.png"));
+}
+
+.container-offer-discount-15 {
+  background: url(image-path("offer-discount-15.png"));
+}
+
+.container-offer-discount-16 {
+  background: url(image-path("offer-discount-16.png"));
+}
+
+.container-offer-discount-17 {
+  background: url(image-path("offer-discount-17.png"));
+}
+
+.container-offer-discount-18 {
+  background: url(image-path("offer-discount-18.png"));
+}
+
+.container-offer-discount-19 {
+  background: url(image-path("offer-discount-19.png"));
+}
+
+.container-offer-discount-20 {
+  background: url(image-path("offer-discount-20.png"));
+}

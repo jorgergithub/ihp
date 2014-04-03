@@ -1,0 +1,37 @@
+<table class="records header">
+  <thead>
+    <tr>
+      <th style="width: 130px;">Call ID</th>
+      <th>Date & Time</th>
+      <th style="width: 155px;">Phone Number<br/>Dialed From</th>
+      <th>Reader Name</th>
+      <th style="width: 130px;">Call Duration</th>
+    </tr>
+  </thead>
+</table>
+
+<div class="scrollbar_table">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class=  "end"></div></div></div></div>
+  <div class="viewport">
+    <div class="overview">
+
+      <table class="records">
+        <tbody>
+          <% @processed_calls.each do |call| %>
+            <tr>
+              <td><%= call.id %></td>
+              <td><%= call.created_at.strftime("%B, %d, %Y %I:%M%p") %></td>
+              <td><%= call.from %></td>
+              <td><%= call.psychic.alias_name %></td>
+              <td>
+                <%= call.duration %>
+                <%= call.duration.present? && call.duration > 1 ? "Mins" : "Min" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

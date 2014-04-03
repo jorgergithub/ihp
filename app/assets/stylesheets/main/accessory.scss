@@ -1,0 +1,96 @@
+.ethics,
+.contact,
+.confirmation,
+.dictionary,
+.privacy,
+.terms {
+  padding: 60px 0 70px 0;
+  color: #8590a1;
+
+  h1 {
+    color: #9d0095;
+    font-size: 36px;
+    font-weight: 100;
+  }
+
+  h3 {
+    color: #000;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: normal;
+    color: #5d687a;
+    line-height: 1.5em;
+    padding: 10px 0;
+  }
+}
+
+.confirmation h1,
+.dictionary h1,
+.privacy h1,
+.terms h1 {
+  margin: 40px 0 40px 0;
+}
+
+.privacy h3,
+.terms h3 {
+  font-size: 24px;
+  color: #8590a1;
+  margin-top: 40px;
+}
+
+.confirmation p,
+.dictionary p,
+.privacy p,
+.terms p {
+  font-weight: normal;
+
+  span {
+    font-weight: bold;
+  }
+}
+
+.confirmation p,
+.privacy p,
+.terms p {
+  color: #8590a1;
+}
+
+.confirmation a {
+  color: #8590a1;
+  font-weight: bold;
+}
+
+.privacy ul,
+.how-it-works ul,
+.terms ul {
+  list-style-type: square;
+  padding: 0 0 0 20px;
+  font-weight: normal;
+  color: #8590a1;
+  font-size: 20px;
+  line-height: 1.5em;
+
+  li {
+    font-size: 18px;
+    margin-left: 40px;
+  }
+
+  span {
+    color: #9d0095;
+    font-size: 36px;
+    font-weight: 100;
+  }
+}
+
+.privacy-important {
+  text-decoration: underline;
+}
+
+.how-it-works div{
+  display: inline-block;
+  padding: 20px 0 0 120px;
+  vertical-align: top;
+  width: 30%;
+}

@@ -1,0 +1,21 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>Manage profile</h3>
+  </div>
+  <div class="span12">
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="active" data-toggle="tab"><%= link_to "Profile", "#form" %></li>
+      <li data-toggle="tab"><%= link_to "Reviews (#{@psychic.reviews.count})", "#reviews" %></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="form">
+        <%= render "form", object: @psychic %>
+      </div>
+
+      <div class="tab-pane" id="reviews">
+        <%= render "reviews" %>
+      </div>
+    </div>
+  </div>
+</div>

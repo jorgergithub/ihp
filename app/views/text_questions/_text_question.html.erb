@@ -1,0 +1,9 @@
+<div class="question">
+  <%= text_question.text %>
+  <div class="answer">
+    <%= f.fields_for "answers[#{answer.question.id}]", answer do |af| %>
+      <%= af.text_area :text, rows: 7, class: "input-xxlarge" %>
+    <% end %>
+  </div>
+</div>
+

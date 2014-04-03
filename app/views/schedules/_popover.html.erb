@@ -1,0 +1,12 @@
+<div class="popover">
+  <%= image_tag "popover_up_arrow.png", class: "popover-arrow" %>
+  <div class="popover-content">
+    <%= f.text_field "#{type}_hour",   class: "hour", placeholder: "HH", maxlength: 2 %>
+    <%= f.text_field "#{type}_minute", class: "minute", placeholder: "MM", maxlength: 2 %>
+
+    <% toggle_id = "toggle_#{(rand*10000000).to_i}" %>
+    <%= f.check_box "#{type}_period", id: toggle_id, class: "toggle", checked: schedule.send("#{type}_period") == "PM" %>
+
+    <label for="<%= toggle_id %>" class="toggle_label">PM</label>
+  </div>
+</div>

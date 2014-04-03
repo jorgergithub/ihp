@@ -1,0 +1,23 @@
+<div class="fields">
+  <hr>
+
+  <div class="pull-right">
+    <%= f.hidden_field :_destroy%>
+    <%= link_to_remove_fields('<i class="icon-remove"></i> Remove this FAQ'.html_safe, f,
+      :title => "This FAQ will be removed") %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :question, "Question", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :question, autofocus: true, class: 'input-xxlarge' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :answer, "Answer", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :answer, class: 'input-xxlarge', rows: 10 %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<table class="records header">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <% week_days_from_today.each do |week_day| %>
+        <th><%= week_day %></th>
+      <% end %>
+    </tr>
+  </thead>
+</table>
+
+<div class="scrollbar_table">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class=  "end"></div></div></div></div>
+  <div class="viewport">
+    <div class="overview">
+
+      <table class="records">
+        <tbody>
+          <% ScheduleTable::HOURS.each_with_index do |hour, index| %>
+            <tr>
+              <td><%= hour %></td>
+              <% @table.row_by_hour(index).each do |schedule| %>
+                <% if schedule %>
+                  <td class="psychic-available">
+                    <div>
+                      <span>Avail.</span>
+                    </div>
+                  </td>
+                <% else %>
+                  <td class="psychic-unavailable">N/A</td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

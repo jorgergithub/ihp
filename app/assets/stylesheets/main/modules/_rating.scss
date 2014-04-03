@@ -1,0 +1,27 @@
+i.star {
+  background-image: url(image_path('star-sprite.png'));
+  display: inline-block;
+  background-position: 0 0;
+  width: 130px;
+  height: 17px;
+}
+
+i.star-1 {
+  background-position: 0 -17px;
+}
+
+i.star-2 {
+  background-position: 0 -34px;
+}
+
+i.star-3 {
+  background-position: 0 -51px;
+}
+
+i.star-4 {
+  background-position: 0 -68px;
+}
+
+i.star-5 {
+  background-position: 0 -85px;
+}

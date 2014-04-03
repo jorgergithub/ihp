@@ -1,0 +1,19 @@
+<ul class="nav">
+  <%= admin_link "Psychics", admin_psychics_path %>
+  <%= admin_link "Clients", admin_clients_path %>
+  <%= admin_link 'Calls', admin_calls_path %>
+  <li><%= link_to 'Calls Summary', summary_admin_calls_path %></li>
+  <%= admin_link 'Packages', admin_packages_path %>
+  <%= admin_link 'CSRs', admin_customer_service_representatives_path, resource: "customer_service_representatives" %>
+  <%= admin_link 'Managing Directors', admin_manager_directors_path, resource: "manager_directors" %>
+  <%= admin_link 'Content Managers', admin_website_admins_path, resource: "website_admins" %>
+  <%= admin_link 'Accountants', admin_accountants_path %>
+  <%= admin_link 'FAQs', admin_categories_path, :resource => :categories %>
+  <%= admin_link 'Psychic FAQs', admin_psychic_faq_categories_path, :resource => :psychic_faq_categories %>
+  <%= admin_link 'Daily Fortunes', admin_daily_fortunes_path, :resource => :daily_fortunes %>
+  <%= admin_link 'Horoscopes', admin_horoscopes_path %>
+  <%= admin_link 'Orders', admin_orders_path %>
+  <li><%= link_to 'Pending Invoices', pending_admin_invoices_path %></li>
+  <li><%= link_to 'Paid Invoices', paid_admin_invoices_path %></li>
+  <%#= admin_link 'Scheduled Jobs', admin_schedule_jobs_path, resource: "scheduled_jobs" %>
+</ul>

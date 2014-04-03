@@ -1,0 +1,107 @@
+<footer class="footer">
+  <section class="footer-links">
+    <div class="footer-container container_12">
+      <ul class="footer-links-groups">
+        <li class="footer-links-groups-link">
+          <h1 class="footer-links-group-title">Psychic Readings</h1>
+          <ul class="footer-links-group-links">
+            <li class="footer-links-group-link">
+              <%= link_to "How it Works", how_it_works_path %>
+            </li>
+
+            <li class="footer-links-group-link">
+            <%= link_to "Psychic Dictionary", dictionary_path %>
+            </li>
+          </ul>
+        </li>
+
+        <li class="footer-links-groups-link">
+          <h1 class="footer-links-group-title">Our Psychics</h1>
+          <ul class="footer-links-group-links">
+            <li class="footer-links-group-link">
+              <a href="/?featured=true#search" class="footer-psychics-featured-link">Featured</a>
+            </li>
+
+            <li class="footer-links-group-link">
+              <a href="/?status=available#search" class="footer-psychics-available-link">Currently Available</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="footer-links-groups-link">
+          <h1 class="footer-links-group-title">Site</h1>
+          <ul class="footer-links-group-links">
+            <li class="footer-links-group-link">
+              <%= link_to "Privacy", privacy_path %>
+            </li>
+
+            <li class="footer-links-group-link">
+              <%= link_to "TOS", terms_path %>
+            </li>
+          </ul>
+        </li>
+
+        <li class="last footer-links-groups-link">
+          <h1 class="footer-links-group-title">Company</h1>
+          <ul class="footer-links-group-links">
+            <li class="footer-links-group-link">
+              <%= link_to "Contact Us", contact_path %>
+            </li>
+
+            <li class="footer-links-group-link">
+              <%= link_to "FAQs", faqs_path %>
+            </li>
+
+            <li class="footer-links-group-link">
+              <%= link_to "Careers", careers_path %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <aside class="footer-social">
+        <h1 class="footer-social-title">Social</h1>
+
+        <p class="footer-social-text">
+          For the latest updates, please follow us<br>
+          on the pages below:
+        </p>
+
+        <ul class="footer-social-links">
+          <li class="footer-social-link">
+            <%= link_to(image_tag("twitter.png", alt: "Twitter"), "http://www.twitter.com/iheartpsychics", target: :_blank) %>
+          </li>
+
+          <li class="footer-social-link">
+            <%= link_to(image_tag("facebook.png", alt: "Facebook"), "http://www.facebook.com/iheartpsychics", target: :_blank) %>
+
+          </li>
+
+          <li class="footer-social-link">
+            <%= link_to(image_tag("google+.png", alt: "Google+"), "https://plus.google.com/b/117686678431757185332/117686678431757185332", target: :_blank) %>
+
+          </li>
+
+          <li class="footer-social-link">
+            <%= link_to(image_tag("instagram.png", alt: "Instagram"), "http://instagram.com/iheartpsychics", target: :_blank) %>
+
+          </li>
+
+          <li class="footer-social-link">
+            <%= link_to(image_tag("linkedin.png", alt: "LinkedIn"), "http://www.linkedin.com/company/iheartpsychics", target: :_blank) %>
+
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="footer-copyright">
+    <div class="container_12">
+      <div class="footer-copyright-container">
+        &copy; Copyright I Heart Psychics, 2013. All rights reserved.<br>
+        For Entertainment Purposes Only.
+      </div>
+    </div>
+  </section>
+</footer>

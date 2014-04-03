@@ -1,0 +1,34 @@
+<div id="callback-modal" class="modal medium">
+  <header>
+    <h1>Schedule a Call Back</h1>
+  </header>
+
+  <div class="modal-body callback-modal-body">
+    <p>
+      How long are you willing to wait for a call back*?
+    </p>
+
+    <%= form_for :callback, url: callbacks_path, remote: true, html: { class: "callback-modal-form" } do |f| %>
+      <%= f.hidden_field :psychic_id %>
+
+      <fieldset class="first">
+        <%= f.label :hours %>
+        <%= select :callback, :hours, (0..4).to_a, selected: "1" %>
+      </fieldset>
+
+      <fieldset>
+        <%= f.label :minutes %>
+        <%= select :callback, :minutes, (0..55).step(5).to_a %>
+      </fieldset>
+    <% end %>
+
+    <p class="callback-modal-footer">
+      * Please note that the Psychic you requested may not become available within the call back time requested. As a result, the scheduled call back will expire and be removed from the system.
+    </p>
+
+    <div class="callback-modal-actions">
+      <a href="#" class="callback-modal-schedule">Schedule</a>
+      <a href="#" class="callback-modal-cancel">Cancel</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+Dear <%= @psychic.first_name %>,
+
+We hope that you had a productive week as part of the I Heart Psychics team!
+
+Please be aware that Invoice #<%= @invoice.number %> has been generated and can
+be accessed using the link below:
+
+<%= psychic_invoice_url(@invoice) %>
+
+Should you have any questions and / or concerns, please feel free to contact
+Customer Care at 1-885-550-8300.
+
+We thank you for your participation in making I Heart Psychics the premier
+platform and look forward to another great week of fulfilling our customer’s
+needs.
+
+Love and light,
+
+The I Heart Psychics team
+
+ <%= ihp_url %>

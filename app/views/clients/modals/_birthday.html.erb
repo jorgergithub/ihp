@@ -1,0 +1,8 @@
+<div id="birthday_modal" class="modal medium" data-day="<%= @client.birthday.day %>" data-month="<%= @client.birthday.month %>" data-year="<%= @client.birthday.year %>" data-timezone="<%= @client.time_zone %>">
+  <header>
+    <h1>My Birthday &amp; Timezone</h1>
+  </header>
+
+  <%= render "clients/modals/spinner" %>
+  <%= render "clients/modals/birthday_form", user: @client.user %>
+</div>

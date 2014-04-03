@@ -1,0 +1,14 @@
+{
+  "name": "clamp.js",
+  "homepage": "https://github.com/josephschmitt/Clamp.js",
+  "_release": "master",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "051fee0360f4929f2ada581339a271c12f1f2db4"
+  },
+  "_source": "git://github.com/josephschmitt/Clamp.js.git",
+  "_target": "*",
+  "_originalSource": "clamp.js",
+  "_direct": true
+}

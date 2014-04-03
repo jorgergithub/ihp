@@ -1,0 +1,77 @@
+#select_payment_method_modal {
+  nav li {
+    cursor: pointer;
+    font-size: 30px;
+    display: inline-block;
+    text-align: center;
+    background: #e7e9ec;
+    width: 900px;
+    padding: 25px 0px;
+    color: #5d687a;
+  }
+
+  nav li + li {
+    border-left: 3px solid #d2dae2;
+  }
+
+  nav ul li.tab_selected {
+    background: white;
+  }
+
+  nav ul {
+    font-size: 0;
+  }
+
+  header {
+    padding: 40px 0px;
+    background: #f5f6f8;
+    margin-bottom: 40px;
+  }
+
+  header span.normal {
+    color: #8590a1;
+    font-size: 30px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px 50px;
+    font-style: italic;
+    font-weight: 100;
+  }
+
+  header h1 {
+    font-size: 66px;
+    font-weight: 100;
+    color: #73c248;
+    display: inline-block;
+    line-height: 0.5;
+    vertical-align: middle;
+
+    small {
+      font-size: 30px;
+      font-weight: bold;
+    }
+  }
+
+  .modal_panel,
+  .sub_modal_panel {
+    display: none;
+  }
+
+  // .credit_cards_panel {
+  //   display: block;
+  // }
+
+  .paypal_panel {
+    display: block;
+  }
+
+  .credit_card_payment_errors {
+    color: red;
+    text-align: center;
+
+    span {
+      display: inline-block;
+      margin-top: 40px;
+    }
+  }
+}

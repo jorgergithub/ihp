@@ -1,0 +1,45 @@
+.favorite-psychics-container {
+  text-align: center;
+
+  h2 {
+    display: inline-block;
+  }
+
+  nav {
+    float: right;
+    margin-top: 15px;
+  }
+
+  nav li {
+    display: inline-block;
+  }
+
+  nav li + li {
+    margin-left: 10px;
+  }
+
+  .amount_badge {
+    font-family: "Roboto";
+    font-weight: 600;
+    font-size: 30px;
+    background: #6acd00;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 10px;
+    text-align: center;
+    width: 50px;
+  }
+
+  .psychic_group {
+    display: none;
+
+    &.psychic_group_selected {
+      display: block;
+    }
+  }
+}

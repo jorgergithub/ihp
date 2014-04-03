@@ -1,0 +1,32 @@
+<table class="records header">
+  <thead>
+    <tr>
+      <th>Payment</th>
+      <th>Amount</th>
+      <th>Date Used</th>
+      <th>Confirmation #</th>
+    </tr>
+  </thead>
+</table>
+
+<div class="scrollbar_table">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class=  "end"></div></div></div></div>
+  <div class="viewport">
+    <div class="overview">
+
+      <table class="records">
+        <tbody>
+          <% @transactions.each do |transaction| %>
+            <tr>
+              <td><%= transaction.card %></td>
+              <td><%= number_to_currency transaction.amount %></td>
+              <td><%= transaction.parsed_date_only %></td>
+              <td>#<%= transaction.order.id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

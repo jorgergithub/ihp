@@ -1,0 +1,30 @@
+<section class="psychic-reviews">
+  <h1>My Featured Reviews</h1>
+
+  <% if @psychic.featured_reviews.any? %>
+    <section class="psychic-reviews-main">
+      <% if @psychic.featured_reviews.count > 1 %>
+        <%= image_tag "psychics/left_arrow.png", class: "psychic-arrow psychic-left-arrow" %>
+      <% end %>
+
+      <% @psychic.featured_reviews.each_with_index do |review, index| %>
+        <%= render "psychics/about/reviews/featured_review", review: review, selected: index == 0, page: index %>
+      <% end %>
+
+      <% if @psychic.featured_reviews.count > 1 %>
+        <%= image_tag "psychics/right_arrow.png", class: "psychic-arrow psychic-right-arrow" %>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% @psychic.regular_reviews.each_slice(2) do |reviews| %>
+    <section class="psychic_regular_reviews_group">
+      <% reviews.each do |review| %>
+        <article class="psychic-review">
+          <p><%= review.text %></p>
+          <%= render "psychics/about/reviews/reviewer", review: review, star_type: :small %>
+        </article>
+      <% end %>
+    </section>
+  <% end %>
+</section>

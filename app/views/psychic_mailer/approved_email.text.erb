@@ -1,0 +1,33 @@
+Dear <%= @psychic.first_name %>,
+
+Your application to the I Heart Psychics team has been reviewed and approved!
+We would like to formally welcome you to the I Heart Psychics family and look
+forward to a wonderful lasting work relationship.
+
+You may now login to our portal located at http://staff.iheartpsychics.com using the credentials below:
+
+Username: <%= @psychic_application.username %>
+Password: <%= @psychic_application.password %>
+
+Your unique extension is <%= @psychic.extension %>.  Please remember this number
+as it is your personal ID as an employee.
+
+In order to help you acclimate to the I Heart Psychics company culture and
+business practices, we require that you take the mandatory training that you
+will find in your dashboard (upon logging in).
+
+Once the required training has been completed you will then be able to create
+your schedule, manage your availability, and begin accepting calls on our
+network!  Please do not hesitate to contact us at recruiting@iheartpsychics.com
+if you have any questions and/or concerns.  We’re here to make your transition
+to the I Heart Psychics team as smooth and seamless as possible.
+
+Congratulations again and we couldn’t be happier that you have chosen our
+premier platform to share your gifts with our clients.
+
+Love and light,
+
+The I Heart Psychics team
+
+
+ <%= ihp_url %>

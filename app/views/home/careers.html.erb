@@ -1,0 +1,102 @@
+<%= select ||= params[:select]  %>
+<section class="careers small_container" data-selected-tab="<%= select %>">
+
+  <aside>
+    <ul>
+      <li class="careers-link-main" href="#main"><%= link_to "Careers at IHP", "#main" %></li>
+      <li class="careers-link-psychics" href="#psychics"><%= link_to "Psychics", "#psychics" %></li>
+      <li class="careers-link-customer-service" href="#customer-service"><%= link_to "Customer Service", "#customer-service" %></li>
+      <li class="careers-link-resume" href="#resume"><%= link_to "Submit a Résumé", "#resume" %></li>
+    </ul>
+  </aside>
+
+  <article class="careers-main">
+    <p>
+      <%= image_tag("careers-banner.png", alt: "Careers at IHP") %>
+    </p>
+
+    <p>
+      At I Heart Psychics we believe helping others reach their full potential has a lasting ripple effect on the rest of the world, that helping all starts by helping one, that one life changed, changes many.  IHP also takes this same approach when it comes to our employees.  We are all connected and each one of our employees is fundamental in maintaining the life of our company.   It is in this vision we’ve built our modern, innovative platform where we recruit and retain a specialized team of individuals that love being key players in completing the bigger picture.
+    </p>
+
+    <p>
+      IHP offers flexible hours, competitive pay, and the opportunity to provide assistance in helping others remember who they’ve always been.
+    </p>
+
+    <p>Come be a part of the I Heart Psychics family and see how making a difference in others can make a difference in you.</p>
+  </article>
+
+  <article class="careers-psychics">
+    <p>
+      We understand the challenges that Psychics face in acquiring and maintaining clients on a regular basis.  Becoming part of the I Heart Psychic’s team alleviates that stress and provides a comfortable, straightforward, hassle free environment that allows you to exercise your divine gift on a regular basis.
+    </p>
+
+    <p>
+      I Heart Psychics is looking for gifted Psychics, mediums, tarot card readers, and astrologers to read clients over the phone for a minimum of 10 hours per week.  The position requires Internet access and a telephone line with no answering service.  Applicants must be over the age of 18 and must be capable of delivering accurate information over the phone.
+    </p>
+
+    <p>
+      I Heart Psychics provides the opportunity to market your business and acquire new clients with regular editorial features through our blog, newsletters, and your own psychic profile.  Not only do we focus on spirituality and light work, we also use cutting edge technology that allows us to target our key demographic in our ever-growing technological world.
+    </p>
+
+    <p>
+      Apply today and become part of the company that is changing the face and future of Psychic networks everywhere!
+    </p>
+
+    <%= link_to "Apply Now", new_psychic_application_path, class: "carrers-psychics-apply-now", target: "_psychic_application" %>
+  </article>
+
+  <article class="careers-customer-service">
+    <p>
+      Are you self-motivated, adaptable and customer focused with a commitment to excellence in the workplace? Do you maintain calm under pressure, have a compassionate nature, and a passion for helping customers?  If so, we encourage you to join our Customer Care team.
+    </p>
+
+    <p>
+      Our Customer Care team is chartered with helping our customers to ensure that their I Heart Psychics experience is unparalled.  As a member of the team, you will be trained and equipped with the necessary tools to support this charter.  As a company, I Heart Psychics offers incentives, bonuses, and competitive pay.  If you are interested in joining a fun and dynamic workplace with high growth opportunities, then we urge you to apply
+      <%= link_to "here", "#resume", class: "inner-link" %>.
+    </p>
+
+    <p>
+      Please view the job descriptions below for more detail regarding the roles that we are seeking professionals for.
+    </p>
+
+    <p>
+      <%= link_to "Customer Care Manager", "/pdf/I HEART PSYCHICS - Customer Care Manager.pdf", target: "_customer_care_manager" %><br>
+      <%= link_to "Customer Care Specialist", "/pdf/I HEART PSYCHICS - Customer Care Specialist.pdf", target: "_customer_care_specialist" %>
+    </p>
+  </article>
+
+  <article class="careers-resume">
+    <p>
+      Please use the following form below in order to apply for all non-psychic positions with I Heart Psychics. If you are interested in applying and joining us as a Psychic, please click <%= link_to "here", new_psychic_application_path, target: "_psychic_application" %>. We thank you in advance for your interest.
+    </p>
+
+    <%= form_for @application do |f| %>
+      <%= render 'errors', object: @application, error_action: "sent" %>
+
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+
+      <%= f.label :position %>
+      <%= f.text_field :position %>
+
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment %>
+
+      <%= f.label :comments %>
+      <%= f.text_area :comments %>
+
+      <%= f.submit "Send", class: "carrers-resume-send-button" %>
+    <% end %>
+  </article>
+
+</section>

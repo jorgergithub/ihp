@@ -1,0 +1,82 @@
+@import "main/helpers";
+
+.header {
+  position: relative;
+  background: #fff;
+}
+
+.header-container {
+  padding: 25px 0;
+}
+
+.header-fold {
+  position: relative;
+  width: 53px;
+  height: 21px;
+  top: -25px;
+  left: 930px;
+  margin-bottom: -21px;
+  background: url(image-path("user-fold.png")) no-repeat top right;
+}
+
+.header-nav {
+  float: right;
+  font-size: 22px;
+  font-weight: normal;
+  color: #242d3c;
+}
+
+.header-nav-links {
+  @extend %flat-list;
+  color: #6c7c84;
+
+  i {
+    float: right;
+    margin-left: 10px;
+  }
+
+  .dashboard i,
+  .signout i {
+    background: url(image-path("header-nav-dashboard.png")) no-repeat top right;
+    width: 30px;
+    height: 30px;
+  }
+
+  .balance i {
+    background: url(image-path("header-nav-balance.png")) no-repeat top right;
+    width: 30px;
+    height: 31px;
+  }
+
+  .signin i {
+    background: url(image-path("header-nav-dashboard.png")) no-repeat top right;
+    width: 30px;
+    height: 31px;
+    // cursor: pointer;
+  }
+}
+
+.nobg {
+  padding-right: 0px !important;
+}
+
+.header-nav-link {
+  height: 31px;
+  padding-right: 40px;
+
+  a {
+    text-decoration: none;
+  }
+
+  &.signin {
+    padding-right: 0;
+  }
+}
+
+.header-nav-link-arrow {
+  cursor: pointer;
+}
+
+.header-nav-link + .header-nav-link {
+  margin-left: 50px;
+}

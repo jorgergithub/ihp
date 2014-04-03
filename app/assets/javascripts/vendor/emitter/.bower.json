@@ -1,0 +1,20 @@
+{
+  "name": "emitter",
+  "main": [
+    "./emitter.js",
+    "./emitter.min.js",
+    "README.md"
+  ],
+  "ignore": [],
+  "homepage": "https://github.com/fnando/emitter",
+  "_release": "master",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fe14453789af772483b7c9789c764e0cef9d3bbb"
+  },
+  "_source": "https://github.com/fnando/emitter.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/fnando/emitter.git",
+  "_direct": true
+}

@@ -1,0 +1,7 @@
+<%= form_for [:admin, @psychic_application], html: {class: 'form'} do |f| %>
+
+  <%= render "psychic_applications/form", f: f %>
+
+  <%= f.submit "Approve", class: "btn btn-primary" %>
+  <%= f.submit "Decline", class: "btn btn-danger" %>
+<% end %>

@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      psychic_faq:
+        one: "FAQ"
+        other: "FAQ's"
+
+    attributes:
+      psychic_faq:
+        answer: "Answer"
+        order: "Order"
+        psychic_faq_category: "Category"
+        question: "Question"

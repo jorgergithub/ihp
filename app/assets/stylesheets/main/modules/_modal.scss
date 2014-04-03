@@ -1,0 +1,311 @@
+.modal {
+  top: 10%;
+  z-index: 1000;
+  overflow: hidden;
+  display: none;
+  position: fixed;
+  width: 640px;
+  margin-left: -320px;
+  left: 50%;
+  background: #fff;
+
+  border: 1px #aaa solid;
+  border-radius: 15px;
+  box-shadow: 5px 5px 0.5em #333;
+
+  &.medium {
+    width: 640px;
+    margin-left: -320px;
+  }
+
+  &.large {
+    width: 900px;
+    margin-left: -450px;
+  }
+
+  .modal-body,
+  footer {
+    margin: 40px 50px;
+  }
+
+  .modal-body p.warning {
+    margin-top: 20px;
+    color: #f00;
+    font-size: 20px;
+  }
+
+  .modal-body.align-center {
+    text-align: center;
+  }
+
+  .close-button {
+    cursor: pointer;
+  }
+
+  .spinner_overlay {
+    display: none;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    vertical-align: middle;
+    background: rgba(255,255,255, .8);
+    z-index: 199;
+
+    img {
+      position: absolute;
+      top: 50%;
+    }
+  }
+}
+
+.modal > header {
+  background: #e7e9ec;
+  padding: 20px 20px;
+  text-align: center;
+
+  h1 {
+    color: #5d687a;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0px;
+  }
+}
+
+.modal footer {
+  text-align: center;
+
+  form, input, a {
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  input + input,
+  input + a,
+  a + a,
+  a + input {
+    margin-left: 40px;
+  }
+}
+
+.modal form {
+  text-align: left;
+
+  table {
+    margin-top: 30px;
+  }
+
+  table th,
+  .field label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #242d3c;
+  }
+
+  .field label {
+    display: block;
+  }
+
+  label, p {
+    color: #8590a1;
+    font-weight: normal;
+  }
+
+  input[type="checkbox"] {
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+
+  label.label-checked {
+    color: #40b500;
+  }
+
+  p {
+    margin: 20px 0px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    border: 2px solid #bec5d0;
+    border-radius: 7px;
+    padding: 13px;
+    color: #8590a1;
+    font-size: 18px;
+  }
+
+  input, textarea, a {
+    vertical-align: top;
+  }
+
+  textarea, input { outline: none; margin: 0px; }
+
+  i {
+    position: absolute;
+    bottom: 0px;
+    right: 17px;
+  }
+
+  i.card_type {
+    position: absolute;
+    bottom: 8px;
+
+    img { display: none; }
+    img.generic_card {
+      display: inline-block;
+    }
+  }
+}
+
+.modal form .reset_field {
+  position: relative;
+
+  input {
+    width: 350px;
+  }
+
+  a {
+    margin-left: 36px;
+  }
+}
+
+.modal.large .row,
+.modal.medium .row {
+  & + .row {
+    margin-top: 40px;
+  }
+
+  .field {
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  .field + .field {
+    margin-left: 40px;
+  }
+
+  .field input {
+    width: 346px;
+  }
+
+  .field.custom {
+    width: 100%;
+
+    input + input {
+      margin-left: 40px;
+    }
+  }
+
+  .field.small {
+    width: auto;
+
+    & + .field { margin-left: 38px; }
+  }
+
+  .field.small input {
+    width: 55px;
+
+    & + input {
+      margin-left: 20px;
+    }
+  }
+
+  .field.medium {
+    width: auto;
+
+    & input { width: 110px; }
+  }
+}
+
+.modal.medium {
+  .field.full input,
+  .field.full textarea {
+    width: 510px;
+  }
+}
+
+.modal.large {
+  .field.full input,
+  .field.full textarea {
+    width: 770px;
+  }
+}
+
+.modal .field.full textarea {
+  height: 100px;
+}
+
+.modal .reset_field div.field_with_errors {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.overlay {
+  position:fixed;
+  display:none;
+
+  /* color with alpha channel */
+  background-color: rgba(0, 0, 0, 0.8); /* 0.7 = 70% opacity */
+
+  /* stretch to screen edges */
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-paragraph {
+  line-height: 1.5em;
+}
+
+.modal input[type="checkbox"]:checked:before {
+  background: url(image-path("modal/checked.png"));
+}​
+
+.modal-close-button {
+  display: block;
+  border-radius: 4px;
+  width: 170px;
+  padding: 18px 0;
+  background-color: #6acd00;
+  font-size: 20px;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-decoration: none;
+}
+
+.modal-pretty-close-button {
+  display: block;
+  border-radius: 4px;
+  width: 170px;
+  padding: 18px 0;
+  background-color: #6acd00;
+  font-size: 20px;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-decoration: none;
+}
+
+.modal input[type="checkbox"]:before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 22px;
+  margin-top: -5px;
+  background: url(image-path("modal/unchecked.png"));
+}
+
+.modal input[type="checkbox"] + label {
+  display: inline-block;
+}

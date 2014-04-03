@@ -1,0 +1,26 @@
+<div class="row-fluid">
+  <div class="span12">
+    <div class="pull-right" style="text-align: center;">
+      <div class="input-prepend input-append">
+        <span class="add-on">
+          <%= link_to '<i class="icon-arrow-left"></i>'.html_safe,
+              edit_admin_horoscope_path(@today - 1.day) %>
+        </span>
+        <%= text_field_tag :horoscope_date, params[:id] %>
+        <span class="add-on">
+          <%= link_to '<i class="icon-arrow-right"></i>'.html_safe,
+              edit_admin_horoscope_path(@today + 1.day) %>
+        </span>
+      </div>
+      <% if @today != Date.today %>
+        <br>
+        <%= link_to 'Go to Today', edit_admin_horoscope_path(Date.today), class: 'btn btn-small' %>
+      <% end %>
+    </div>
+    <h3>Horoscope for <%=l @horoscope.date, format: :short %></h3>
+  </div>
+
+  <div class="span12">
+    <%= render "form", object: @horoscope %>
+  </div>
+</div>

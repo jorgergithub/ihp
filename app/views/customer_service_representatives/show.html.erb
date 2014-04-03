@@ -1,0 +1,39 @@
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Account info</h3>
+
+    <%= form_for @csr do |f| %>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td>Phone</td>
+            <td>
+              <div class="input-append">
+                <%= f.text_field :phone, class: "input-small",
+                  style: "width: 120px", autofocus: !@csr.phone.present?,
+                  data: { mask: t('masks.phone') } %>
+                <%= f.submit "Save", class: "btn" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td class="<%= @csr.status.downcase %>">
+              <%= @csr.status %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+
+    <%= form_for @csr do |f| %>
+      <% if @csr.available? %>
+        <%= f.hidden_field :available, value: false %>
+        <%= f.submit "Make Unavailable", class: 'btn' %>
+      <% else %>
+        <%= f.hidden_field :available, value: true %>
+        <%= f.submit "Make Available", class: 'btn' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

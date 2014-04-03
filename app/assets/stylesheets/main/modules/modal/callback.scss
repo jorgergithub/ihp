@@ -1,0 +1,74 @@
+@import "main/helpers";
+
+#callback-modal {
+  width: 660px;
+}
+
+.callback-modal-body {
+  color: #8590a1;
+}
+
+.callback-modal-body p {
+  font-size: 24px;
+}
+
+.callback-modal-body p.callback-modal-footer {
+  font-size: 16px;
+}
+
+.callback-modal-form {
+  @extend %clearfix;
+
+  margin: 35px 0 20px 0;
+  color: #000;
+}
+
+.callback-modal-form label {
+  text-transform: uppercase !important;
+  display: block !important;
+  font-weight: bold !important;
+  color: #000 !important;
+}
+
+.callback-modal-form fieldset {
+  float: left;
+}
+
+.callback-modal-form fieldset.first {
+  margin-right: 40px;
+}
+
+.callback-modal-form select {
+  width: 260px;
+  height: 50px;
+  line-height: 50px;
+  border: 2px #bec5d0 solid;
+  font-size: 18px;
+  color: #8590a1;
+}
+
+.callback-modal-actions {
+  margin: 40px 0 20px 0;
+  text-align: center;
+}
+
+.callback-modal-actions a {
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 4px;
+  padding: 20px 0;
+  width: 170px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+}
+
+.callback-modal-schedule {
+  background-color: #73c248;
+  margin-right: 40px;
+}
+
+.callback-modal-cancel {
+  background-color: #bec5d0;
+}

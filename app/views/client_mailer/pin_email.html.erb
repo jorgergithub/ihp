@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Welcome <%= @client.first_name %>,</p>
+
+    <p>
+      Thank you for confirming your registration with I Heart Psychics. The following is your unique assigned I Heart Psychics PIN number: <%= @pin %>.
+    </p>
+
+    <p>
+      You will need to enter this PIN number every time you call I Heart
+      Psychics.
+    </p>
+
+    <p>
+      Please note that you can always <%= link_to "reset your PIN online", reset_pin_client_url %>  to a unique pin of your choice.
+    </p>
+
+    <p>
+      Happy reading and we would like to thank you for including I Heart
+      Psychics on such a unique and personal journey!
+    </p>
+
+    <p>
+      Love and light,
+    </p>
+
+    <p>
+      The I Heart Psychics team<br>
+    </p>
+
+    <p>
+       <%= ihp_url %>
+    </p>
+  </body>
+</html>

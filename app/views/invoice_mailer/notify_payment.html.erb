@@ -1,0 +1,29 @@
+<p>
+  Dear <%= @psychic.first_name %>,
+</p>
+
+<p>
+  We hope that you have had a wonderful reading week and also thank you for being
+  apart of the I Heart Psychics family!
+</p>
+
+<p>
+  Please be aware that Invoice #<%= @invoice.number %> has been paid.  Payment
+  will post in 5 - 7 business days and may be accessed using the link below:
+</p>
+
+<p>
+  <%= link_to psychic_invoice_url(@invoice), psychic_invoice_url(@invoice) %>
+</p>
+
+<p>
+  Love and light,
+</p>
+
+<p>
+  The I Heart Psychics team<br>
+</p>
+
+<p>
+   <%= ihp_url %>
+</p>

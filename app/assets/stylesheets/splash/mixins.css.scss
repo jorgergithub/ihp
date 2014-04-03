@@ -1,0 +1,52 @@
+$countdown-margin: 50px;
+
+$digit-width: 135px * 0.75;
+$digit-height: 157px * 0.75;
+$digit-spacing: 20px * 0.75;
+$digit-font-size: 97px * 0.75;
+$pair-spacing: 52px * 0.75;
+
+$main-header-spacing: 40px;
+$main-header-font-size: 30px;
+$main-text-font-size: 16px;
+
+$button-width: 270px * 0.75;
+$button-height: 20px * 0.75;
+$button-font-size: 24px * 0.75;
+$button-spacing: 70px * 0.75;
+$button-area-height: ($button-height * 0.75) + 80px;
+
+$subscribe-height: 145px;
+$subscribe-padding: 30px;
+$subscribe-font-size: 30px * 0.75;
+$subscribe-input-width: 500px * 0.75;
+$subscribe-input-padding: 20px * 0.75;
+$subscribe-input-margin: 50px * 0.75;
+$subscribe-input-font-size: 24px * 0.75;
+$subscribe-input-border-radius: (2 * $subscribe-input-font-size) * 0.75;
+
+$footer-padding: 15px;
+$footer-font-size: 16px;
+
+@mixin regular-font($size) {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: $size;
+}
+
+@mixin thin-font($size) {
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: $size;
+}
+
+@mixin button {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    background: #7fd14d;
+    border-radius: 48px;
+    color: #fff;
+    padding: ((($button-height / 2) - ($button-font-size / 2)) + 10px) 0;
+    width: $button-width;
+}

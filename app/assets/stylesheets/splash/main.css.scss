@@ -1,0 +1,286 @@
+@import "splash/mixins";
+
+body.home {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+.inner {
+  overflow: auto;
+  padding-bottom: 54px;
+}
+
+body.home header {
+  margin-bottom: $countdown-margin;
+}
+
+.logo {
+  width: 500px;
+  height: 55px;
+}
+
+.container {
+  text-align: center;
+  padding: 55px 0;
+  border-bottom: 2px #e1e7eb solid;
+}
+
+.countdown {
+  width: (6 * $digit-width) + (3 * $digit-spacing) + (2 * $pair-spacing);
+  margin: 0 auto;
+
+  .pair {
+    .digit {
+      @include thin-font($digit-font-size);
+      float: left;
+
+      width: $digit-width;
+      height: $digit-height;
+      margin-right: $digit-spacing;
+
+      background: url(image-path("digits-background.png"));
+      padding: 15px 0;
+      border-radius: 5px;
+      text-align: center;
+      color: #8590a1;
+    }
+
+    .middle {
+      margin-right: $pair-spacing;
+    }
+
+    .last {
+      margin-right: 0;
+    }
+  }
+
+  .captions {
+    clear: left;
+    @include regular-font(40px);
+    color: #8590a1;
+
+    .caption {
+      margin-top: 40px;
+      float: left;
+      width: ($digit-width * 2) + $digit-spacing;
+      margin-right: $pair-spacing;
+      text-align: center;
+      margin-bottom: $countdown-margin;
+    }
+
+    .last {
+      margin-right: 0;
+    }
+  }
+}
+
+.main {
+  @include thin-font($main-text-font-size);
+
+  clear: left;
+  border-top: 2px #e1e7eb solid;
+  padding-top: $main-header-spacing;
+  margin-bottom: $main-header-spacing;
+
+  h1 {
+    @include thin-font($main-header-font-size);
+    color: #af00a5;
+    margin-bottom: $main-header-spacing;
+    text-align: center;
+  }
+
+  p {
+    color: #000;
+
+    a {
+      text-decoration: none;
+      color: #af00a5;
+    }
+  }
+}
+
+.confirmation {
+  @include thin-font($main-text-font-size);
+  margin-bottom: 150px;
+
+  p {
+    color: #000;
+
+    a {
+      text-decoration: none;
+      color: #af00a5;
+    }
+  }
+}
+
+.actions {
+  margin: 0 auto;
+  width: (2 * $button-width) + $button-spacing;
+  height: $button-area-height;
+
+  a {
+    @include thin-font($button-font-size);
+    @include button;
+
+    margin-right: $button-spacing;
+    float: left;
+  }
+
+  a.last {
+    margin-right: 0;
+  }
+}
+
+.back {
+  margin: 0 auto;
+  width: $button-width;
+  height: $button-area-height;
+
+  a {
+    @include thin-font($button-font-size);
+    @include button;
+  }
+}
+
+.bottom {
+  @include thin-font($subscribe-font-size);
+
+  height: $subscribe-height;
+  padding: $subscribe-padding 0 0 0;
+  background-color: #92278f;
+  color: #fff;
+  text-align: center;
+}
+
+.bottom h3 {
+  font-size: 23px;
+  font-weight: 300;
+}
+
+.bottom-connect {
+  width: 50%;
+  text-align: center;
+  float: right;
+}
+
+.bottom-connect-links {
+  display: inline-block;
+  list-style: none;
+}
+
+.bottom-connect-link {
+  float: left;
+  margin-left: 20px;
+}
+
+.subscribe {
+  width: 50%;
+  float: left;
+}
+
+.subscribe div.text {
+  // text-transform: uppercase;
+}
+
+.subscribe .input {
+  margin: 0 auto;
+  width: 357px;
+  margin-top: 20px;
+}
+
+.subscribe .input input {
+  border: 0;
+  background: url(image-path("subscribe-input.png"));
+  padding: 5px 0 5px 25px;
+  width: 246px;
+  height: 34px;
+  font-size: 18px;
+  float: left;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.subscribe .input a {
+  background: url(image-path("subscribe-button.png"));
+  padding: 0;
+  height: 44px;
+  width: 86px;
+  float: left;
+}
+
+footer {
+  @include thin-font($footer-font-size);
+
+  position: relative;
+  height: 24px;
+  margin-top: -54px;
+  width: 100%;
+  padding: $footer-padding 0;
+  color: #fff;
+  background: #232d3b;
+  clear: both;
+}
+
+.overlay {
+  position:fixed;
+  display:none;
+
+  /* color with alpha channel */
+  background-color: rgba(0, 0, 0, 0.7); /* 0.7 = 70% opacity */
+
+  /* stretch to screen edges */
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#faq-modal, #confirmation-modal {
+  @include thin-font(15px);
+
+  display: none;
+  position: fixed;
+  left: 50%;
+  background: #fff;
+  border: 1px #aaa solid;
+  padding: 20px;
+  box-shadow: 5px 5px 0.5em #333;
+  border-radius: 15px;
+
+  .modal-actions {
+    a {
+      @include thin-font($button-font-size);
+      @include button;
+      margin: 0 auto;
+    }
+  }
+}
+
+#confirmation-modal {
+  width: 400px;
+  top: 50%;
+  margin-left: -200px;
+
+  .modal-actions { width: 400px; }
+}
+
+#faq-modal {
+  width: 600px;
+  top: 100px;
+  margin-left: -300px;
+
+  .question {
+    @include regular-font(15px);
+  }
+
+  .answer {
+    @include thin-font(15px);
+  }
+
+  .modal-actions { width: 600px; }
+}

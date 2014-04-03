@@ -1,0 +1,110 @@
+---
+app_name: iheartpsychics
+deploy_to: "/srv/ihp"
+user: rails
+domain: "iheartpsychics.com"
+domain_aliases:
+  - "www.iheartpsychics.com"
+  - "staff.iheartpsychics.com"
+  - "admin.iheartpsychics.com"
+rails_env: staging
+gzip_types:
+  - "text/html"
+  - "text/plain"
+  - "text/xml"
+  - "text/css"
+  - "text/javascript"
+  - "text/json"
+  - "application/x-javascript"
+  - "application/javascript"
+  - "application/json"
+
+users::active:
+  - rails
+users::disabled:
+  - foobar  # placeholder, don't remove
+  
+denyhosts::admin_email: root@localhost
+denyhosts::hosts_allow:
+  - "ALL : 127.0.0.1"
+  - "ALL : 50.142.63.182"
+
+dnsmasq::listen_address: 127.0.0.1
+dnsmasq::cache_size: 256
+dnsmasq::nameservers:
+  - 127.0.0.1
+  - 8.8.8.8
+  - 8.8.4.4
+  - 208.67.222.222
+  - 208.67.220.220
+  
+iptables::rules:
+  - "-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT"
+  - "-A INPUT -p icmp -j ACCEPT"
+  - "-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT"
+  - "-A INPUT -s 127.0.0.1 -j ACCEPT"
+
+apache::logrotate_file: "apache2.conf"
+apache::logrotate_logs: "/var/log/apache*.log"
+apache::logrotate_options:
+  - "daily"
+  - "missingok"
+  - "rotate 7"
+  - "compress"
+  - "delaycompress"
+  - "notifempty"
+  - "create 640 root adm"
+  - "sharedscripts"
+  - "copytruncate"
+
+haproxy::error_code_descriptions:
+  400: "Bad Request"
+  403: "Forbidden"
+  408: "Request Timeout"
+  500: "Internal Server Error"
+  503: "Service Unavailable"
+  504: "Gateway Timeout"
+haproxy::http_request_timeout: "30s"
+haproxy::stats_auth: "ihp:nag8oak9vak7po"
+haproxy::backends:
+  - ihp:
+    backend_name: ihp
+    balance: roundrobin
+    servers:
+      - app1: 
+        server_name: app1
+        settings: "192.168.100.52:80 weight 100 maxconn 1000 check inter 2000 fastinter 500 downinter 500 fall 1"
+      - maintenance:
+        server_name: maintenance
+        settings: "127.0.0.1:8080 maxconn 1000 backup"
+haproxy::frontends:
+  - rails:
+    frontend_name: rails
+    bind_ip: "0.0.0.0"
+    bind_port: "80"
+    default_backend: ihp
+haproxy::logrotate_file: "haproxy.conf"
+haproxy::logrotate_logs: "/var/log/haproxy*.log"
+haproxy::logrotate_options:
+  - "daily"
+  - "missingok"
+  - "rotate 7"
+  - "compress"
+  - "delaycompress"
+  - "notifempty"
+  - "create 640 root adm"
+  - "sharedscripts"
+  - "copytruncate"
+haproxy::postrotate: "reload rsyslog >/dev/null 2>&1 || true"
+
+application::passenger_version: "4.0.29"
+application::rails_spawn_method: smart
+
+mysql::allowed_hosts:
+  - "localhost"
+  - "192.168.100.52"
+  - "192.168.100.53"
+  - "192.168.100.2"
+  - "192.168.100.3"
+mysql::db_username: ihearpsychics
+mysql::db_password: VuA2mGhUcSdf

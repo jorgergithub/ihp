@@ -1,0 +1,26 @@
+<div id="prices_modal" class="modal large">
+  <table>
+    <tr>
+      <% Package.active[0..2].each do |package| %>
+        <td class="package-item" data-package-id="<%= package.id %>">
+          <header>
+            <h1><small>$</small><%= package.price.to_i %></h1>
+            <% if package.discount > 0 %>
+              <div class="container-offer-discount-bg"></div>
+              <div class="container-offer-discount-<%= package.discount %>"></div>
+            <% end %>
+          </header>
+
+          <h1>
+            <%= package.credits.to_i %>
+            <span>DOLLARS</span>
+          </h1>
+
+          <footer>
+            <%= link_to image_tag("modal/checkout.png"), "#", class: "modal_link", "data-modal-id" => "select_payment_method_modal", data: { "modal-attributes" => { package: { id: package.id, price: package.price.to_i, credits: package.credits.to_i } } } %>
+          </footer>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+</div>

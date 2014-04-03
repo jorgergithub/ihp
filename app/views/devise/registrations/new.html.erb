@@ -1,0 +1,19 @@
+<% create_as = params[:user].try(:[], :create_as) || "client" %>
+
+<% if create_as == 'csr' %>
+  <h2>Customer Service Representative sign up</h2>
+<% else %>
+  <h2><%= create_as.capitalize %> sign up</h2>
+<% end %>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form form-horizontal', :autocomplete => 'off' }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <%= f.hidden_field :provider, value: resource.provider %>
+  <%= f.hidden_field :uid, value: resource.uid %>
+  <%= f.hidden_field :create_as, value: create_as %>
+
+  <%= render create_as, f: f %>
+<% end %>
+
+<%= render "devise/shared/links" %>

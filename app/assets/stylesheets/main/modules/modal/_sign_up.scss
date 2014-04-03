@@ -1,0 +1,29 @@
+#sign_up_modal {
+  div.field select {
+    width: 376px;
+    height: 51px;
+    font-size: 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 1px solid #ccc;
+    color: #8590a1;
+  }
+
+  div.field.date select {
+    width: 93px;
+
+    &.month {
+      width: 139px;
+    }
+
+    & + select {
+      margin-left: 20px;
+    }
+  }
+}
+
+#sign_up_success_modal .modal-body {
+  color: black;
+  text-align: center;
+}

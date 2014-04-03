@@ -1,0 +1,261 @@
+<section class="profile-container small_container">
+  <div class="modal_list">
+    <%= render "psychics/modals/edit_profile" %>
+  </div>
+
+  <div class="profile-avatar profile-item">
+    <ul>
+      <li class="avatar">
+        <%= avatar_image_tag(@psychic.avatar_id) %>
+      </li>
+      <li>
+        <%= form_for(@psychic, url: avatar_psychic_path(@psychic), method: :patch, remote: true, html: { :class => "upload-picture", :'data-type' => 'json' }) do |f| %>
+
+          <div class="upload">
+            <span>Edit Your Picture</span>
+            <%= f.cl_image_upload :avatar_id %>
+          </div>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="profile-psychic profile-info profile-item">
+    <h2>
+      Hello, <span class="name"><%= @psychic.first_name %></span>!
+    </h2>
+
+    <p class="alias">
+      <span>Alias:</span> <%= @psychic.alias_name %>
+    </p>
+
+    <% if @psychic.training_complete? %>
+      <div class="status status-<%= @psychic.current_state %>">
+        <% if @psychic.available? %>
+          <%= link_to "", unavailable_psychic_path, class: "status-toggle" %>
+        <% else %>
+          <%= link_to "", available_psychic_path, class: "status-toggle" %>
+        <% end %>
+        Status: <span><%= @psychic.current_state.capitalize %></span>
+      </div>
+    <% else %>
+      <div class="disabled-status"></div>
+    <% end %>
+
+    <h3>Your Number</h3>
+
+    <p class="your-number">
+      <span id="psychic-phone-number"><%= @psychic.phone %></span>
+      <span class="extension">Ext:</span> <%= @psychic.extension %>
+    </p>
+
+    <p class="edit-profile">
+      <%= link_to "Edit Profile", "#", class: "modal_link", "data-modal-id" => "psychic_edit_profile_modal" %>
+    </p>
+  </div>
+
+  <div class="profile-current-rate profile-item">
+    <%= image_tag("psychic-tier-#{@psychic.current_tier_name.downcase}.png", class: "psychic-profile-tier-image") %>
+
+    <p>
+      Your Current Rate Per Min Is
+      <span class="rate"><%= number_to_currency @psychic.price %></span>
+      Per Minute
+    </p>
+  </div>
+</section>
+
+<section class="actions-container small_container">
+  <h2 class="section-title">My Stats</h2>
+
+  <div class="total-calls psychic-action-item action-item first">
+    <h2>Total Calls This Paid Period</h2>
+
+    <div class="total-calls-badge badge">
+      <%= @psychic.total_calls_in_period %>
+    </div>
+  </div>
+
+  <div class="total-minutes psychic-action-item action-item">
+    <h2>Total Minutes Talked</h2>
+
+    <div class="psychic-badge badge">
+      <%= @psychic.total_minutes_in_period %>
+    </div>
+  </div>
+
+  <div class="average-minutes psychic-action-item action-item">
+    <h2>Average Minutes Per Call</h2>
+
+    <div class="psychic-badge badge">
+      <%= @psychic.avg_minutes_in_period %>
+    </div>
+  </div>
+
+  <div class="total-pay-percentage psychic-action-item action-item last">
+    <h2>Total Pay Percentage</h2>
+
+    <div class="psychic-badge badge">
+      <%= @psychic.payout_percentage_in_period %>%
+    </div>
+  </div>
+</section>
+
+<section class="about-psychic-container small_container">
+  <div class="my-bio about-item">
+    <h2>My Bio</h2>
+
+    <p>
+      <%= @psychic.about %>
+    </p>
+  </div>
+
+  <div class="my-expertises about-item">
+    <h2>My Areas of Expertise</h2>
+
+    <div class="area">
+      <h3>Tools</h3>
+
+      <ul>
+        <% @psychic.tools_enum.each do |tool| %>
+          <li><%= tool %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="area">
+      <h3>Specialties</h3>
+
+      <ul>
+        <% @psychic.specialties_enum.each do |specialty| %>
+          <li class="<%= speciality_class(@psychic, specialty) %>"><%= specialty %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="area">
+      <h3>Style</h3>
+
+      <ul>
+        <% @psychic.styles_enum.each do |style| %>
+          <li><%= style %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="area">
+      <h3>Abilities</h3>
+
+      <ul>
+        <% @psychic.abilities_enum.each do |ability| %>
+          <li><%= ability %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="psychic-call-history-container small_container">
+  <h2 class="section-title">My Call History</h2>
+
+  <% if @calls.any? %>
+    <%= render "call_history" %>
+  <% else %>
+    <div class="psychic-blank">
+      You have no calls.
+    </div>
+  <% end %>
+</section>
+
+<section class="small_container">
+  <%= render "psychics/shared/schedule" %>
+</section>
+
+<section class="psychic-schedule-container small_container">
+  <h2 class="section-title">My Upcoming Weekly Schedule</span></h2>
+
+  <%= form_for @psychic do |f| %>
+    <script type="text/html" id="new_schedule">
+      <%= template_for_field f, :schedules %>
+    </script>
+
+    <table class="schedules">
+      <thead>
+        <tr>
+          <th style="width: 250px;">Date</th>
+          <th>Start</th>
+          <th>End</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tfoot>
+        <tr>
+          <td colspan="4"><%= image_submit_tag "psychics/save_schedule_btn.png" %></td>
+        </tr>
+      </tfoot>
+
+      <tbody>
+        <% @schedules.each_pair do |date, schedules| %>
+          <tr class="date-row">
+            <td class="upcoming-date" rowspan="<%= schedules.size + 1 %>">
+              <%= link_to l(date.in_time_zone.to_date, format: :schedule), "#",
+                :class => "add-schedule",
+                :"data-date" => l(date.in_time_zone.to_date, format: :date_only) %>
+            </td>
+          </tr>
+
+          <% schedules.each do |schedule| %>
+            <tr class="fields-row" data-date="<%=l date.in_time_zone.to_date, format: :date_only %>">
+              <%= f.fields_for :schedules, schedule do |sf| %>
+                <%= render schedule, f: sf, schedule: schedule %>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</section>
+
+<section class="psychic-invoices-container small_container">
+  <h2 class="section-title">My Pending Invoices</h2>
+
+  <% if @psychic.pending_invoices.any? %>
+    <%= render "pending_invoices_list" %>
+  <% else %>
+    <div class="psychic-blank">
+      No pending invoices.
+    </div>
+  <% end %>
+</section>
+
+<section class="psychic-invoices-container small_container">
+  <h2 class="section-title">My Paid Invoices</h2>
+
+  <% if @psychic.paid_invoices.any? %>
+    <%= render "paid_invoices_list" %>
+  <% else %>
+    <div class="psychic-blank">
+      No paid invoices.
+    </div>
+  <% end %>
+</section>
+
+<section class="psychic-reviews-container small_container">
+  <div class="my-reviews">
+    <h2 class="section-title">My Reviews:</h2>
+
+    <div class="my-reviews-badge">
+      <%= @psychic.reviews.count %>
+    </div>
+  </div>
+
+  <% if @psychic.reviews.any? %>
+    <%= render "reviews_list" %>
+  <% else %>
+    <div class="psychic-blank">
+      No reviews yet.
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,82 @@
+<div class="row-fluid">
+  <div class="span8">
+    <h3>Calls Summary</h3>
+
+    <%= form_tag(summary_admin_calls_path, method: "get") do %>
+      <label>Start date</label>
+      <%= text_field_tag :start_date, @start_date, class: "call_summary_date" %>
+
+      <label>End date</label>
+      <%= text_field_tag :end_date, @end_date, class: "call_summary_date" %>
+
+      <br>
+      <%= submit_tag "Search", class: "btn" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="control-group">
+  <div class="controls">
+    <% if @calls.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Call ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>From</th>
+            <th>Psychic</th>
+            <th>Duration</th>
+            <th>Refunded?</th>
+            <th>Cost</th>
+            <th>Price</th>
+            <th>Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @calls.each do |call| %>
+            <tr>
+              <td><%= call.id %></td>
+              <td><%= call.parsed_start_date_only %></td>
+              <td><%= call.parsed_start_time_only %></td>
+              <td><%= call.formatted_number %></td>
+              <td><%= call.psychic_alias_name %></td>
+              <td class="right">
+                <%= call.formatted_duration %>
+              </td>
+              <td>
+                <% if call.refunded? %>
+                  <i class="icon-ok"></i>
+                <% end %>
+              </td>
+              <td class="right">
+                <%= number_to_currency call.price_f %>
+              </td>
+              <td class="right">
+                <%= number_to_currency call.cost %>
+              </td>
+              <td class="right">
+                <%= number_to_currency call.profit %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="7"><strong>Total</strong></td>
+            <td class="right"><%= number_to_currency @total_cost_of_calls %></td>
+            <td class="right"><%= number_to_currency @total_price_of_calls %></td>
+            <td class="right"><%= number_to_currency @total_revenue_of_calls %></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <%= paginate @calls %>
+    <% else %>
+      <div class="blank-state">
+        No calls logged yet for the specified period.
+      </div>
+    <% end %>
+  </div>
+</div>

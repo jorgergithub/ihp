@@ -1,0 +1,21 @@
+<section id="psychic-details" data-psychic-id="<%= @psychic.id %>">
+  <div class="container_12">
+    <%= render "psychics/about/profile" %>
+    <%= render "psychics/about/pricing" %>
+    <%= render "psychics/shared/schedule" %>
+    <%= render "psychics/about/reviews" %>
+    <%= render "psychics/about/similar" %>
+  </div>
+</section>
+
+<div class="modal_list">
+  <% if @client %>
+    <% if @client.favorite_psychics.any? %>
+      <%= render "clients/modals/purchase/psychics" %>
+    <% else %>
+      <%= render "clients/modals/purchase/thank_you" %>
+    <% end %>
+    <%= render "clients/modals/prices" %>
+    <%= render "clients/modals/purchase/select_payment_method" %>
+  <% end %>
+</div>

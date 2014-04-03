@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      psychic_faq_category:
+        one: "Category"
+        other: "Categories"
+
+    attributes:
+      psychic_faq_category:
+        name: "Name"
+        faqs: "FAQ's"

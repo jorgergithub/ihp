@@ -1,0 +1,79 @@
+
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+
+== Install Redis (Ubuntu 13.04)
+
+    sudo apt-get -y install software-properties-common
+    sudo add-apt-repository ppa:chris-lea/redis-server
+    sudo apt-get update
+    sudo apt-get -y install redis-server
+
+== Install Redis (Ubuntu 12.04)
+
+    sudo apt-get -y install python-software-properties
+    sudo add-apt-repository ppa:chris-lea/redis-server
+    sudo apt-get update
+    sudo apt-get -y install redis-server
+
+=== Psychic fields
+
+address city state zip_code landline_number cellular_number ssn date_of_birth emergency_contact emergency_contact_number us_citizen:boolean has_experience:boolean experience:text gift explain_gift:text age_discovered:integer reading_style:text why_work:text friends_describe:text strongest_weakest_attributes:text how_to_deal_challenging_client:text specialties:text professional_goals:text how_did_you_hear other:text
+
+Street Address:  Text Field
+City:  (All US States) Drop Down Box
+Zip Code:  Text Field with Numeric Validation
+Landline Number:  Text Field with Numeric Validation
+Cellular Number:  (Optional)  Text Field with Numeric Validation
+SS#:  Text Field with Numeric Validation
+Date of Birth:  Text Field with Numeric Validation
+Emergency Contact:  Text Field
+Emergency Contact Number:  Text Field with Numeric Validation
+US Citizen?:  Yes / No Radio Button
+Method to Attach and Upload Resume:  File Upload Field
+Do you have any experience working professionally as a Psychic?  Yes / No Radio Button
+Please list your Psychic experience below:  Text Box
+What type of gift do you use to provide readings?  Text Box
+Explain your gift.  Text Box
+How old were you when you discovered your ability?  (All Age) Drop Down Box
+What is your reading style?  Text Box
+Why do you want to work for IHP?  Text Box
+How would your friends and coworkers describe you?  Text Box
+What are your strongest and weakest attributes?  Text Box
+How would you deal with a client who is challenging?   Text Box
+What are your specialties?  Text Box
+What tools do you use?  Text Box
+What are some of your professional goals?  Text Box
+How did you hear about this opportunity?  (Search Engine, Social Network Sites, TV, Radio, Referral, Other) Drop Down Box
+
+(Other) Text Field
+
+=== Font awesome
+
+  <%= stylesheet_link_tag    "http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" %>

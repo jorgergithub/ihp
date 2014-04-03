@@ -1,0 +1,7 @@
+<div class="control-group fields">
+  <%= f.label :text, "Answer", class: "control-label" %>
+  <div class="controls">
+    <%= f.text_field :text, class: "input-xxlarge" %>
+    <%= link_to_remove_fields('<i class="icon-remove"></i>'.html_safe, f, :title => "Delete this Question.") %>
+  </div>
+</div>

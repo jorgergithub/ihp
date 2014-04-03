@@ -1,0 +1,56 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h3>New Order</h3>
+  </div>
+  <div class="span12">
+    <%= form_for(@order, :url => admin_orders_path, :html => { :class => 'form form-horizontal' }) do |f| %>
+      <fieldset>
+        <span class="payment-errors"></span>
+
+        <section class="client">
+          <legend>Client</legend>
+          <div class="control-group">
+            <%= f.label :client_id, class: 'control-label' %>
+            <div class="controls">
+              <%= f.collection_select :client_id, Client.by_name, :id, :full_name, { :prompt => 'Select client'}, { :rel => "/admin/clients/" } %>
+              <span id="order-client-validation-error" class="validation-error"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="package">
+          <legend>Package</legend>
+
+          <div class="control-group">
+            <%= f.label :package_id, class: 'control-label' %>
+            <div class="controls">
+              <% Package.active.reverse.each do |pkg| %>
+                <label class="radio">
+                  <%= f.radio_button :package_id, pkg.id %>
+                  <%= pkg.name %>
+                  for
+                  <%= number_to_currency(pkg.price) %>
+                  <% if pkg = Package.active.reverse.first %>
+                    <span id="package-validation-error" class="validation-error"></span>
+                  <% end %>
+                </label>
+              <% end %>
+            </div>
+          </div>
+        </section>
+
+        <section id="client-payment" class="payment">
+        </section>
+      </fieldset>
+
+      <div>
+        <%= f.button "Go", class: 'btn go' %>
+        <%= link_to "Cancel", admin_orders_path, class: 'cancel btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  Stripe.setPublishableKey("<%= Rails.configuration.stripe[:publishable_key] %>")
+</script>

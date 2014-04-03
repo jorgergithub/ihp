@@ -1,0 +1,55 @@
+<%= f.fields_for :psychic, f.object.psychic.localized do |pf| %>
+
+  <legend>Address and Contact Information</legend>
+
+  <%= add_text_field pf, :address, "Street Address", class: "input-xxlarge" %>
+  <%= add_text_field pf, :city %>
+
+  <div class='control-group'>
+    <%= pf.label :country, :class => 'control-label' %>
+    <div class='controls'>
+      <%= pf.country_select :country, ["United States", "Canada"] %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= pf.label :state, :class => 'control-label' %>
+    <div class='controls'>
+      <%= pf.select :state, us_states, include_blank: true %>
+      <%= pf.text_field :state %>
+    </div>
+  </div>
+
+  <%= add_text_field pf, :postal_code %>
+  <%= add_text_field pf, :cellular_number, "", data: { mask: t('masks.phone') } %>
+  <%= add_text_field pf, :ssn, "SS#", data: { mask: t('masks.ssn') } %>
+  <%= add_date_field pf, :date_of_birth %>
+  <%= add_text_field pf, :emergency_contact %>
+  <%= add_text_field pf, :emergency_contact_number, "Emergency number" , data: { mask: t('masks.phone')} %>
+
+  <legend>Resume</legend>
+
+  <%= add_file_field pf, @psychic, :resume %>
+
+  <legend>Questions</legend>
+
+  <%= add_yesno_field pf, :us_citizen, "US citizen?" %>
+
+  <%= add_yesno_field pf, :has_experience, "Do you have any experience working professionally as a Psychic?" %>
+  <%= add_text_area pf, :experience, "Please list your Psychic experience below", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :gift, "What type of gift do you use to provide readings?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :explain_gift, "Explain your gift.", size: "120x10", class: "input-xxlarge" %>
+  <%= add_select pf, :age_discovered, (1..100).map { |n| [n, n]}, "How old were you when you discovered your ability?" %>
+  <%= add_text_area pf, :reading_style, "What is your reading style?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :why_work, "Why do you want to work for IHP?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :friends_describe, "How would your friends and coworkers describe you?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :strongest_weakest_attributes, "What are your strongest and weakest attributes?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :how_to_deal_challenging_client, "How would you deal with a client who is challenging?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :specialties, "What are your specialties?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :tools, "What tools do you use?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area pf, :professional_goals, "What are some of your professional goals?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_select pf, :how_did_you_hear, ["Search Engine", "Social Network Sites", "TV", "Radio", "Referral", "Other"].map { |o| [o, o] }, "How did you hear about this opportunity?" %>
+  <div id="other" class="hidden">
+    <%= add_text_field pf, :other, "Other", size: "120x10", class: "input-xxlarge" %>
+  </div>
+<% end %>

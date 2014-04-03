@@ -1,0 +1,14 @@
+<div id="thank_you_modal" class="thanks modal large">
+  <div>
+    <h1>Thank You!</h1>
+    <h2>Your purchase is complete!</h2>
+
+    <p>
+      A confirmation email has been sent to <b><%= @client.email %></b></p>
+    </p>
+  </div>
+
+  <footer>
+    <%= link_to image_tag("modal/search_psychics.png"), "/#search", class: "dismiss_modal" %>
+  </footer>
+</div>

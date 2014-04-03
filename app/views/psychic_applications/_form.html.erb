@@ -1,0 +1,124 @@
+<fieldset>
+  <legend>Personal Info</legend>
+
+  <div class="control-group">
+    <%= f.label :first_name, "Name", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, placeholder: "First name", autofocus: true, autocomplete: 'on' %>
+      <%= f.text_field :last_name, placeholder: "Last name", autocomplete: 'on' %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :pseudonym, :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.text_field :pseudonym %>
+      <p class="hint">Alias will be used as your online identity across all customer facing pages on the IHP website</p>
+    </div>
+  </div>
+
+  <% if f.object.persisted? %>
+    <div class="control-group">
+      <%= f.label :price, "Price (Per minute)", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :price, min: 3, max: 9, step: 1 %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= add_text_field f, :username %>
+  <%= add_text_field f, :email %>
+  <%= add_password_field f, :password %>
+  <%= add_password_field f, :password_confirmation %>
+
+  <div class="control-group">
+    <%= f.label :timezone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, { include_blank: true, default: nil }, class: 'timezone' %>
+    </div>
+  </div>
+
+  <legend>Address and Contact Information</legend>
+
+  <%= add_text_field f, :address, "Street Address", class: "input-xxlarge" %>
+  <%= add_text_field f, :city %>
+
+  <div class='control-group'>
+    <%= f.label :country, :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.country_select :country, ["United States", "Canada"] %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :state, :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.select :state, us_states, include_blank: true %>
+      <%= f.text_field :state %>
+    </div>
+  </div>
+
+  <%= add_text_field f, :postal_code %>
+  <%= add_text_field f, :phone, "Landline Number", data: { mask: t('masks.phone') } %>
+  <%= add_text_field f, :cellular_number, "", data: { mask: t('masks.phone') } %>
+
+  <div class="control-group">
+    <%= f.label :date_of_birth, nil, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_of_birth,
+            :start_year => Time.now.year,
+            :end_year => 1900,
+            :use_short_month => true,
+            :order => [:month, :day, :year],
+            :with_css_classes => true %>
+    </div>
+  </div>
+
+  <%= add_text_field f, :emergency_contact %>
+  <%= add_text_field f, :emergency_contact_number, "Emergency number", data: { mask: t('masks.phone') } %>
+
+  <legend>Resume</legend>
+
+  <% if params[:controller] =~ /admin/ %>
+    <% if @psychic_application.resume.present? %>
+      <div class="resume">
+        <i class="icon-arrow-down"></i>
+        <%= link_to @psychic_application.resume.file.try(:identifier), @psychic_application.resume.url, target: "_blank" %>
+      </div>
+    <% else %>
+      <i class="resume-not-uploaded">Not uploaded</i>
+    <% end %>
+  <% else %>
+    <%= add_file_field f, @psychic_application, :resume, "Resume (optional)" %>
+  <% end %>
+
+  <legend>Questions</legend>
+
+  <%= add_yesno_field f, :us_citizen, "US citizen?" %>
+
+  <%= add_yesno_field f, :has_experience, "Do you have any experience working professionally as a Psychic?" %>
+  <%= add_text_area f, :experience, "Please list your Psychic experience below", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :gift, "What type of gift do you use to provide readings?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :explain_gift, "Explain your gift.", size: "120x10", class: "input-xxlarge" %>
+  <%= add_select f, :age_discovered, (1..100).map { |n| [n, n]}, "How old were you when you discovered your ability?" %>
+  <%= add_text_area f, :reading_style, "What is your reading style?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :why_work, "Why do you want to work for IHP?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :friends_describe, "How would your friends and coworkers describe you?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :strongest_weakest_attributes, "What are your strongest and weakest attributes?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :how_to_deal_challenging_client, "How would you deal with a client who is challenging?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :specialties, "What are your specialties?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :tools, "What tools do you use?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_text_area f, :professional_goals, "What are some of your professional goals?", size: "120x10", class: "input-xxlarge" %>
+  <%= add_select f, :how_did_you_hear, ["Search Engine", "Social Network Sites", "TV", "Radio", "Referral", "Other"].map { |o| [o, o] }, "How did you hear about this opportunity?" %>
+  <div id="other" class="hidden">
+    <%= add_text_field f, :other, "Other", size: "120x10", class: "input-xxlarge" %>
+  </div>
+</fieldset>
+
+<div class="privacy_document">
+  <%= link_to "Applicant Privacy Notification for Application", apna_path, target: "_privacy_document" %>
+</div>
+
+<div class="acceptance">
+  <%= add_checkbox f, :terms, "By submitting this form, I acknowledge, understand, and agree to the terms as identified in the Applicant Privacy Notification for Application document above." %>
+</div>

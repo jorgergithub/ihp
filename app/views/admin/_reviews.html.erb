@@ -1,0 +1,84 @@
+<% if target.reviews.any? %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Client</th>
+        <th>Rating</th>
+        <th>Review</th>
+        <th>Marked as featured</th>
+        <th>Date/time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% target.reviews.each do |review| %>
+        <tr>
+          <td class="admin-actions">
+            <a href="#details_<%= review.id %>" role="button" data-toggle="modal"><i class='icon-plus-sign'></i></a>
+          </td>
+          <td>
+            <a href="#details_<%= review.id %>" role="button" data-toggle="modal"><%= review.id %></a>
+          </td>
+          <td><%= link_to review.client.full_name, edit_admin_client_path(review.client) %></td>
+          <td>
+            <% review.rating.times do %>
+              <i class="icon-heart"></i>
+            <% end %>
+          </td>
+          <td style="color: #666; font-style: italic;">
+            <%= truncate(review.text, length: 70) %>
+          </td>
+          <td>
+            <% if review.featured? %>
+              <i class="icon-ok"></i>
+            <% end %>
+          </td>
+          <td><%= format_datetime review.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% target.reviews.each do |review| %>
+    <div id="details_<%= review.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Review details</h3>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+          <tr style="background: #eee;">
+            <td>
+              <div class="pull-right">
+                <%= format_datetime review.created_at %>
+              </div>
+              Review from
+              <b><%= link_to review.client.full_name, edit_admin_client_path(review.client) %></b>
+              <span><% review.rating.times do %><i class="icon-heart"></i><% end %></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div><%= review.text %></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <% if review.featured? %>
+          <%= link_to "Unmark as featured", unmark_as_featured_admin_review_path(review), class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Mark as featured", mark_as_featured_admin_review_path(review), class: "btn btn-primary" %>
+        <% end %>
+
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+  <% end %>
+
+<% else %>
+  <div class="blank-state">
+    No reviews for this <%= target.class.name.humanize.downcase %>.
+  </div>
+<% end %>

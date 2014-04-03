@@ -1,0 +1,60 @@
+  <div class='control-group'>
+    <%= f.label :pseudonym, :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.text_field :pseudonym, disabled: current_user.psychic? %>
+      <p class="hint">Alias will be used as your online identity across all customer facing pages on the IHP website</p>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :abilities, :class => 'control-label' %>
+    <div class='controls'>
+      <label class='checkbox'><%= f.check_box :ability_clairvoyance %> Clairvoynance</label>
+      <label class='checkbox'><%= f.check_box :ability_clairaudient %> Clairaudiente</label>
+      <label class='checkbox'><%= f.check_box :ability_clairsentient %> Clairsentient</label>
+      <label class='checkbox'><%= f.check_box :ability_empathy %> Empathy</label>
+      <label class='checkbox'><%= f.check_box :ability_medium %> Medium</label>
+      <label class='checkbox'><%= f.check_box :ability_channeler %> Channeler</label>
+      <label class='checkbox'><%= f.check_box :ability_dream_analysis %> Dream Analysis</label>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :tools, :class => 'control-label' %>
+    <div class='controls'>
+      <label class='checkbox'><%= f.check_box :tools_tarot %> Tarot</label>
+      <label class='checkbox'><%= f.check_box :tools_oracle_cards %> Oracle Cards</label>
+      <label class='checkbox'><%= f.check_box :tools_runes %> Runes</label>
+      <label class='checkbox'><%= f.check_box :tools_crystals %> Crystals</label>
+      <label class='checkbox'><%= f.check_box :tools_pendulum %> Pendulum</label>
+      <label class='checkbox'><%= f.check_box :tools_numerology %> Numerology</label>
+      <label class='checkbox'><%= f.check_box :tools_astrology %> Astrology</label>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :specialties, :class => 'control-label' %>
+    <div class='controls'>
+      <label class='checkbox'><%= f.check_box :specialties_love_and_relationships %> Love and relationships</label>
+      <label class='checkbox'><%= f.check_box :specialties_career_and_work %> Career and work</label>
+      <label class='checkbox'><%= f.check_box :specialties_money_and_finance %> Money and finance</label>
+      <label class='checkbox'><%= f.check_box :specialties_lost_objects %> Lost objects</label>
+      <label class='checkbox'><%= f.check_box :specialties_dream_interpretation %> Dream interpretation</label>
+      <label class='checkbox'><%= f.check_box :specialties_pet_and_animals %> Pet and animals</label>
+      <label class='checkbox'><%= f.check_box :specialties_past_lives %> Past lives</label>
+      <label class='checkbox'><%= f.check_box :specialties_deceased %> Deceased</label>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :style, :class => 'control-label' %>
+    <div class='controls'>
+      <label class='checkbox'><%= f.check_box :style_compassionate %> Compassionate</label>
+      <label class='checkbox'><%= f.check_box :style_inspirational %> Inspirational</label>
+      <label class='checkbox'><%= f.check_box :style_straightforward %> Straightforward</label>
+    </div>
+  </div>
+
+  <%= add_text_area f, :about, nil, size: "120x10", class: "input-xxlarge" %>
+
+  <%= add_select f, :price, psychic_prices, "Price (Per Minute)", :selected => number_with_precision(f.object.price) %>

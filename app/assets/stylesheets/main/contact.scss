@@ -1,0 +1,86 @@
+@import "main/helpers";
+
+.contact {
+  aside {
+    float: right;
+    width: 370px;
+  }
+
+  aside p {
+    padding-bottom: 55px;
+  }
+
+  h3, label {
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    color: #000;
+    margin-bottom: 5px;
+  }
+
+  input, textarea {
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #8590a1;
+  }
+
+  input {
+    width: 370px;
+    height: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  textarea {
+    width: 540px;
+    height: 180px;
+    padding: 10px;
+  }
+
+  .contact-main {
+    padding: 50px 0;
+  }
+
+  .contact-social-links {
+    @extend %flat-list;
+    margin-top: 20px;
+  }
+
+  .contact-social-link {
+    margin-right: 5px;
+  }
+
+  .contact-send-button {
+    width: 170px;
+    height: 60px;
+    padding: 18x 0;
+    background-color: #6acd00;
+    font-size: 20px;
+    color: #fff;
+  }
+
+  #error_explanation {
+    background: #ffcccb;
+    width: 500px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: black;
+    border-radius: 4px;
+  }
+
+  #error_explanation h2 {
+    color: black;
+    font-size: 20px;
+  }
+
+  #error_explanation ul {
+    list-style-type: square;
+    padding: 10px 0 0 20px;
+  }
+}

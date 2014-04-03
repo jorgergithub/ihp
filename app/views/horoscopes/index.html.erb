@@ -1,0 +1,28 @@
+<%= render "nav" %>
+
+<section id="details" class="small_container">
+  <div class="horoscopes_row">
+    <% @horoscope.signs.each_with_index do |sign, index| %>
+      <%= render "sign",  sign: sign,
+                          lovescope_horoscope: @lovescope_horoscope,
+                          selected: select_if_first(index, :horoscope) %>
+    <% end %>
+  </div>
+
+  <div class="horoscopes_row">
+    <%= render "horoscopes/sign/friendship", horoscope: @horoscope %>
+    <%= render "horoscopes/sign/love", horoscope: @horoscope %>
+  </div>
+</section>
+
+<div class="modal_list">
+  <% if @client %>
+    <% if @client.favorite_psychics.any? %>
+      <%= render "clients/modals/purchase/psychics" %>
+    <% else %>
+      <%= render "clients/modals/purchase/thank_you" %>
+    <% end %>
+    <%= render "clients/modals/prices" %>
+    <%= render "clients/modals/purchase/select_payment_method" %>
+  <% end %>
+</div>

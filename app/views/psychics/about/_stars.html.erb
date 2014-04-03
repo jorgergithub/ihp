@@ -1,0 +1,8 @@
+<div class="stars">
+  <% stars.to_i.times do %>
+    <%= image_tag "psychics/#{star_type}_star.png" %>
+  <% end %> 
+  <% (5 - stars.to_i).times do %>
+    <%= image_tag "psychics/#{star_type}_star_container.png" %>
+  <% end %>
+</div>

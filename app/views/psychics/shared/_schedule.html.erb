@@ -1,0 +1,13 @@
+<article class="psychic-schedule">
+  <h1>My Schedule for the Week of <b><%= Date.today.strftime("%B %d, %Y") %></b></h1>
+
+  <div id="schedules_container">
+    <% if @psychic.weekly_schedule.any? %>
+      <%= render "psychics/shared/schedules_table" %>
+    <% else %>
+      <div class="psychic-blank">
+        No entries for this week's schedule.
+      </div>
+    <% end %>
+  </div>
+<article>
